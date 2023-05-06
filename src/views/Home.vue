@@ -1,7 +1,9 @@
 <template>
-  <HelloWorld />
+  <v-container class="d-flex justify-center align-center fill-height">
+    صفحه اصلی
+  </v-container>
 </template>
 
 <script setup>
-  import HelloWorld from '@/components/HelloWorld.vue'
+  
 </script>
