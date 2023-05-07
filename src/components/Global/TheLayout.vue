@@ -4,8 +4,9 @@
       <v-app-bar
         :color="theme == 'dark' ? 'rgba(0,0,0,.5)' : 'transparent'"
         height="100"
+        class="px-3"
       >
-        <div class="d-flex flex-column align-center pa-2">
+        <div class="d-flex flex-column align-center">
           <v-img width="60" height="60" src="@/assets/images/logo.png"> </v-img>
           <span
             :style="{
@@ -18,45 +19,53 @@
         </div>
 
         <v-spacer></v-spacer>
-        <div class="d-flex justify-between gap-1" gap="3rem">
+        <div
+          class="d-flex justify-between gap-1"
+          v-if="display.mdAndUp.value"
+          gap="3rem"
+        >
           <router-link
-            to="/"
-            :class="{ link: true, dark: theme == 'dark', active: false }"
+            :to="{ name: 'Home' }"
+            :class="{
+              link: true,
+              dark: theme == 'dark',
+              active: router.currentRoute.value.name == 'Home',
+            }"
           >
             صفحه اصلی
           </router-link>
           <router-link
-            to="/"
+            :to="{ name: 'Home' }"
             :class="{ link: true, dark: theme == 'dark', active: false }"
           >
             استان ها
           </router-link>
           <router-link
-            to="/"
+            :to="{ name: 'Home' }"
             :class="{ link: true, dark: theme == 'dark', active: false }"
           >
             تشکل های میان تخصصی
           </router-link>
           <router-link
-            to="/"
+            :to="{ name: 'Home' }"
             :class="{ link: true, dark: theme == 'dark', active: false }"
           >
             اخبار
           </router-link>
           <router-link
-            to="/"
+            :to="{ name: 'Home' }"
             :class="{ link: true, dark: theme == 'dark', active: false }"
           >
             چندرسانه ای
           </router-link>
           <router-link
-            to="/"
+            :to="{ name: 'Home' }"
             :class="{ link: true, dark: theme == 'dark', active: false }"
           >
             معرفی سازمان
           </router-link>
           <router-link
-            to="/"
+            :to="{ name: 'Home' }"
             :class="{ link: true, dark: theme == 'dark', active: false }"
           >
             تماس با ما
@@ -66,12 +75,22 @@
           variant="text"
           icon="mdi-magnify"
           :color="theme == 'dark' ? '#fff' : 'var(--primary)'"
+          @click="show_search_bar = !show_search_bar"
         ></v-btn>
         <v-app-bar-nav-icon
           variant="text"
           @click.stop="drawer = !drawer"
           :color="theme == 'dark' ? '#fff' : 'var(--primary)'"
+          v-if="display.smAndDown.value"
         ></v-app-bar-nav-icon>
+        <v-text-field
+          variant="underlined"
+          v-if="show_search_bar"
+          append-inner-icon="mdi-magnify"
+          @click:append-inner="show_search_bar = false"
+          :color="theme == 'dark' ? '#fff' : '#000'"
+        >
+        </v-text-field>
       </v-app-bar>
 
       <v-navigation-drawer
@@ -79,50 +98,54 @@
         location="bottom"
         temporary
         class="mobile-nav pa-5"
-        style="height: max-content;"
+        style="height: max-content"
       >
         <div
           class="d-flex flex-column justify-between gap-2 text-center mobile-nav"
           gap="3rem"
         >
           <router-link
-            to="/"
-            :class="{ link: true, dark: false, active: false }"
+            :to="{ name: 'Home' }"
+            :class="{
+              link: true,
+              dark: false,
+              active: router.currentRoute.value.name == 'Home',
+            }"
           >
             صفحه اصلی
           </router-link>
           <router-link
-            to="/"
+            :to="{ name: 'Home' }"
             :class="{ link: true, dark: false, active: false }"
           >
             استان ها
           </router-link>
           <router-link
-            to="/"
+            :to="{ name: 'Home' }"
             :class="{ link: true, dark: false, active: false }"
           >
             تشکل های میان تخصصی
           </router-link>
           <router-link
-            to="/"
+            :to="{ name: 'Home' }"
             :class="{ link: true, dark: false, active: false }"
           >
             اخبار
           </router-link>
           <router-link
-            to="/"
+            :to="{ name: 'Home' }"
             :class="{ link: true, dark: false, active: false }"
           >
             چندرسانه ای
           </router-link>
           <router-link
-            to="/"
+            :to="{ name: 'Home' }"
             :class="{ link: true, dark: false, active: false }"
           >
             معرفی سازمان
           </router-link>
           <router-link
-            to="/"
+            :to="{ name: 'Home' }"
             :class="{ link: true, dark: false, active: false }"
           >
             تماس با ما
@@ -140,6 +163,7 @@
 import { watch } from "vue";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useDisplay } from "vuetify/lib/framework.mjs";
 const router = useRouter();
 const drawer = ref(false);
 const group = ref(null);
@@ -149,6 +173,10 @@ watch(group, () => {
 });
 
 const theme = ref(router.currentRoute.value.meta.theme);
+
+const display = useDisplay();
+
+const show_search_bar = ref(false);
 </script>
 
 <style scoped>
