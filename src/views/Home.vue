@@ -1,9 +1,7 @@
 <template>
-  <v-container class="d-flex justify-center align-center fill-height">
-    صفحه اصلی
-  </v-container>
+  <News />
 </template>
 
 <script setup>
-  
+import News from "@/components/Home/News.vue";
 </script>

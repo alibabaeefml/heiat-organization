@@ -2,9 +2,13 @@
   <v-card>
     <v-layout>
       <v-app-bar
-        :color="theme == 'dark' ? 'rgba(0,0,0,.5)' : 'transparent'"
+        color="transparent"
         height="100"
         class="px-3"
+        :style="{
+          width: useDisplay().xlAndUp.value ? '2400px' : '100%',
+          left: useDisplay().xlAndUp.value ? 'calc(50% - 1200px)' : 0,
+        }"
       >
         <div class="d-flex flex-column align-center">
           <v-img width="60" height="60" src="@/assets/images/logo.png"> </v-img>
@@ -17,11 +21,17 @@
             >سازمان هیئت و تشکل های دینی</span
           >
         </div>
-
         <v-spacer></v-spacer>
+        <HeaderSubtitle
+          v-if="
+            display.smAndUp.value && router.currentRoute.value.name == 'Home'
+          "
+        />
         <div
           class="d-flex justify-between gap-1"
-          v-if="display.mdAndUp.value"
+          v-if="
+            display.mdAndUp.value && router.currentRoute.value.name != 'Home'
+          "
           gap="3rem"
         >
           <router-link
@@ -73,7 +83,7 @@
         </div>
         <v-btn
           variant="text"
-          icon="mdi-magnify"
+          :icon="show_search_bar ? 'mdi-close' : 'mdi-magnify'"
           :color="theme == 'dark' ? '#fff' : 'var(--primary)'"
           @click="show_search_bar = !show_search_bar"
         ></v-btn>
@@ -86,9 +96,14 @@
         <v-text-field
           variant="underlined"
           v-if="show_search_bar"
-          append-inner-icon="mdi-magnify"
-          @click:append-inner="show_search_bar = false"
           :color="theme == 'dark' ? '#fff' : '#000'"
+          bg-color="rgba(255,255,255,.3)"
+          clearable
+          class="pl-5"
+          autofocus
+          label="جستجو"
+          append-inner-icon="mdi-magnify"
+          @click:append-inner="search"
         >
         </v-text-field>
       </v-app-bar>
@@ -154,7 +169,9 @@
       </v-navigation-drawer>
 
       <v-main style="height: 100vh; overflow: auto" class="pa-0">
-        <router-view />
+        <v-container class="h-100 pa-0" :fluid="useDisplay().xlAndDown.value">
+          <router-view />
+        </v-container>
       </v-main>
     </v-layout>
   </v-card>
@@ -164,6 +181,7 @@ import { watch } from "vue";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useDisplay } from "vuetify/lib/framework.mjs";
+import HeaderSubtitle from "@/components/Home/HeaderSubtitle.vue";
 const router = useRouter();
 const drawer = ref(false);
 const group = ref(null);
@@ -177,6 +195,7 @@ const theme = ref(router.currentRoute.value.meta.theme);
 const display = useDisplay();
 
 const show_search_bar = ref(false);
+const search = () => console.log("to search later");
 </script>
 
 <style scoped>
