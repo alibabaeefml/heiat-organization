@@ -20,6 +20,7 @@ import TheLayout from "@/components/Global/layout/TheLayout.vue";
 :root {
   --primary: #015933;
   --secondary: #f3efcc;
+  --secondary-2:#ABCA53;
   font-family: Iran;
 }
 .gap-1 {

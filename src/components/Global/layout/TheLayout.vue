@@ -2,7 +2,7 @@
   <v-card>
     <v-layout>
       <v-app-bar
-        color="transparent"
+        :color="scrolled ? 'rgba(0,0,0,0.6)' : 'transparent'"
         height="100"
         class="px-3"
         :style="{
@@ -11,7 +11,10 @@
         }"
       >
         <div class="d-flex flex-column align-center">
-          <v-img width="60" height="60" src="@/assets/images/logo.png"> </v-img>
+          <router-link :to="{ name: 'Home' }">
+            <v-img width="60" height="60" src="@/assets/images/logo.png">
+            </v-img>
+          </router-link>
           <span
             :style="{
               'font-size': '7px',
@@ -27,6 +30,7 @@
             display.smAndUp.value && router.currentRoute.value.name == 'Home'
           "
         />
+
         <div
           class="d-flex justify-between gap-1"
           v-if="
@@ -168,7 +172,11 @@
         </div>
       </v-navigation-drawer>
 
-      <v-main style="height: 100vh; overflow: auto" class="pa-0">
+      <v-main
+        style="height: 100vh; overflow: auto"
+        class="pa-0"
+        :onscroll="main_scroll"
+      >
         <v-container class="h-100 pa-0" :fluid="useDisplay().xlAndDown.value">
           <router-view />
         </v-container>
@@ -182,6 +190,8 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import HeaderSubtitle from "@/components/Home/HeaderSubtitle.vue";
+import { onMounted } from "vue";
+import { computed } from "vue";
 const router = useRouter();
 const drawer = ref(false);
 const group = ref(null);
@@ -196,6 +206,13 @@ const display = useDisplay();
 
 const show_search_bar = ref(false);
 const search = () => console.log("to search later");
+
+const scrolled = ref(false);
+
+const main_scroll = () => {
+  let scroll_top = document.querySelector("main").scrollTop;
+  scroll_top > 0 ? (scrolled.value = true) : (scrolled.value = false);
+};
 </script>
 
 <style scoped>

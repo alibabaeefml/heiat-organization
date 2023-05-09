@@ -1,21 +1,18 @@
 <template>
-  <section class="section-one d-flex flex-column">
-    <swiper
-      :slides-per-view="1"
-      :space-between="50"
-      :class="{
-        'w-75': useDisplay().mdAndUp.value,
-        'w-100': useDisplay().mdAndDown.value,
-        'pa-5': true,
-      }"
-      style="margin-top: 200px"
-    >
-      <swiper-slide v-for="slide in 5" :key="slide">
-        <v-img cover src="@/assets/images/68942_842.png"></v-img>
-        <h2>خبرنامه سازمان هیئت های و تشکل های مذهبی</h2>
-        <p>{{ persian_lorem }}</p>
-      </swiper-slide>
-    </swiper>
+  <section
+    class="section-one d-flex flex-column"
+    :style="{
+      height: useDisplay().xs.value
+        ? 'calc(100% + 600px)'
+        : 'calc(100% + 300px)',
+    }"
+  >
+    <news-swiper />
+    <home-navigation
+      v-if="useDisplay().mdAndUp"
+      class="position-absolute"
+      style="bottom: 30px; left: calc(50% - 350px);z-index: 20;"
+    />
     <div
       class="w-100 position-absolute d-flex align-center justify-end"
       style="bottom: 0"
@@ -29,12 +26,9 @@
   </section>
 </template>
 <script setup>
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from "swiper/vue";
-
-// Import Swiper styles
-import "swiper/css";
 import { useDisplay } from "vuetify/lib/framework.mjs";
+import NewsSwiper from "./NewsSwiper.vue";
+import HomeNavigation from "./HomeNavigation.vue";
 </script>
 
 <style scoped>
@@ -45,7 +39,5 @@ import { useDisplay } from "vuetify/lib/framework.mjs";
   background-position: center;
   position: relative;
   width: 100%;
-  height: 100%;
-  min-height: 800px;
 }
 </style>
