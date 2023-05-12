@@ -28,7 +28,7 @@
         <h2 class="text-secondary next">
           خبرنامه سازمان هیئت های و تشکل های مذهبی
         </h2>
-        <p class="text-white">
+        <p class="text-white limited">
           {{ persian_lorem }}
         </p>
         <v-btn to="/" variant="outlined" color="secondary" text="ادامه مطلب">
@@ -39,7 +39,7 @@
       class="position-absolute d-flex justify-space-between"
       :style="
         (useDisplay().smAndUp.value ? 'top: 60%' : 'bottom:0') +
-        ';left: 5%; width: 90%;  z-index: 10'
+        ';left: 5%; width: 90%;  z-index: 10;'
       "
     >
       <v-btn

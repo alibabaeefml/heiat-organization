@@ -1,7 +1,7 @@
 <template>
   <div
     class="d-flex align-center justify-space-between rounded-lg bg-white pa-5"
-    style="width: 700px; height: 120px"
+    style="width: 700px; height: 120px;border: 2px solid var(--primary);"
   >
     <nav-item name="صفحه اصلی" route_name="Home" active="true">
       <svg
