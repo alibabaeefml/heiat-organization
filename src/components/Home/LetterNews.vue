@@ -1,7 +1,7 @@
 <template>
   <section
     class="section-one d-flex flex-column"
-  style="height: 100vh;"
+  style="min-height: 1000px;"
   >
     <letter-news-swiper />
     <home-navigation

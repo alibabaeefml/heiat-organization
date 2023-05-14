@@ -6,7 +6,8 @@
         height="100"
         class="px-3"
         :style="{
-          width: useDisplay().xlAndUp.value ? '2400px' : '100%',
+          minWidth: useDisplay().xlAndUp.value ? '2400px' : '100%',
+          maxWidth: useDisplay().xlAndUp.value ? '2400px' : '100%',
           left: useDisplay().xlAndUp.value ? 'calc(50% - 1200px)' : 0,
         }"
       >

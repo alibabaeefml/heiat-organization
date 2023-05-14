@@ -1,13 +1,14 @@
 <template>
   <LetterNews />
-  <div class="position-relative ">
+  <div class="position-relative">
     <div
       class="w-100 h-100 position-absolute pattern-div"
       style="pointer-events: none"
     ></div>
     <ProvincesNews />
     <InterprofessionalOrganizations />
-    <News/>
+    <News />
+    <MultiMedia />
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import InterprofessionalOrganizations from "@/components/Home/InterprofessionalO
 import LetterNews from "@/components/Home/LetterNews.vue";
 import News from "@/components/Home/News.vue";
 import ProvincesNews from "@/components/Home/ProvincesNews.vue";
+import MultiMedia from "@/components/Home/MultiMedia.vue"
 </script>
 
 <style scoped>

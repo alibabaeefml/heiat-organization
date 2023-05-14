@@ -4,15 +4,16 @@
       'overflow-hidden': true,
       'bg-white rounded-sm': data.card_theme == 'primary',
     }"
-    :style="{ width: data.width || '270px' }"
+    :style="{ width: data.width || '100%' }"
   >
-    <div>
-      <v-img
-        class="rounded-lg"
-        cover
-        src="@/assets/images/news-item-sample-image.png"
-      ></v-img>
-    </div>
+    <v-img
+      class="rounded-xl"
+      :width="data.img_width || '100%'"
+      :height="data.img_height || 'auto'"
+      cover
+      src="@/assets/images/news-item-sample-image.png"
+    ></v-img>
+
     <div class="pa-2">
       <h3>عنوان خبر</h3>
       <p class="limited">{{ persian_lorem }}</p>
