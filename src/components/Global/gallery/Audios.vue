@@ -39,4 +39,5 @@ const selected_audio = ref({});
   justify-content: space-between;
   padding: 1rem;
 }
+
 </style>

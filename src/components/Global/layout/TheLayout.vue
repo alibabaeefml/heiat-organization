@@ -182,6 +182,9 @@
           <router-view />
         </v-container>
       </v-main>
+      <v-footer class="d-flex flex-column bg-primary" color="primary">
+        <div>FOOTER</div>
+      </v-footer>
     </v-layout>
   </v-card>
 </template>
@@ -191,8 +194,7 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import HeaderSubtitle from "@/components/Home/HeaderSubtitle.vue";
-import { onMounted } from "vue";
-import { computed } from "vue";
+
 const router = useRouter();
 const drawer = ref(false);
 const group = ref(null);

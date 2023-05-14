@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-secondary-3 pa-5" style="min-height: 1000px">
+  <section class="bg-secondary-3 pa-5 position-relative" style="min-height: 1000px">
     <div class="position-relative" style="z-index: 11">
       <div
         class="d-flex gap-1 flex-md-row flex-column align-end justify-space-between"
@@ -34,6 +34,17 @@
           />
         </v-col>
       </v-row>
+    </div>
+    <!-- lower mask -->
+    <div
+      class="w-100 position-absolute d-flex align-center justify-end"
+      style="bottom: 0"
+    >
+      <v-img
+        cover
+        src="@/assets/images/white_mask.png"
+        style="object-fit: cover"
+      ></v-img>
     </div>
   </section>
 </template>

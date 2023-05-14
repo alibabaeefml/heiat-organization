@@ -9,6 +9,7 @@
     <InterprofessionalOrganizations />
     <News />
     <MultiMedia />
+    <SpecialNews/>
   </div>
 </template>
 
@@ -18,6 +19,7 @@ import LetterNews from "@/components/Home/LetterNews.vue";
 import News from "@/components/Home/News.vue";
 import ProvincesNews from "@/components/Home/ProvincesNews.vue";
 import MultiMedia from "@/components/Home/MultiMedia.vue"
+import SpecialNews from "@/components/Home/SpecialNews.vue";
 </script>
 
 <style scoped>

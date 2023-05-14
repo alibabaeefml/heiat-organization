@@ -1,16 +1,20 @@
 <template>
-  <div class="d-flex gap-1 pa-5 justify-end" v-if="useDisplay().mdAndUp.value">
+  <div class="d-none d-md-flex gap-1 pa-5 justify-end" >
     <v-btn class="next-slide" icon="mdi-arrow-right" color="secondary"></v-btn>
     <v-btn class="prev-slide" icon="mdi-arrow-left" color="secondary"></v-btn>
   </div>
   <v-row height="500">
     <v-col cols="12" md="5" class="pa-8">
-      <CaptionedPhoto :data="{ card_style: { height: '100%' },img_style: { height: '100%' } }" />
+      <CaptionedPhoto
+        :data="{
+          card_style: { height: '100%' },
+          img_style: { height: '100%' },
+        }"
+      />
     </v-col>
     <v-col cols="12" md="7">
       <div
-        class="d-flex gap-1 justify- d-flex gap-1 pa-5 justify-center"
-        v-if="useDisplay().mdAndDown.value"
+        class="d-flex d-md-none  gap-1 pa-5 justify-center "
       >
         <v-btn
           class="next-slide"

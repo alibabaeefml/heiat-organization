@@ -18,17 +18,6 @@
         </v-col>
       </v-row>
     </div>
-    <!-- lower mask -->
-    <div
-      class="w-100 position-absolute d-flex align-center justify-end"
-      style="bottom: 0"
-    >
-      <v-img
-        cover
-        src="@/assets/images/white_mask.png"
-        style="object-fit: cover"
-      ></v-img>
-    </div>
   </section>
 </template>
 <script setup>

@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex gap-1 pa-5 justify-end" v-if="useDisplay().mdAndUp.value">
+    <div class="d-none d-md-flex gap-1 pa-5 justify-end" v-if="useDisplay().mdAndUp.value">
       <v-btn class="next-slide" icon="mdi-arrow-right" color="secondary"></v-btn>
       <v-btn class="prev-slide" icon="mdi-arrow-left" color="secondary"></v-btn>
     </div>
@@ -9,7 +9,7 @@
       </v-col>
       <v-col cols="12" md="3">
         <div
-          class="d-flex gap-1 justify- d-flex gap-1 pa-5 justify-center"
+          class="d-flex d-md-none  gap-1 pa-5 justify-center "
           v-if="useDisplay().mdAndDown.value"
         >
           <v-btn

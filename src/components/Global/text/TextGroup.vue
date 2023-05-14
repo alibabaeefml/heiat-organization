@@ -1,5 +1,5 @@
 <template>
- <div class="d-flex flex-column">
+ <div class="d-flex flex-column pa-3">
   <h4>{{ pretitle }}</h4>
   <h2 class="text-primary" style="font-size: 2rem">{{ title }}</h2>
   <p :class="{ limited: limited }">
