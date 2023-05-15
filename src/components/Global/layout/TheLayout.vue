@@ -2,12 +2,11 @@
   <v-card>
     <v-layout>
       <v-app-bar
-        :color="scrolled ? 'rgba(0,0,0,0.6)' : 'transparent'"
+        :color="scrolled ? ( theme == 'dark' ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,.6)') : 'transparent'"
         height="100"
-        class="px-3"
+        class="px-3 "
         :style="{
-          minWidth: useDisplay().xlAndUp.value ? '2400px' : '100%',
-          maxWidth: useDisplay().xlAndUp.value ? '2400px' : '100%',
+          width: useDisplay().xlAndUp.value ? '2400px' : '100%',
           left: useDisplay().xlAndUp.value ? 'calc(50% - 1200px)' : 0,
         }"
       >
@@ -180,11 +179,97 @@
       >
         <v-container class="h-100 pa-0" :fluid="useDisplay().xlAndDown.value">
           <router-view />
+          <v-footer class="d-flex flex-column pa-0" color="secondary-3">
+            <v-row class="pa-3">
+              <v-col cols="12" md="3" class="d-flex flex-column gap-1">
+                <div class="d-flex flex-column align-center">
+                  <router-link :to="{ name: 'Home' }">
+                    <v-img
+                      width="60"
+                      height="60"
+                      src="@/assets/images/logo.png"
+                    >
+                    </v-img>
+                  </router-link>
+                  <h3
+                    :style="{
+                      'font-size': '7px',
+                      'letter-spacing': '-0.5px',
+                    }"
+                    class="text-primary"
+                  >
+                    سازمان هیئت و تشکل های دینی
+                  </h3>
+                </div>
+                <p class="limited">{{ persian_lorem }}</p>
+              </v-col>
+              <v-col
+                cols="12"
+                md="3"
+                class="text-center d-flex flex-column align-center"
+              >
+                <h3 class="text-primary">دسترسی سریع</h3>
+                <v-row class="d-flex justify-center mt-2"
+                  ><v-col cols="6" class="d-flex flex-column">
+                    <v-btn
+                      variant="plain"
+                      :to="{ name: item.link || 'Home' }"
+                      v-for="item in 5"
+                      width="max-content"
+                    >
+                      {{ item.title || "لورم ایپسوم" }}
+                    </v-btn>
+                  </v-col>
+                  <v-col cols="6" class="d-flex flex-column">
+                    <v-btn
+                      variant="plain"
+                      :to="{ name: item.link || 'Home' }"
+                      v-for="item in 5"
+                      width="max-content"
+                    >
+                      {{ item.title || "لورم ایپسوم" }}
+                    </v-btn>
+                  </v-col></v-row
+                >
+              </v-col>
+              <v-col
+                cols="12"
+                md="6"
+                class="d-flex align-md-end align-center flex-column gap-1"
+              >
+                <h4>آمار بازدید سایت: {{ visit_stat || 1356 }}</h4>
+                <v-row class="w-100 justify-space-between">
+                  <v-col cols="4" v-for="item in 3">
+                    <router-link :to="{ name: item.link || 'Home' }">
+                      <v-img cover :src="item.img || default_img"></v-img>
+                    </router-link>
+                  </v-col>
+                </v-row>
+              </v-col>
+            </v-row>
+            <div class="bg-primary w-100">
+              <div
+                class="d-flex align-center w-100 flex-sm-row flex-column justify-space-between pa-2"
+              >
+                <p>
+                  کلیه حقوق این سایت متعلق به سازمان هیأت و تشکل های دینی
+                  می‌باشد.
+                </p>
+                <div class="d-flex justify-space-between gap-1">
+                  <v-btn
+                    v-for="item in socials"
+                    :key="item"
+                    :icon="item.icon"
+                    variant="plain"
+                    size="small"
+                  >
+                  </v-btn>
+                </div>
+              </div>
+            </div>
+          </v-footer>
         </v-container>
       </v-main>
-      <v-footer class="d-flex flex-column bg-primary" color="primary">
-        <div>FOOTER</div>
-      </v-footer>
     </v-layout>
   </v-card>
 </template>
@@ -194,7 +279,6 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import HeaderSubtitle from "@/components/Home/HeaderSubtitle.vue";
-
 const router = useRouter();
 const drawer = ref(false);
 const group = ref(null);
@@ -216,6 +300,27 @@ const main_scroll = () => {
   let scroll_top = document.querySelector("main").scrollTop;
   scroll_top > 0 ? (scrolled.value = true) : (scrolled.value = false);
 };
+
+const socials = ref([
+  {
+    icon: "mdi-facebook",
+    link: "Home",
+  },
+  {
+    icon: "mdi-instagram",
+    link: "Home",
+  },
+  {
+    icon: "mdi-youtube",
+    link: "Home",
+  },
+  {
+    icon: "mdi-linkedin",
+    link: "Home",
+  },
+]);
+
+const visit_stat = ref()
 </script>
 
 <style scoped>

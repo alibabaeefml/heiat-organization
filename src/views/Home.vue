@@ -22,12 +22,3 @@ import MultiMedia from "@/components/Home/MultiMedia.vue"
 import SpecialNews from "@/components/Home/SpecialNews.vue";
 </script>
 
-<style scoped>
-.pattern-div {
-  background-image: url(@/assets/images/pattern.png);
-  background-repeat: repeat;
-  top: 0;
-  left: 0;
-  z-index: 10;
-}
-</style>

@@ -15,7 +15,7 @@
     ></v-img>
 
     <div class="pa-2">
-      <h3>عنوان خبر</h3>
+      <h3>{{ data.title || 'عنوان کارت' }}</h3>
       <p class="limited">{{ persian_lorem }}</p>
       <div
         :class="{
@@ -29,7 +29,7 @@
           :to="{ name: 'Home' }"
           class="text-decoration-none text-black"
           style="border-bottom: 3px solid var(--primary)"
-          >مشاهده بیشتر</router-link
+          >{{ data.link_text || 'مشاهده بیشتر' }}</router-link
         >
       </div>
     </div>

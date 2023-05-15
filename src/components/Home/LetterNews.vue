@@ -3,7 +3,7 @@
     class="section-one d-flex flex-column"
   style="min-height: 1000px;"
   >
-    <letter-news-swiper />
+    <LetterNewsSwiper />
     <home-navigation
       v-if="useDisplay().mdAndUp.value"
       class="position-absolute"

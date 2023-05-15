@@ -39,9 +39,9 @@ li {
   align-items: center;
   justify-content: center;
 }
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   display: none;
-}
+} */
 p.limited {
   height: 60px;
   overflow: hidden;
@@ -71,5 +71,12 @@ p.limited {
 }
 .jvectormap-region.jvectormap-element.active {
   fill: var(--primary);
+}
+.pattern-div {
+  background-image: url(@/assets/images/pattern.png);
+  background-repeat: repeat;
+  top: 0;
+  left: 0;
+  z-index: 10;
 }
 </style>
