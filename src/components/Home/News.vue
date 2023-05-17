@@ -1,5 +1,8 @@
 <template>
-  <section class="bg-secondary-3 pa-5 position-relative" style="min-height: 1000px">
+  <section
+    class="bg-secondary-3 pa-5 position-relative"
+    style="min-height: 1000px"
+  >
     <div class="position-relative" style="z-index: 11">
       <div
         class="d-flex gap-1 flex-md-row flex-column align-end justify-space-between"
@@ -53,4 +56,5 @@ import TextGroup from "@/components/Global/text/TextGroup.vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import VerticalCard from "../Global/card/VerticalCard.vue";
 import HorizontalCard from "../Global/card/HorizontalCard.vue";
+import Swiper from "swiper";
 </script>

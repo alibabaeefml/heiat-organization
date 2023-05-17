@@ -24,13 +24,22 @@
           <Map />
         </v-col>
       </v-row>
-      <div>
+      <div class="pa-2">
         <h2>خبر های استان</h2>
         <v-row class="pa-3">
-            <v-col cols="12" md="3">
-                <Filter/>
-            </v-col>
-            <v-col cols="12" md="9"></v-col>
+          <v-col cols="12" md="3">
+            <Filter />
+          </v-col>
+          <v-col cols="12" md="9">
+            <v-row>
+              <v-col cols="12" md="3" sm="6" v-for="item in 12">
+                <VerticalCard :data="{ card_theme: 'primary',link:'ProvincesSingleNews' }" />   
+              </v-col>
+              <v-col>
+                <Pagination />
+              </v-col>
+            </v-row>
+          </v-col>
         </v-row>
       </div>
     </div>
@@ -38,7 +47,9 @@
 </template>
 
 <script setup>
-import Filter from "@/components/Global/Filter/Filter.vue";
+import VerticalCard from "@/components/Global/card/VerticalCard.vue";
+import Filter from "@/components/Global/filter/Filter.vue";
+import Pagination from "@/components/Global/filter/Pagination.vue";
 import Map from "@/components/Global/map/Map.vue";
 import TextGroup from "@/components/Global/text/TextGroup.vue";
 import PrimaryOrganization from "@/components/Provinces/PrimaryOrganizations.vue";

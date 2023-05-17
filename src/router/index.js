@@ -9,18 +9,36 @@ const routes = [
       {
         path: "",
         name: "Home",
-        component: () =>
-          import( "@/views/Home.vue"),
+        component: () => import("@/views/Home.vue"),
         meta: {
+          title: "صفحه اصلی",
           theme: "dark",
         },
       },
       {
         path: "/provinces",
         name: "Provinces",
-        component: () =>
-          import( "@/views/Provinces.vue"),
+        component: () => import("@/views/Provinces.vue"),
         meta: {
+          title: "استان ها",
+          theme: "light",
+        },
+      },
+      {
+        path: "/provinces-single-news",
+        name: "ProvincesSingleNews",
+        component: () => import("@/views/ProvincesSingleNews.vue"),
+        meta: {
+          title: "تک خبر استان ها",
+          theme: "light",
+        },
+      },
+      {
+        path: "/categorized-news",
+        name: "CategorizedNews",
+        component: () => import("@/views/CategorizedNews.vue"),
+        meta: {
+          title: "اخبار دسته بندی شده",
           theme: "light",
         },
       },
@@ -33,4 +51,7 @@ const router = createRouter({
   routes,
 });
 
+router.beforeEach((to, from) => {
+  document.title = to.meta.title;
+});
 export default router;

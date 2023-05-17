@@ -15,7 +15,7 @@
     ></v-img>
 
     <div class="pa-2">
-      <h3>{{ data.title || 'عنوان کارت' }}</h3>
+      <h3>{{ data.title || "عنوان کارت" }}</h3>
       <p class="limited">{{ persian_lorem }}</p>
       <div
         :class="{
@@ -26,10 +26,10 @@
         }"
       >
         <router-link
-          :to="{ name: 'Home' }"
+          :to="{ name: data.link || 'Home' }"
           class="text-decoration-none text-black"
           style="border-bottom: 3px solid var(--primary)"
-          >{{ data.link_text || 'مشاهده بیشتر' }}</router-link
+          >{{ data.link_text || "مشاهده بیشتر" }}</router-link
         >
       </div>
     </div>

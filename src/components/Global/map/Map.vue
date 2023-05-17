@@ -16,6 +16,57 @@
 import { onMounted } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 
+function append_map_stats(path, statistic_data, data_code, attrs = {}) {
+  let bbox = path.getBBox();
+  let x = bbox.x + bbox.width / 2;
+  let y = bbox.y + bbox.height / 2;
+  // default attrs
+  const defaultAttrs = {
+    circle: {
+      cx: x,
+      cy: y,
+      r: 8,
+      "data-code": data_code,
+      style: `pointerEvents: none;
+        userSelect: none;
+        fill: var(--primary)`,
+    },
+    text: {
+      x: x,
+      y: y,
+      "data-code": data_code,
+      "text-anchor": "middle",
+      "alignment-baseline": "middle",
+      style: `pointer-events: none;
+        user-select: none;
+        fill: #fff;
+        font-size: 8px`,
+    },
+  };
+  Object.assign(defaultAttrs.circle, attrs.circle);
+  Object.assign(defaultAttrs.text, attrs.text);
+
+  let background_circle = document.createElementNS(path.namespaceURI, "circle");
+
+  for (let item in defaultAttrs.circle) {
+    background_circle.setAttribute(item, defaultAttrs.circle[item]);
+  }
+
+  // append circle after svg path
+  path.after(background_circle);
+
+  // Create a <text> element
+  let data_number = document.createElementNS(path.namespaceURI, "text");
+
+  data_number.textContent = statistic_data;
+  // Add this text element directly after the label background path
+
+  for (let item in defaultAttrs.text) {
+    data_number.setAttribute(item, defaultAttrs.text[item]);
+  }
+
+  background_circle.after(data_number);
+}
 onMounted(() => {
   const jvm_map = $("#iran_map");
   jvm_map.vectorMap({
@@ -39,9 +90,17 @@ onMounted(() => {
       },
     },
     onRegionClick: function (event, code) {
-      $("path[data-code]").removeClass("active")
+      $("path[data-code]").removeClass("active");
       $(`path[data-code=${code}]`).addClass("active");
     },
+  });
+  $("[data-code]").each((i, e) => {
+    let province_name = e.getAttribute("data-code");
+    append_map_stats(
+      document.querySelector(`[data-code='${province_name}']`),
+      50,
+      province_name
+    );
   });
 });
 </script>

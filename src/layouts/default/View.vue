@@ -1,6 +1,7 @@
 <template>
   <v-locale-provider locale="fa">
     <TheLayout />
+    
   </v-locale-provider>
 </template>
 
@@ -23,6 +24,7 @@ import TheLayout from "@/components/Global/layout/TheLayout.vue";
   --secondary-2: #abca53;
   --secondary-3: #fdfbe3;
   font-family: Iran;
+  overflow: hidden;
 }
 
 li {
@@ -71,6 +73,14 @@ p.limited {
 }
 .jvectormap-region.jvectormap-element.active {
   fill: var(--primary);
+}
+.jvectormap-region.jvectormap-element.active + circle + text {
+  fill: var(--primary) !important;
+  pointer-events: none;
+}
+.jvectormap-region.jvectormap-element.active + circle {
+  fill: var(--secondary-3) !important;
+  pointer-events: none;
 }
 .pattern-div {
   background-image: url(@/assets/images/pattern.png);

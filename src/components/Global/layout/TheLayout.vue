@@ -2,12 +2,19 @@
   <v-card>
     <v-layout>
       <v-app-bar
-        :color="scrolled ? ( theme == 'dark' ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,.6)') : 'transparent'"
+        :color="
+          scrolled
+            ? theme == 'dark'
+              ? 'rgba(0,0,0,0.3)'
+              : 'rgba(255,255,255,.5)'
+            : 'transparent'
+        "
         height="100"
-        class="px-3 "
+        class="px-3"
         :style="{
           width: useDisplay().xlAndUp.value ? '2400px' : '100%',
           left: useDisplay().xlAndUp.value ? 'calc(50% - 1200px)' : 0,
+          backdropFilter:'blur(5px)'
         }"
       >
         <div class="d-flex flex-column align-center">
@@ -49,8 +56,12 @@
             صفحه اصلی
           </router-link>
           <router-link
-            :to="{ name: 'Home' }"
-            :class="{ link: true, dark: theme == 'dark', active: false }"
+            :to="{ name: 'Provinces' }"
+            :class="{
+              link: true,
+              dark: theme == 'dark',
+              active: router.currentRoute.value.name == 'Provinces',
+            }"
           >
             استان ها
           </router-link>
@@ -134,8 +145,12 @@
             صفحه اصلی
           </router-link>
           <router-link
-            :to="{ name: 'Home' }"
-            :class="{ link: true, dark: false, active: false }"
+            :to="{ name: 'Provinces' }"
+            :class="{
+              link: true,
+              dark: false,
+              active: router.currentRoute.value.name == 'Provinces',
+            }"
           >
             استان ها
           </router-link>
@@ -174,7 +189,7 @@
 
       <v-main
         style="height: 100vh; overflow: auto"
-        class="pa-0"
+        class="pa-0 overflow-x-hidden"
         :onscroll="main_scroll"
       >
         <v-container class="h-100 pa-0" :fluid="useDisplay().xlAndDown.value">
@@ -279,6 +294,7 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import HeaderSubtitle from "@/components/Home/HeaderSubtitle.vue";
+import { computed } from "vue";
 const router = useRouter();
 const drawer = ref(false);
 const group = ref(null);
@@ -287,7 +303,7 @@ watch(group, () => {
   drawer.value = false;
 });
 
-const theme = ref(router.currentRoute.value.meta.theme);
+const theme = computed(() => router.currentRoute.value.meta.theme);
 
 const display = useDisplay();
 
@@ -320,7 +336,7 @@ const socials = ref([
   },
 ]);
 
-const visit_stat = ref()
+const visit_stat = ref();
 </script>
 
 <style scoped>

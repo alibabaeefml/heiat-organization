@@ -26,9 +26,9 @@
 import { ref } from "vue";
 
 const items = ref([
-  { text: "دسته بندی مادر", icon: "mdi-clock" },
-  { text: "دسته بندی مادر", icon: "mdi-clock" },
-  { text: "دسته بندی مادر", icon: "mdi-clock" },
-  { text: "دسته بندی مادر", icon: "mdi-clock" },
+  { text: "دسته بندی مادر" },
+  { text: "دسته بندی مادر" },
+  { text: "دسته بندی مادر" },
+  { text: "دسته بندی مادر" },
 ]);
 </script>
