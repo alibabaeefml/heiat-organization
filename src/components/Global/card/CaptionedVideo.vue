@@ -2,7 +2,7 @@
   <v-card class="rounded-xl overflow-hidden" :style="data.card_style || {}">
     <video
       :style="data.video_style || {}"
-      cover
+      
       :poster="data.poster || default_img"
       :src="data.vdieo"
     ></video>

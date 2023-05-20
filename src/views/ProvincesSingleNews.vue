@@ -43,19 +43,6 @@ import VerticalCard from "@/components/Global/card/VerticalCard.vue";
 import Actions from "@/components/Global/button_group/Actions.vue";
 const news = ref({});
 
-const actions = ref([
-  {
-    link: "/",
-    icon: "mdi-facebook",
-  },
-  {
-    link: "/",
-    icon: "mdi-youtube",
-  },
-  {
-    link: "/",
-    icon: "mdi-twitter",
-  },
-]);
+
 const rating = ref()
 </script>

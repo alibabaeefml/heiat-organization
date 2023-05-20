@@ -60,11 +60,11 @@
             استان ها
           </router-link>
           <router-link
-            :to="{ name: 'InterprofessionalOrganizations' }"
+            :to="{ name: 'InterprofessionalOrganizationsCategorizedNews' }"
             :class="{
               link: true,
               dark: theme == 'dark',
-              active: router_name == 'InterprofessionalOrganizations',
+              active: router_name == 'InterprofessionalOrganizationsCategorizedNews',
             }"
           >
             تشکل های میان تخصصی
@@ -196,7 +196,7 @@
       >
         <v-container class="h-100 pa-0" :fluid="display.xlAndDown.value">
           <router-view />
-          <v-footer class="mt-5 d-flex flex-column pa-0" color="secondary-3">
+          <v-footer class="pt-5 d-flex flex-column pa-0" color="#FAF8E8">
             <v-row class="pa-3">
               <v-col cols="12" md="3" class="d-flex flex-column gap-1">
                 <div class="d-flex flex-column align-center">

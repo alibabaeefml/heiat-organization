@@ -23,6 +23,7 @@ import TheLayout from "@/components/Global/layout/TheLayout.vue";
   --secondary: #f3efcc;
   --secondary-2: #abca53;
   --secondary-3: #fdfbe3;
+  --secondary-4: #4E8C43;
   font-family: Iran;
   overflow: hidden;
 }

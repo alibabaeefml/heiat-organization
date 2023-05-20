@@ -4,7 +4,7 @@
     class="w-100"
     autoplay
     loop
-    :slides-per-view="useDisplay().xs.value ? 1 : 4" 
+    :slides-per-view="useDisplay().xs.value ? 1 : 4"
     :space-between="20"
     :navigation="navigation_options"
   >
@@ -24,7 +24,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-import VerticalCard from "../Global/card/VerticalCard.vue";
+import VerticalCard from "../card/VerticalCard.vue";
 
 const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay];
 

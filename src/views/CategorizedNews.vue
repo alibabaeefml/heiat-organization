@@ -98,7 +98,7 @@
             ></v-btn>
           </div>
         </div>
-        <ProvincesNewsSwiper class="mt-5" />
+        <HorizontalSwiper class="mt-5" />
       </div>
       <div
         class="d-flex flex-sm-row flex-column align-center justify-space-between"
@@ -125,12 +125,12 @@
       </div>
       <div class="d-flex justify-end w-100 mt-5">
         <v-btn
-              color="primary"
-              class="rounded-lg font-weight-bold"
-              :to="{ name: 'News' }"
-              :block="useDisplay().xs.value"
-              >نمایش همه</v-btn
-            >
+          color="primary"
+          class="rounded-lg font-weight-bold"
+          :to="{ name: 'News' }"
+          :block="useDisplay().xs.value"
+          >نمایش همه</v-btn
+        >
       </div>
       <OrganizationNewsSwiper class="mt-5" />
       <div class="d-flex justify-end mt-5"></div>
@@ -141,8 +141,8 @@
 import TextGroup from "@/components/Global/text/TextGroup.vue";
 
 import PrimaryNewsSwiper from "@/components/CategorizedNews/PrimaryNewsSwiper.vue";
-import ProvincesNewsSwiper from "@/components/CategorizedNews/ProvincesNewsSwiper.vue";
 import VerticalCard from "@/components/Global/card/VerticalCard.vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import OrganizationNewsSwiper from "@/components/CategorizedNews/OrganizationNewsSwiper.vue";
+import HorizontalSwiper from "@/components/Global/swiper/HorizontalSwiper.vue";
 </script>

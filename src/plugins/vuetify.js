@@ -21,6 +21,8 @@ export default createVuetify({
           secondary: "#F3EFCC",
           "secondary-2": "#ABCA53",
           "secondary-3": "#fdfbe3",
+          "secondary-4": "#4E8C43",
+
         },
       },
     },

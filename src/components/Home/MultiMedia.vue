@@ -1,7 +1,7 @@
 <template>
   <section class="bg-white">
     <div class="position-relative" style="z-index: 11">
-      <TextGroup title="چند رسانه ای" class="text-center" />
+      <TextGroup title="چند رسانه ای" class="text-center mx-auto w-75" />
       <v-tabs color="secondary-2 " grow v-model="media_tab">
         <v-tab value="photos">آلبوم تصاویر</v-tab>
         <v-tab value="videos">فیلم</v-tab>

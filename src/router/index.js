@@ -42,13 +42,12 @@ const routes = [
           theme: "light",
         },
       },
-
       {
         path: "/organization-single-news",
         name: "OrganizationSingleNews",
         component: () => import("@/views/OrganizationSingleNews.vue"),
         meta: {
-          title: "تک خبر",
+          title: "تک خبر سازمان / تشکل",
           theme: "light",
         },
       },
@@ -62,11 +61,20 @@ const routes = [
         },
       },
       {
-        path: "/categorized-news",
-        name: "InterprofessionalOrganizations",
-        component: () => import("@/views/InterprofessionalOrganizations.vue"),
+        path: "/interprofessional-organizations-categorized-news",
+        name: "InterprofessionalOrganizationsCategorizedNews",
+        component: () => import("@/views/InterprofessionalOrganizationsCategorizedNews.vue"),
         meta: {
-          title: "تشکل های میان تخصصی",
+          title: "دسته بندی اخبار تشکل های میان تخصصی",
+          theme: "light",
+        },
+      },
+      {
+        path: "/special-news",
+        name: "SpecialNews",
+        component: () => import("@/views/SpecialNews.vue"),
+        meta: {
+          title: "ویژه نامه",
           theme: "light",
         },
       },
