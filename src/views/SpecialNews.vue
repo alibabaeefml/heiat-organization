@@ -13,7 +13,9 @@
         <v-col cols="12" md="9">
           <v-row>
             <v-col cols="12" md="6" v-for="item in 12">
-                <HorizontalCard :data="{img_width:'200px'}" />
+              <HorizontalCard
+                :data="{ img_width: useDisplay().xs.value ? '100%' : '200px' }"
+              />
             </v-col>
           </v-row>
           <Pagination />
@@ -27,5 +29,6 @@ import HorizontalCard from "@/components/Global/card/HorizontalCard.vue";
 import Filter from "@/components/Global/filter/Filter.vue";
 import Pagination from "@/components/Global/filter/Pagination.vue";
 import { ref } from "vue";
+import { useDisplay } from "vuetify/lib/framework.mjs";
 const data = ref({});
 </script>

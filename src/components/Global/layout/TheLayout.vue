@@ -129,11 +129,11 @@
         v-model="drawer"
         location="bottom"
         temporary
-        class="mobile-nav pa-5"
+        class="mobile-nav pa-5 "
         style="height: max-content"
       >
         <div
-          class="d-flex flex-column justify-between gap-2 text-center mobile-nav"
+          class="d-flex flex-column justify-between gap-2 text-center mobile-nav overflow-hidden"
           gap="3rem"
         >
           <router-link

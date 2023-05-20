@@ -78,6 +78,24 @@ const routes = [
           theme: "light",
         },
       },
+      {
+        path: "/about-us",
+        name: "AboutUs",
+        component: () => import("@/views/AboutUs.vue"),
+        meta: {
+          title: "ویژه نامه",
+          theme: "light",
+        },
+      },
+      {
+        path: "/contact-us",
+        name: "ContactUs",
+        component: () => import("@/views/ContactUs.vue"),
+        meta: {
+          title: "ویژه نامه",
+          theme: "light",
+        },
+      },
     ],
   },
 ];
