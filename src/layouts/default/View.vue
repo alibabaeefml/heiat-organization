@@ -41,9 +41,15 @@ li {
   align-items: center;
   justify-content: center;
 }
-/* ::-webkit-scrollbar {
-  display: none;
-} */
+::-webkit-scrollbar{
+  width: .5rem;
+  background-color: rgba(0, 0, 0, .1);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  width: .5rem;
+  border-radius: 1rem;
+}
 p.limited {
   height: 60px;
   overflow: hidden;

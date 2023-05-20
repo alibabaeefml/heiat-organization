@@ -11,7 +11,7 @@
         <v-btn
           color="primary"
           class="rounded-lg font-weight-bold"
-          :width="useDisplay().smAndDown.value ? '100%' : 'auto'"
+          :width="useDisplay().xs.value ? '100%' : 'auto'"
           >نمایش همه</v-btn
         >
       </div>

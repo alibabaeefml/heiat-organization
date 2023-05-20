@@ -25,6 +25,15 @@ const routes = [
         },
       },
       {
+        path: "/news",
+        name: "News",
+        component: () => import("@/views/News.vue"),
+        meta: {
+          title: "لیست اخبار",
+          theme: "light",
+        },
+      },
+      {
         path: "/provinces-single-news",
         name: "ProvincesSingleNews",
         component: () => import("@/views/ProvincesSingleNews.vue"),
@@ -33,12 +42,31 @@ const routes = [
           theme: "light",
         },
       },
+
+      {
+        path: "/organization-single-news",
+        name: "OrganizationSingleNews",
+        component: () => import("@/views/OrganizationSingleNews.vue"),
+        meta: {
+          title: "تک خبر",
+          theme: "light",
+        },
+      },
       {
         path: "/categorized-news",
         name: "CategorizedNews",
         component: () => import("@/views/CategorizedNews.vue"),
         meta: {
-          title: "اخبار دسته بندی شده",
+          title: "اخبار",
+          theme: "light",
+        },
+      },
+      {
+        path: "/categorized-news",
+        name: "InterprofessionalOrganizations",
+        component: () => import("@/views/InterprofessionalOrganizations.vue"),
+        meta: {
+          title: "تشکل های میان تخصصی",
           theme: "light",
         },
       },

@@ -12,9 +12,9 @@
         height="100"
         class="px-3"
         :style="{
-          width: useDisplay().xlAndUp.value ? '2400px' : '100%',
-          left: useDisplay().xlAndUp.value ? 'calc(50% - 1200px)' : 0,
-          backdropFilter:'blur(5px)'
+          width: display.width.value >= 2400 ? '2400px' : '100%',
+          left: display.width.value >= 2400 ? 'calc(50% - 1200px)' : 0,
+          backdropFilter: 'blur(5px)',
         }"
       >
         <div class="d-flex flex-column align-center">
@@ -32,17 +32,11 @@
           >
         </div>
         <v-spacer></v-spacer>
-        <HeaderSubtitle
-          v-if="
-            display.smAndUp.value && router.currentRoute.value.name == 'Home'
-          "
-        />
+        <HeaderSubtitle v-if="display.smAndUp.value && router_name == 'Home'" />
 
         <div
           class="d-flex justify-between gap-1"
-          v-if="
-            display.mdAndUp.value && router.currentRoute.value.name != 'Home'
-          "
+          v-if="display.width.value >= 800 && router_name != 'Home'"
           gap="3rem"
         >
           <router-link
@@ -50,7 +44,7 @@
             :class="{
               link: true,
               dark: theme == 'dark',
-              active: router.currentRoute.value.name == 'Home',
+              active: router_name == 'Home',
             }"
           >
             صفحه اصلی
@@ -60,20 +54,28 @@
             :class="{
               link: true,
               dark: theme == 'dark',
-              active: router.currentRoute.value.name == 'Provinces',
+              active: router_name == 'Provinces',
             }"
           >
             استان ها
           </router-link>
           <router-link
-            :to="{ name: 'Home' }"
-            :class="{ link: true, dark: theme == 'dark', active: false }"
+            :to="{ name: 'InterprofessionalOrganizations' }"
+            :class="{
+              link: true,
+              dark: theme == 'dark',
+              active: router_name == 'InterprofessionalOrganizations',
+            }"
           >
             تشکل های میان تخصصی
           </router-link>
           <router-link
-            :to="{ name: 'Home' }"
-            :class="{ link: true, dark: theme == 'dark', active: false }"
+            :to="{ name: 'CategorizedNews' }"
+            :class="{
+              link: true,
+              dark: theme == 'dark',
+              active: router_name == 'CategorizedNews',
+            }"
           >
             اخبار
           </router-link>
@@ -106,7 +108,7 @@
           variant="text"
           @click.stop="drawer = !drawer"
           :color="theme == 'dark' ? '#fff' : 'var(--primary)'"
-          v-if="display.smAndDown.value"
+          v-if="display.width.value <= 800"
         ></v-app-bar-nav-icon>
         <v-text-field
           variant="underlined"
@@ -139,7 +141,7 @@
             :class="{
               link: true,
               dark: false,
-              active: router.currentRoute.value.name == 'Home',
+              active: router_name == 'Home',
             }"
           >
             صفحه اصلی
@@ -149,20 +151,20 @@
             :class="{
               link: true,
               dark: false,
-              active: router.currentRoute.value.name == 'Provinces',
+              active: router_name == 'Provinces',
             }"
           >
             استان ها
           </router-link>
           <router-link
             :to="{ name: 'Home' }"
-            :class="{ link: true, dark: false, active: false }"
+            :class="{ link: true, dark: false, active: router_name == 'InterprofessionalOrganization' }"
           >
             تشکل های میان تخصصی
           </router-link>
           <router-link
             :to="{ name: 'Home' }"
-            :class="{ link: true, dark: false, active: false }"
+            :class="{ link: true, dark: false, active: router_name == 'CategorizedNews' }"
           >
             اخبار
           </router-link>
@@ -192,9 +194,9 @@
         class="pa-0 overflow-x-hidden"
         :onscroll="main_scroll"
       >
-        <v-container class="h-100 pa-0" :fluid="useDisplay().xlAndDown.value">
+        <v-container class="h-100 pa-0" :fluid="display.xlAndDown.value">
           <router-view />
-          <v-footer class="d-flex flex-column pa-0" color="secondary-3">
+          <v-footer class="mt-5 d-flex flex-column pa-0" color="secondary-3">
             <v-row class="pa-3">
               <v-col cols="12" md="3" class="d-flex flex-column gap-1">
                 <div class="d-flex flex-column align-center">
@@ -296,6 +298,7 @@ import { useDisplay } from "vuetify/lib/framework.mjs";
 import HeaderSubtitle from "@/components/Home/HeaderSubtitle.vue";
 import { computed } from "vue";
 const router = useRouter();
+const router_name = computed(() => router.currentRoute.value.name);
 const drawer = ref(false);
 const group = ref(null);
 

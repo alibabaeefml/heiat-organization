@@ -16,17 +16,12 @@
                 <p>{{ news.date || 'یازدهم مرداد ۱۴۰۱ - ۱۳:۲۳' }}</p>
               </div>
             </div>
-            <!-- <div dir="ltr">
+            <div dir="ltr">
               <div class="d-flex align-center gap-1" >
-                <v-btn
-                  v-for="action in actions"
-                  variant="plain"
-                  color="primary"
-                  :icon="action.icon"
-                ></v-btn>
+               <Actions/>
               </div>
               <v-rating color="yellow" density="compact" v-model="rating" hover ></v-rating>
-            </div> -->
+            </div>
           </div>
           <p class="text-justify">{{ news.text || persian_lorem  }}</p>
           
@@ -45,6 +40,7 @@
 import { ref } from "vue";
 import Comments from "@/components/Global/comment/Comments.vue"
 import VerticalCard from "@/components/Global/card/VerticalCard.vue";
+import Actions from "@/components/Global/button_group/Actions.vue";
 const news = ref({});
 
 const actions = ref([
