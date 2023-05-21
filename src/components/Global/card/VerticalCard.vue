@@ -11,7 +11,7 @@
       :width="data.img_width || '100%'"
       :height="data.img_height || 'auto'"
       cover
-      src="@/assets/images/news-item-sample-image.png"
+      :src="data.img || default_img"
     ></v-img>
 
     <div class="pa-2">

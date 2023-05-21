@@ -5,7 +5,7 @@
       cover
       :width="data.img_width || 'auto'"
       :height="data.img_height || 'auto'"
-      src="@/assets/images/news-item-sample-image.png"
+      :src="data.img || default_img"
     ></v-img>
 
     <div class="w-100 pa-2">
@@ -22,7 +22,7 @@
           :to="{ name: data.link || 'Home' }"
           class="text-decoration-none text-black"
           style="border-bottom: 3px solid var(--primary)"
-          >{{ data.link_text || 'مشاهده بیشتر' }}</router-link
+          >{{ data.link_text || "مشاهده بیشتر" }}</router-link
         >
       </div>
     </div>
@@ -30,6 +30,5 @@
 </template>
 
 <script setup>
-
 const props = defineProps(["data"]);
 </script>

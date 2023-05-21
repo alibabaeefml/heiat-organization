@@ -1,7 +1,6 @@
 <template>
   <v-locale-provider locale="fa">
     <TheLayout />
-    
   </v-locale-provider>
 </template>
 
@@ -23,7 +22,7 @@ import TheLayout from "@/components/Global/layout/TheLayout.vue";
   --secondary: #f3efcc;
   --secondary-2: #abca53;
   --secondary-3: #fdfbe3;
-  --secondary-4: #4E8C43;
+  --secondary-4: #4e8c43;
   font-family: Iran;
   overflow: hidden;
 }
@@ -42,13 +41,13 @@ li {
   align-items: center;
   justify-content: center;
 }
-::-webkit-scrollbar{
-  width: .5rem;
-  background-color: rgba(0, 0, 0, .1);
+::-webkit-scrollbar {
+  width: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 ::-webkit-scrollbar-thumb {
   background-color: var(--primary);
-  width: .5rem;
+  width: 0.5rem;
   border-radius: 1rem;
 }
 p.limited {
@@ -61,6 +60,7 @@ p.limited {
 }
 .jvectormap-container {
   height: 100%;
+  pointer-events: none;
 }
 .jvectormap-container > svg {
   filter: drop-shadow(-4px 9px 0px #eaeaea);
@@ -77,6 +77,9 @@ p.limited {
   padding: 0.5rem;
   border-radius: 0.5rem 0.5rem 0.5rem 0rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.jvectormap-container path {
+  pointer-events: fill;
 }
 .jvectormap-region.jvectormap-element.active {
   fill: var(--primary);

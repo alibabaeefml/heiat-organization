@@ -1,7 +1,7 @@
 <template>
   <section
     class="bg-secondary-3 pa-5 position-relative"
-    style="min-height: 1000px"
+    style="aspect-ratio: 16/9;"
   >
     <div class="position-relative" style="z-index: 11">
       <div
@@ -38,6 +38,7 @@
         </v-col>
       </v-row>
     </div>
+    
     <!-- lower mask -->
     <div
       class="w-100 position-absolute d-flex align-center justify-end"

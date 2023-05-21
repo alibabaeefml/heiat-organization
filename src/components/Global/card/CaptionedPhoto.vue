@@ -3,7 +3,7 @@
     <v-img
       :style="data.img_style || {}"
       cover
-      :src="data.img || 'src/assets/images/news-item-sample-image.png'"
+      :src="data.img || default_img"
     >
     </v-img>
     <v-card-title

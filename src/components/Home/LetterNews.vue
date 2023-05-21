@@ -1,13 +1,10 @@
 <template>
-  <section
-    class="section-one d-flex flex-column"
-  style="min-height: 1000px;"
-  >
+  <section class="section-one d-flex flex-column">
     <LetterNewsSwiper />
     <home-navigation
       v-if="useDisplay().mdAndUp.value"
       class="position-absolute"
-      style="bottom: 30px; left: calc(50% - 350px);z-index: 20;"
+      style="bottom: 30px; left: calc(50% - 350px); z-index: 20"
     />
     <div
       class="w-100 position-absolute d-flex align-center justify-end"
@@ -35,5 +32,7 @@ import HomeNavigation from "./HomeNavigation.vue";
   background-position: center;
   position: relative;
   width: 100%;
+  height: 100vh;
+  min-height: 750px;
 }
 </style>
