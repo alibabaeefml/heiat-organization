@@ -50,7 +50,7 @@
         </g>
       </svg>
     </nav-item>
-    <nav-item name="تشکل ها" route_name="Home">
+    <nav-item name="تشکل ها" route_name="InterprofessionalOrganizationsCategorizedNews">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="54.829"
@@ -127,7 +127,7 @@
         </g>
       </svg>
     </nav-item>
-    <nav-item name="اخبار" route_name="Home">
+    <nav-item name="اخبار" route_name="CategorizedNews">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="45.541"
@@ -180,7 +180,7 @@
         />
       </svg>
     </nav-item>
-    <nav-item name="معرفی سازمان" route_name="Home">
+    <nav-item name="معرفی سازمان" route_name="AboutUs">
       <svg
         id="huge-icon_education_outline_book"
         data-name="huge-icon/education/outline/book"
@@ -196,7 +196,7 @@
         />
       </svg>
     </nav-item>
-    <nav-item name="تماس با ما" route_name="Home">
+    <nav-item name="تماس با ما" route_name="ContactUs">
       <svg
         id="Huge-icon_communication_outline_call-user"
         data-name="Huge-icon/communication/outline/call-user"

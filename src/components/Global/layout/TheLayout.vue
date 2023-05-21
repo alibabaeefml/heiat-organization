@@ -64,7 +64,8 @@
             :class="{
               link: true,
               dark: theme == 'dark',
-              active: router_name == 'InterprofessionalOrganizationsCategorizedNews',
+              active:
+                router_name == 'InterprofessionalOrganizationsCategorizedNews',
             }"
           >
             تشکل های میان تخصصی
@@ -86,14 +87,22 @@
             چندرسانه ای
           </router-link>
           <router-link
-            :to="{ name: 'Home' }"
-            :class="{ link: true, dark: theme == 'dark', active: false }"
+            :to="{ name: 'AboutUs' }"
+            :class="{
+              link: true,
+              dark: theme == 'dark',
+              active: router_name == 'AboutUs',
+            }"
           >
             معرفی سازمان
           </router-link>
           <router-link
-            :to="{ name: 'Home' }"
-            :class="{ link: true, dark: theme == 'dark', active: false }"
+            :to="{ name: 'ContactUs' }"
+            :class="{
+              link: true,
+              dark: theme == 'dark',
+              active: router_name == 'ContactUs',
+            }"
           >
             تماس با ما
           </router-link>
@@ -129,7 +138,7 @@
         v-model="drawer"
         location="bottom"
         temporary
-        class="mobile-nav pa-5 "
+        class="mobile-nav pa-5"
         style="height: max-content"
       >
         <div
@@ -157,14 +166,23 @@
             استان ها
           </router-link>
           <router-link
-            :to="{ name: 'Home' }"
-            :class="{ link: true, dark: false, active: router_name == 'InterprofessionalOrganization' }"
+            :to="{ name: 'InterprofessionalOrganizationsCategorizedNews' }"
+            :class="{
+              link: true,
+              dark: false,
+              active:
+                router_name == 'InterprofessionalOrganizationsCategorizedNews',
+            }"
           >
             تشکل های میان تخصصی
           </router-link>
           <router-link
-            :to="{ name: 'Home' }"
-            :class="{ link: true, dark: false, active: router_name == 'CategorizedNews' }"
+            :to="{ name: 'CategorizedNews' }"
+            :class="{
+              link: true,
+              dark: false,
+              active: router_name == 'CategorizedNews',
+            }"
           >
             اخبار
           </router-link>
@@ -175,14 +193,22 @@
             چندرسانه ای
           </router-link>
           <router-link
-            :to="{ name: 'Home' }"
-            :class="{ link: true, dark: false, active: false }"
+            :to="{ name: 'AboutUs' }"
+            :class="{
+              link: true,
+              dark: false,
+              active: router_name == 'AboutUs',
+            }"
           >
             معرفی سازمان
           </router-link>
           <router-link
-            :to="{ name: 'Home' }"
-            :class="{ link: true, dark: false, active: false }"
+            :to="{ name: 'ContactUs' }"
+            :class="{
+              link: true,
+              dark: false,
+              active: router_name == 'ContactUs',
+            }"
           >
             تماس با ما
           </router-link>
@@ -254,7 +280,7 @@
                 md="6"
                 class="d-flex align-md-end align-center flex-column gap-1"
               >
-                <h4>آمار بازدید سایت: {{ visit_stat || 1356 }}</h4>
+                <h4>آمار بازدید سایت: {{ visit_stat || 4312 }}</h4>
                 <v-row class="w-100 justify-space-between">
                   <v-col cols="4" v-for="item in 3">
                     <router-link :to="{ name: item.link || 'Home' }">

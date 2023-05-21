@@ -1,5 +1,5 @@
 <template>
-  <div class="position-relative" style="min-height: 1000px">
+  <div class="position-relative">
     <div
       class="w-100 h-100 position-absolute pattern-div"
       style="pointer-events: none"
@@ -7,6 +7,7 @@
     <div
       style="
         padding-top: 10rem;
+        padding-bottom: 5rem;
         padding-inline: 2rem;
         position: relative;
         z-index: 11;
@@ -66,12 +67,16 @@
               <v-btn color="primary" type="submit"> ارسال نظر </v-btn>
             </div>
           </v-form>
-          <div class="mt-5 pa-3 bg-secondary-3 rounded-lg text-primary font-bold">
+          <div
+            class="mt-5 pa-3 bg-secondary-3 rounded-lg text-primary font-bold"
+          >
             <p>آدرس: {{ data.location || "لورم ایپسوم" }}</p>
-            <p class="mt-5">شماره تماس: {{ data.phone_number || "لورم ایپسوم" }}</p>
+            <p class="mt-5">
+              شماره تماس: {{ data.phone_number || "لورم ایپسوم" }}
+            </p>
           </div>
         </v-col>
-        <v-col cols="12" md="6"> </v-col>
+        <v-col cols="12" md="6" class="d-flex justify-center align-center bg-secondary rounded-xl" > <v-icon size="100" color="primary">mdi-map-marker</v-icon> </v-col>
       </v-row>
     </div>
   </div>

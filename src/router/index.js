@@ -96,6 +96,15 @@ const routes = [
           theme: "light",
         },
       },
+      {
+        path: "/:pathMatch(.*)*",
+        name: "PageNotFound",
+        component: () => import("@/views/PageNotFound.vue"),
+        meta: {
+          title: ":)",
+          theme: "light",
+        },
+      },
     ],
   },
 ];
