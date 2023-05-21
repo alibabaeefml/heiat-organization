@@ -81,8 +81,8 @@
             اخبار
           </router-link>
           <router-link
-            :to="{ name: 'Home' }"
-            :class="{ link: true, dark: theme == 'dark', active: false }"
+            :to="{ name: 'MultiMedia' }"
+            :class="{ link: true, dark: theme == 'dark', active: router_name == 'MultiMedia' }"
           >
             چندرسانه ای
           </router-link>
@@ -187,8 +187,8 @@
             اخبار
           </router-link>
           <router-link
-            :to="{ name: 'Home' }"
-            :class="{ link: true, dark: false, active: false }"
+            :to="{ name: 'MultiMedia' }"
+            :class="{ link: true, dark: false, active: router_name == 'MultiMedia' }"
           >
             چندرسانه ای
           </router-link>
@@ -216,13 +216,13 @@
       </v-navigation-drawer>
 
       <v-main
-        style="height: 100vh; overflow: auto"
+        style="height: 100vh; overflow-y: auto"
         class="pa-0 overflow-x-hidden"
         :onscroll="main_scroll"
       >
         <v-container class="h-100 pa-0" :fluid="display.xlAndDown.value">
           <router-view />
-          <v-footer class="pt-5 d-flex flex-column pa-0" color="#FAF8E8">
+          <v-footer class="pt-5 d-flex flex-column pa-0"  color="#FAF8E8">
             <v-row class="pa-3">
               <v-col cols="12" md="3" class="d-flex flex-column gap-1">
                 <div class="d-flex flex-column align-center">

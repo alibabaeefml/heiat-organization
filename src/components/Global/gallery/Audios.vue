@@ -2,14 +2,21 @@
   <div>
     <v-row class="pa-3">
       <v-col class="d-flex flex-column gap-1" cols="12" md="6">
-        <CaptionedAudio :data="{}" v-for="audio in 4" :key="audio" />
+        <CaptionedAudio
+          :data="{ theme: theme }"
+          v-for="audio in 4"
+          :key="audio"
+        />
       </v-col>
       <v-col class="d-flex flex-column gap-1" cols="12" md="6">
-        <CaptionedAudio v-for="audio in 4" :key="audio" />
+        <CaptionedAudio :data="{ theme: theme }" v-for="audio in 4" :key="audio" />
       </v-col>
     </v-row>
-    <v-card color="secondary text-secondary-2">
-      <div id="audio" class="player-wrapper d-flex align-center flex-md-row flex-column">
+    <v-card>
+      <div
+        id="audio"
+        class="player-wrapper d-flex align-center flex-md-row flex-column"
+      >
         <div class="d-flex gap-1 align-center">
           <v-avatar
             :image="selected_audio.avatar || default_img"
@@ -19,7 +26,7 @@
             {{ selected_audio.title || persian_lorem }}
           </h3>
         </div>
-        <audio-player file="src/assets/Boresh.mp3" dir="ltr"></audio-player>
+        <audio-player :theme="`var(--${theme})`" file="src/assets/Boresh.mp3" dir="ltr"></audio-player>
       </div>
     </v-card>
   </div>
@@ -30,6 +37,8 @@ import AudioPlayer from "@/components/Global/gallery/AudioPlayer.vue";
 import { ref } from "vue";
 
 const selected_audio = ref({});
+
+const props = defineProps(["theme"])
 </script>
 
 <style scoped>
@@ -39,5 +48,4 @@ const selected_audio = ref({});
   justify-content: space-between;
   padding: 1rem;
 }
-
 </style>

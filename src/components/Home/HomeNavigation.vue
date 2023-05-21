@@ -165,7 +165,7 @@
         </g>
       </svg>
     </nav-item>
-    <nav-item name="چند رسانه ای" route_name="Home">
+    <nav-item name="چند رسانه ای" route_name="MultiMedia">
       <svg
         id="Huge-icon_multimedia_and_audio_outline_clapperboard"
         data-name="Huge-icon/multimedia and audio/outline/clapperboard"

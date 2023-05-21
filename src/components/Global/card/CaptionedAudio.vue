@@ -1,5 +1,9 @@
 <template>
-  <v-card class="text-secondary-2 d-flex justify-space-between pa-2 rounded-lg">
+  <v-card
+    :class="
+      'text-' + data.theme + ' d-flex justify-space-between pa-2 rounded-lg'
+    "
+  >
     <v-avatar :image="data.avatar || default_img" size="59"></v-avatar>
     <div class="d-flex flex-column gap-1 w-75">
       <h3 class="overflow-hidden" style="height: 25px">
@@ -13,7 +17,7 @@
     <v-btn
       :icon="'mdi-' + (paused ? 'play' : 'pause')"
       @click="audio_control"
-      color="secondary-2"
+      :color="data.theme"
       variant="outlined"
     ></v-btn>
   </v-card>
@@ -22,7 +26,7 @@
 <script setup>
 import { ref } from "vue";
 const paused = ref(true);
-const data = defineProps(["data"]);
+const props = defineProps(["data"]);
 const audio_control = () => {
   paused.value = !paused.value;
 };

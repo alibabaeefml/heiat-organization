@@ -4,13 +4,28 @@
     class="w-100"
     autoplay
     loop
-    :slides-per-view="useDisplay().xs.value ? 1 : slides_per_view"
+    :slides-per-view="useDisplay().xs.value ? 1 : 3"
     :space-between="20"
     :navigation="navigation_options"
   >
     <SwiperSlide v-for="item in 10">
-      <VerticalCard :data="{}" />
+      <v-img
+        style="border: 2px solid var(--primary)"
+        class="rounded-lg mx-auto"
+        :src="default_img"
+        width="220"
+        height="280"
+        cover
+      ></v-img>
     </SwiperSlide>
+    <div class="d-flex gap-1 pa-5 justify-center">
+      <v-btn
+        class="next-slide"
+        icon="mdi-arrow-right"
+        color="secondary"
+      ></v-btn>
+      <v-btn class="prev-slide" icon="mdi-arrow-left" color="secondary"></v-btn>
+    </div>
   </Swiper>
 </template>
 
@@ -24,7 +39,6 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-import VerticalCard from "../card/VerticalCard.vue";
 
 const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay];
 
@@ -32,8 +46,4 @@ const navigation_options = {
   nextEl: ".next-slide",
   prevEl: ".prev-slide",
 };
-
-const props = defineProps({
-  slides_per_view: { default: 4 },
-});
 </script>

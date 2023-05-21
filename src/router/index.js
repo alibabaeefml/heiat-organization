@@ -63,7 +63,8 @@ const routes = [
       {
         path: "/interprofessional-organizations-categorized-news",
         name: "InterprofessionalOrganizationsCategorizedNews",
-        component: () => import("@/views/InterprofessionalOrganizationsCategorizedNews.vue"),
+        component: () =>
+          import("@/views/InterprofessionalOrganizationsCategorizedNews.vue"),
         meta: {
           title: "دسته بندی اخبار تشکل های میان تخصصی",
           theme: "light",
@@ -93,6 +94,15 @@ const routes = [
         component: () => import("@/views/ContactUs.vue"),
         meta: {
           title: "ویژه نامه",
+          theme: "light",
+        },
+      },
+      {
+        path: "/multimedia",
+        name: "MultiMedia",
+        component: () => import("@/views/MultiMedia.vue"),
+        meta: {
+          title: "چند رسانه ای",
           theme: "light",
         },
       },

@@ -1,8 +1,12 @@
 <template>
-  <section class="bg-white">
+  <section>
     <div class="position-relative" style="z-index: 11">
-      <TextGroup title="چند رسانه ای" class="text-center mx-auto w-75" />
-      <v-tabs color="secondary-2 " grow v-model="media_tab">
+      <TextGroup
+        title="چند رسانه ای"
+        :class="center ? 'text-center mx-auto w-75' : ''"
+        :title_class="'text-' + theme"
+      />
+      <v-tabs :color="theme" grow v-model="media_tab">
         <v-tab value="photos">آلبوم تصاویر</v-tab>
         <v-tab value="videos">فیلم</v-tab>
         <v-tab value="audios">صوت</v-tab>
@@ -16,7 +20,7 @@
           <Videos />
         </v-window-item>
         <v-window-item value="audios">
-          <Audios />
+          <Audios :theme="theme" />
         </v-window-item>
         <v-window-item value="docs">
           <Docs />
@@ -26,12 +30,17 @@
   </section>
 </template>
 <script setup>
-import Audios from "../Global/gallery/Audios.vue";
-import Docs from "../Global/gallery/Docs.vue";
-import Photos from "../Global/gallery/Photos.vue";
+import Audios from "@/components/Global/gallery/Audios.vue";
+import Docs from "@/components/Global/gallery/Docs.vue";
+import Photos from "@/components/Global/gallery/Photos.vue";
 import Videos from "@/components/Global/gallery/Videos.vue";
-import TextGroup from "../Global/text/TextGroup.vue";
+import TextGroup from "@/components/Global/text/TextGroup.vue";
 import { ref } from "vue";
 
-const media_tab = ref("videos");
+const media_tab = ref("audios");
+
+const props = defineProps({
+  theme: { default: "primary" },
+  center: {},
+});
 </script>
