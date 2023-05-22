@@ -2,7 +2,7 @@
   <router-link
     :to="{ name: data.link || 'Home' }"
     class="d-block rounded-xl position-relative overflow-hidden bg-primary"
-    style="height: 280px"
+    
   >
     <v-img cover :src="data.img || default_img"></v-img>
     <span

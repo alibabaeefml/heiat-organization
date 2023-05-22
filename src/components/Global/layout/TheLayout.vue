@@ -32,7 +32,7 @@
           >
         </div>
         <v-spacer></v-spacer>
-        <HeaderSubtitle v-if="display.smAndUp.value && router_name == 'Home'" />
+        <HeaderSubtitle v-if="display.smAndUp.value && router_name == 'Home'" style="width: 50%;"/>
 
         <div
           class="d-flex justify-between gap-1"
@@ -113,17 +113,12 @@
           :color="theme == 'dark' ? '#fff' : 'var(--primary)'"
           @click="show_search_bar = !show_search_bar"
         ></v-btn>
-        <v-app-bar-nav-icon
-          variant="text"
-          @click.stop="drawer = !drawer"
-          :color="theme == 'dark' ? '#fff' : 'var(--primary)'"
-          v-if="display.width.value <= 800"
-        ></v-app-bar-nav-icon>
         <v-text-field
           variant="underlined"
           v-if="show_search_bar"
           :color="theme == 'dark' ? '#fff' : '#000'"
           bg-color="rgba(255,255,255,.3)"
+          
           clearable
           class="pl-5"
           autofocus
@@ -132,6 +127,13 @@
           @click:append-inner="search"
         >
         </v-text-field>
+        <v-app-bar-nav-icon
+          variant="text"
+          @click.stop="drawer = !drawer"
+          :color="theme == 'dark' ? '#fff' : 'var(--primary)'"
+          v-if="display.width.value <= 800 || router_name == 'Home'"
+        ></v-app-bar-nav-icon>
+        
       </v-app-bar>
 
       <v-navigation-drawer

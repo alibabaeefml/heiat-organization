@@ -1,5 +1,5 @@
 <template>
-  <section class="province-news-section bg-secondary-3">
+  <section class="wrapper bg-secondary-3">
     <div
       class="position-relative d-flex flex-md-row justify-space-between flex-column pa-5"
       style="z-index: 11"
@@ -16,17 +16,6 @@
       />
     </div>
     <v-spacer style="my-10"></v-spacer>
-    <!-- lower mask -->
-    <div
-      class="w-100 position-absolute d-flex align-center justify-end"
-      style="bottom: 0"
-    >
-      <v-img
-        cover
-        src="@/assets/images/white_mask.png"
-        style="object-fit: cover"
-      ></v-img>
-    </div>
   </section>
 </template>
 <script setup>
@@ -39,16 +28,25 @@ const data = ref({});
 </script>
 
 <style scoped>
-.province-news-section {
+.wrapper {
   background-size: cover;
   background-position: center;
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
+  height: max-content;
+  padding-bottom: 200px;
 }
-@media (max-width: 960px) {
-  .province-news-section {
-    height: max-content;
-  }
+
+.wrapper::after {
+  content: "";
+  display: flex;
+  background-image: url(@/assets/images/white_mask.png);
+  background-position: bottom;
+  background-size: contain;
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 </style>

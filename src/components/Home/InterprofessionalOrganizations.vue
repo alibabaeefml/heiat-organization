@@ -26,3 +26,4 @@ import TextGroup from "@/components/Global/text/TextGroup.vue";
 import { ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 </script>
+

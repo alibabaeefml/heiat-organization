@@ -1,10 +1,11 @@
 <template>
-  <div class="position-relative bg-secondary-3" style="min-height: 1200px">
+  <div class="wrapper position-relative bg-secondary-3">
     <div
       class="w-100 h-100 position-absolute pattern-div"
       style="pointer-events: none"
     ></div>
     <div
+      class=""
       style="
         padding-top: 10rem;
         padding-inline: 1rem;
@@ -50,9 +51,8 @@
       </p>
       <PrimaryNewsSwiper class="mt-5" />
     </div>
-    <v-spacer class="py-10"></v-spacer>
     <!-- lower mask -->
-    <div
+    <!-- <div
       class="w-100 position-absolute d-flex align-center justify-end"
       style="bottom: 0"
     >
@@ -61,7 +61,7 @@
         src="@/assets/images/white_mask.png"
         style="object-fit: cover"
       ></v-img>
-    </div>
+    </div> -->
   </div>
   <div class="position-relative" style="min-height: 1200px">
     <div
@@ -86,3 +86,21 @@ import { useDisplay } from "vuetify/lib/framework.mjs";
 import InterprofessionalOrganizationCategoryItem from "@/components/InterprofessionalOrganizationsCategorizedNews/InterprofessionalOrganizationCategoryItem.vue";
 const data = ref({});
 </script>
+
+<style scoped>
+.wrapper {
+  padding-bottom: 200px;
+}
+.wrapper::after {
+  content: "";
+  display: flex;
+  background-image: url(@/assets/images/white_mask.png);
+  background-position: bottom;
+  background-size: contain;
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+</style>

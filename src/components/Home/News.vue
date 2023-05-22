@@ -1,9 +1,9 @@
 <template>
   <section
-    class="bg-secondary-3 pa-5 position-relative"
-    style="aspect-ratio: 16/9;"
+    class="wrapper bg-secondary-3 position-relative"
+    
   >
-    <div class="position-relative" style="z-index: 11">
+    <div class="position-relative pa-3" style="z-index: 11">
       <div
         class="d-flex gap-1 flex-md-row flex-column align-end justify-space-between"
       >
@@ -39,17 +39,6 @@
       </v-row>
     </div>
     
-    <!-- lower mask -->
-    <div
-      class="w-100 position-absolute d-flex align-center justify-end"
-      style="bottom: 0"
-    >
-      <v-img
-        cover
-        src="@/assets/images/white_mask.png"
-        style="object-fit: cover"
-      ></v-img>
-    </div>
   </section>
 </template>
 <script setup>
@@ -57,5 +46,29 @@ import TextGroup from "@/components/Global/text/TextGroup.vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import VerticalCard from "../Global/card/VerticalCard.vue";
 import HorizontalCard from "../Global/card/HorizontalCard.vue";
-import Swiper from "swiper";
 </script>
+
+
+<style scoped>
+.wrapper {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  height: max-content;
+  padding-bottom: 200px;
+}
+
+.wrapper::after {
+  content: "";
+  display: flex;
+  background-image: url(@/assets/images/white_mask.png);
+  background-position: bottom;
+  background-size: contain;
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+</style>

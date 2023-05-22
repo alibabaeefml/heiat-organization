@@ -1,0 +1,2 @@
+https://sazmanheyat.ir/api/get_table/news
+https://sazmanheyat.ir/admin/index

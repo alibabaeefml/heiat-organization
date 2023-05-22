@@ -51,6 +51,7 @@
     </div>
   </swiper>
 </template>
+
 <script setup>
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
