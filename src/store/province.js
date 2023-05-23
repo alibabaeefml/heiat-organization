@@ -21,32 +21,32 @@ export const use_province_store = defineStore("province", () => {
     {
       name_en: "ir_hamedan",
       name_fa: "همدان",
-      id: 4,
+      id: 39,
     },
     {
       name_en: "ir_zanjan",
       name_fa: "زنجان",
-      id: 5,
+      id: 23,
     },
     {
       name_en: "ir_kurdistan",
       name_fa: "کردستان",
-      id: 6,
+      id: 29,
     },
     {
       name_en: "ir_mazandaran",
       name_fa: "مازندران",
-      id: 7,
+      id: 36,
     },
     {
       name_en: "ir_qazvin",
       name_fa: "قزوین",
-      id: 8,
+      id: 27,
     },
     {
       name_en: "ir_gilan",
       name_fa: "گیلان",
-      id: 9,
+      id: 34,
     },
     {
       name_en: "ir_ilam",
@@ -56,22 +56,22 @@ export const use_province_store = defineStore("province", () => {
     {
       name_en: "ir_lorestan",
       name_fa: "لرستان",
-      id: 11,
+      id: 35,
     },
     {
       name_en: "ir_kermanshah",
       name_fa: "کرمانشاه",
-      id: 12,
+      id: 31,
     },
     {
       name_en: "ir_qom",
       name_fa: "قم",
-      id: 13,
+      id: 28,
     },
     {
       name_en: "ir_markazi",
       name_fa: "مرکزی",
-      id: 14,
+      id: 37,
     },
     {
       name_en: "ir_alborz",
@@ -96,22 +96,22 @@ export const use_province_store = defineStore("province", () => {
     {
       name_en: "ir_khuzestan",
       name_fa: "خوزستان",
-      id: 19,
+      id: 22,
     },
     {
       name_en: "ir_kohgiloyeh",
       name_fa: "کهگیلویه و بویراحمد",
-      id: 20,
+      id: 32,
     },
     {
       name_en: "ir_yazd",
       name_fa: "یزد",
-      id: 21,
+      id: 40,
     },
     {
       name_en: "ir_fars",
       name_fa: "فارس",
-      id: 22,
+      id: 26,
     },
     {
       name_en: "ir_isfahan",
@@ -121,42 +121,42 @@ export const use_province_store = defineStore("province", () => {
     {
       name_en: "ir_khorasan_razavi",
       name_fa: "خراسان رضوی",
-      id: 24,
+      id: 20,
     },
     {
       name_en: "ir_golestan",
       name_fa: "گلستان",
-      id: 25,
+      id: 33,
     },
     {
       name_en: "ir_semnan",
       name_fa: "سمنان",
-      id: 26,
+      id: 24,
     },
     {
       name_en: "ir_north_khorasan",
       name_fa: "خراسان شمالی",
-      id: 27,
+      id: 21,
     },
     {
       name_en: "ir_sistan",
       name_fa: "سیستان و بلوچستان",
-      id: 28,
+      id: 25,
     },
     {
       name_en: "ir_kerman",
       name_fa: "کرمان",
-      id: 29,
+      id: 30,
     },
     {
       name_en: "ir_hormozgan",
       name_fa: "هرمزگان",
-      id: 30,
+      id: 38,
     },
     {
       name_en: "ir_south_khorasan",
       name_fa: "خراسان جنوبی",
-      id: 31,
+      id: 19,
     },
   ]);
   const get_all_provinces = computed(() => all_provinces.value);
