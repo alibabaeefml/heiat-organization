@@ -33,7 +33,9 @@
           <v-col cols="12" md="9">
             <v-row>
               <v-col cols="12" md="3" sm="6" v-for="item in 12">
-                <VerticalCard :data="{ card_theme: 'primary',link:'ProvincesSingleNews' }" />   
+                <VerticalCard
+                  :data="{ card_theme: 'primary', link: 'ProvincesSingleNews' }"
+                />
               </v-col>
               <v-col>
                 <Pagination />
@@ -53,5 +55,8 @@ import Pagination from "@/components/Global/filter/Pagination.vue";
 import Map from "@/components/Global/map/Map.vue";
 import TextGroup from "@/components/Global/text/TextGroup.vue";
 import PrimaryOrganization from "@/components/Provinces/PrimaryOrganizations.vue";
+
 import { useDisplay } from "vuetify/lib/framework.mjs";
+
+
 </script>

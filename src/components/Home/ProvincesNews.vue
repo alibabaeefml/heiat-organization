@@ -4,6 +4,7 @@
       class="position-relative d-flex flex-md-row justify-space-between flex-column pa-5"
       style="z-index: 11"
     >
+    
       <SelectedProvinceNews
         :data="data"
         :style="{ width: useDisplay().mdAndUp.value ? '50%' : '100%' }"
@@ -25,6 +26,20 @@ import { useDisplay } from "vuetify/lib/framework.mjs";
 import Map from "../Global/map/Map.vue";
 
 const data = ref({});
+
+import { use_news_store } from "@/store/news";
+import { storeToRefs } from "pinia";
+use_news_store().index_provinces_news();
+const { get_provinces_news } = storeToRefs(use_news_store());
+
+const calc_provinces_news = () => {
+  console.log(get_provinces_news.value);
+  return
+  get_provinces_news.value.map((n)=>{
+    console.log(n);
+  });
+};
+calc_provinces_news();
 </script>
 
 <style scoped>
