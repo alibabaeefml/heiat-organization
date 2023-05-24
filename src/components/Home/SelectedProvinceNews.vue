@@ -1,10 +1,19 @@
 <template>
   <div class="d-flex flex-column">
-    <TextGroup title="استان خراسان رضوی" />
-    <ul class="d-flex flex-md-row flex-column gap-1 align-center mt-5">
-      <VerticalCard v-for="news_item in 3" :key="news_item" :data="data" />
+    <TextGroup
+      pretitle="اخبار مربوط به"
+      :title="'استان ' + data.province?.name_fa"
+      no_desc="true"
+    />
+    <ul v-if="data.province_news?.length" class="d-flex flex-md-row flex-column gap-1 align-center mt-5">
+      <VerticalCard
+        v-for="news_item in data.province_news?.slice(0, 3)"
+        :key="news_item.id"
+        :data="{ title: news_item.title_fa, text: news_item.desc_fa }"
+      />
     </ul>
-    <div class="d-sm-flex justify-sm-end">
+    <h3 v-else class="w-100 h-100 d-flex align-center justify-center">خبری در این استان موجود نیست</h3>
+    <div class="d-sm-flex justify-sm-end" v-if="data.province_news?.length">
       <v-btn
         color="primary"
         class="rounded-lg font-weight-bold"
@@ -18,8 +27,6 @@
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import VerticalCard from "@/components/Global/card/VerticalCard.vue";
 import TextGroup from "@/components/Global/text/TextGroup.vue";
-const data = {
-  card_theme: "secondary",
-};
+
 const props = defineProps(["data"]);
 </script>

@@ -13,9 +13,13 @@
 </template>
 
 <script setup>
+import { use_news_store } from "@/store/news";
+import { use_province_store } from "@/store/province";
+import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
-
+const { get_all_provinces } = storeToRefs(use_province_store());
+const { get_provinces_news } = storeToRefs(use_news_store());
 function append_map_stats(path, statistic_data, data_code, attrs = {}) {
   let bbox = path.getBBox();
   let x = bbox.x + bbox.width / 2;
@@ -45,7 +49,7 @@ function append_map_stats(path, statistic_data, data_code, attrs = {}) {
   };
   Object.assign(defaultAttrs.circle, attrs.circle);
   Object.assign(defaultAttrs.text, attrs.text);
-
+  
   let background_circle = document.createElementNS(path.namespaceURI, "circle");
 
   for (let item in defaultAttrs.circle) {
@@ -64,10 +68,12 @@ function append_map_stats(path, statistic_data, data_code, attrs = {}) {
   for (let item in defaultAttrs.text) {
     data_number.setAttribute(item, defaultAttrs.text[item]);
   }
-
+  
   background_circle.after(data_number);
 }
-onMounted(() => {
+
+onMounted(async () => {
+  await use_news_store().index_provinces_news();
   const jvm_map = $("#iran_map");
   jvm_map.vectorMap({
     map: "ir_mill",
@@ -89,20 +95,56 @@ onMounted(() => {
         fill: "var(--primary)",
       },
     },
-    onRegionClick: function (event, code) {
-      $("path[data-code]").removeClass("active");
-      $(`path[data-code=${code}]`).addClass("active");
-    },
   });
+
   $("[data-code]").each((i, e) => {
     let province_name = e.getAttribute("data-code");
+    get_all_provinces.value.map((v) => {
+      if (v.name_en == province_name) {
+        document.querySelector(`[data-code='${province_name}']`).id = v.id;
+      }
+    });
+    let custom_attr = {};
+    if (province_name == "ir_west_azerbaijan") {
+      custom_attr = {
+        circle: {
+          cx: 20,
+        },
+        text: {
+          x: 20,
+        },
+      };
+    }
+    if (province_name == "ir_tehran") {
+      custom_attr = {
+        circle: {
+          cx: 210,
+        },
+        text: {
+          x: 210,
+        },
+      };
+    }
     append_map_stats(
       document.querySelector(`[data-code='${province_name}']`),
-      50,
-      province_name
+      get_provinces_news.value.filter((v) => v.provinceid == e.id).length,
+      province_name,
+      custom_attr
     );
   });
+  $("#iran_map path").click((e) => {
+    select_province(e.currentTarget.id);
+  });
+
+  select_province(17);
 });
+
+const emit = defineEmits(["on_province_selected"]);
+const select_province = (id) => {
+  $("path[data-code]").removeClass("active");
+  $(`path#${id}`).addClass("active");
+  emit("on_province_selected", id);
+};
 </script>
 
 <style scoped></style>

@@ -25,4 +25,6 @@ app.config.globalProperties.default_avatar = default_avatar;
 
 registerPlugins(app);
 
+
+
 app.mount("#app");
