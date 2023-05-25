@@ -12,16 +12,15 @@ export const use_news_store = defineStore("news", () => {
   const index_all_news = async () => {
     const response = await axios.get(url("news"));
     if ([200, 201].includes(response.status)) {
-      all_news.value = response.data;
+      all_news.value = response.data.data;
       return response.data;
     }
   };
 
   const index_provinces_news = async (filters = {}) => {
-    const response = await axios.get(url("provincesnews"));
+    const response = await axios.get(url("provincesnews", filters));
     if ([200, 201].includes(response.status)) {
       provinces_news.value = response.data.data;
-      
     }
   };
 

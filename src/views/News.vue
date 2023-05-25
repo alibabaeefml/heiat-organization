@@ -20,8 +20,8 @@
         <v-col cols="12" md="9">
           <div class="d-flex flex-column gap-1">
             <HorizontalCard
-              :data="{ img_width: useDisplay().smAndUp.value ? '200px' : null }"
               v-for="item in 6"
+              :data="{ img_width: useDisplay().smAndUp.value ? '200px' : null }"
             />
           </div>
           <Pagination />
