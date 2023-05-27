@@ -28,11 +28,18 @@
 </template>
 
 <script setup>
+import { watch } from "vue";
 import { ref } from "vue";
 
 const active_page = ref(1);
+const emit = defineEmits(["callback"]);
+
+watch(active_page, () => {
+  emit("callback", active_page);
+});
 
 const props = defineProps({
   pages_count: { default: 1, type: Number },
+  per_page: { default: 12, type: Number },
 });
 </script>
