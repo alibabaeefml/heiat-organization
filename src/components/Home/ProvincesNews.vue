@@ -36,9 +36,9 @@ const set_province_data = async (id) => {
   data.value.province_news = await use_news_store().index_provinces_news({
     provinceid: id,
   });
-
   data.value.province_news = use_news_store().get_provinces_news;
 };
+
 </script>
 
 <style scoped>

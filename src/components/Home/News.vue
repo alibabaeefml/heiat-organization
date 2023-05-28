@@ -13,17 +13,19 @@
         >
       </div>
       <v-row class="mt-5">
-        <v-col cols="12" md="5">
+        <v-col cols="12" md="5" >
           <VerticalCard
             :data="{
               width: '100%',
               img_height: '310px',
               card_theme: 'secondary',
-              title: get_all_news[0]?.title_fa,
-              text: get_all_news[0]?.desc_fa,
-              img:get_all_news[0]?.thumbnail
+              title: latest_news.title_fa,
+              text: latest_news.lead_fa,
+              img: latest_news.thumbnail,
+              link: { name: 'ProvincesSingleNews', params: { id: latest_news.id || 1 } },
             }"
           />
+          
         </v-col>
         <v-col cols="12" md="7" class="d-flex flex-column gap-1">
           <HorizontalCard
@@ -31,12 +33,14 @@
             :data="{
               img_width: useDisplay().smAndUp.value ? '200px' : '100%',
               title: news.title_fa,
-              text: news.desc_fa,
+              text: news.lead_fa,
               img: news.thumbnail,
+              link: { name: 'ProvincesSingleNews', params: { id: news.id } },
             }"
           />
         </v-col>
       </v-row>
+      
     </div>
   </section>
 </template>
@@ -47,9 +51,21 @@ import VerticalCard from "../Global/card/VerticalCard.vue";
 import HorizontalCard from "../Global/card/HorizontalCard.vue";
 import { use_news_store } from "@/store/news";
 import { storeToRefs } from "pinia";
+import { ref } from "vue";
 
 use_news_store().index_all_news();
 const { get_all_news } = storeToRefs(use_news_store());
+
+const latest_news = ref({});
+
+const get_latest_news = async () => {
+  latest_news.value = await use_news_store().show_news({
+    limit: 1,
+    page: 1,
+  });
+  
+};
+get_latest_news();
 </script>
 
 <style scoped>

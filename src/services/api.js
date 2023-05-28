@@ -1,13 +1,14 @@
-const base_url = "https://sazmanheyat.ir/api/";
+const base_url = "https://sazmanheyat.ir/api/get_table/";
 
 const create_filters = (filters = {}) => {
-  let query = "";
+  let query = "?";
+
   for (let item in filters) {
-    query = "/" + filters[item] + "/" + item;
+    query = query + item + "=" + filters[item] + "&";
   }
 
   return query;
 };
 
-export const url = (url, filters = {}, paginate = "") =>
-  base_url + url + create_filters(filters) + paginate;
+export const url = (table, filters = {}) =>
+  base_url + table + create_filters(filters);

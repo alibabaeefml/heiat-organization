@@ -1,6 +1,6 @@
 <template>
   <section class="wrapper d-flex flex-column">
-    <LetterNewsSwiper />
+    <LetterNewsSwiper :slides="slides" />
     <home-navigation
       v-if="useDisplay().mdAndUp.value"
       class="position-absolute"
@@ -12,6 +12,15 @@
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import LetterNewsSwiper from "./LetterNewsSwiper.vue";
 import HomeNavigation from "./HomeNavigation.vue";
+import { use_slider_store } from "@/store/slider";
+import { ref } from "vue";
+
+const slides = ref([]);
+
+const load_data = async () => {
+  slides.value = await use_slider_store().main_slider();
+};
+load_data();
 </script>
 
 <style scoped>

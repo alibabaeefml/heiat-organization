@@ -25,7 +25,7 @@ const routes = [
         },
       },
       {
-        path: "/news",
+        path: "/news/:province_id?",
         name: "News",
         component: () => import("@/views/News.vue"),
         meta: {
@@ -34,7 +34,7 @@ const routes = [
         },
       },
       {
-        path: "/provinces-single-news",
+        path: "/provinces-single-news/:id",
         name: "ProvincesSingleNews",
         component: () => import("@/views/ProvincesSingleNews.vue"),
         meta: {

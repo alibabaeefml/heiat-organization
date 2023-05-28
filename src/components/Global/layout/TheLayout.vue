@@ -32,7 +32,10 @@
           >
         </div>
         <v-spacer></v-spacer>
-        <HeaderSubtitle v-if="display.smAndUp.value && router_name == 'Home'" style="width: 50%;"/>
+        <HeaderSubtitle
+          v-if="display.smAndUp.value && router_name == 'Home'"
+          style="width: 50%"
+        />
 
         <div
           class="d-flex justify-between gap-1"
@@ -82,7 +85,11 @@
           </router-link>
           <router-link
             :to="{ name: 'MultiMedia' }"
-            :class="{ link: true, dark: theme == 'dark', active: router_name == 'MultiMedia' }"
+            :class="{
+              link: true,
+              dark: theme == 'dark',
+              active: router_name == 'MultiMedia',
+            }"
           >
             چندرسانه ای
           </router-link>
@@ -113,27 +120,18 @@
           :color="theme == 'dark' ? '#fff' : 'var(--primary)'"
           @click="show_search_bar = !show_search_bar"
         ></v-btn>
-        <v-text-field
-          variant="underlined"
+        <Searchbar
+          @input="search"
+          :items="get_all_news"
+          :theme="theme"
           v-if="show_search_bar"
-          :color="theme == 'dark' ? '#fff' : '#000'"
-          bg-color="rgba(255,255,255,.3)"
-          
-          clearable
-          class="pl-5"
-          autofocus
-          label="جستجو"
-          append-inner-icon="mdi-magnify"
-          @click:append-inner="search"
-        >
-        </v-text-field>
+        />
         <v-app-bar-nav-icon
           variant="text"
           @click.stop="drawer = !drawer"
           :color="theme == 'dark' ? '#fff' : 'var(--primary)'"
           v-if="display.width.value <= 800 || router_name == 'Home'"
         ></v-app-bar-nav-icon>
-        
       </v-app-bar>
 
       <v-navigation-drawer
@@ -190,7 +188,11 @@
           </router-link>
           <router-link
             :to="{ name: 'MultiMedia' }"
-            :class="{ link: true, dark: false, active: router_name == 'MultiMedia' }"
+            :class="{
+              link: true,
+              dark: false,
+              active: router_name == 'MultiMedia',
+            }"
           >
             چندرسانه ای
           </router-link>
@@ -224,7 +226,7 @@
       >
         <v-container class="h-100 pa-0" :fluid="display.xlAndDown.value">
           <router-view />
-          <v-footer class="pt-5 d-flex flex-column pa-0"  color="#FAF8E8">
+          <v-footer class="pt-5 d-flex flex-column pa-0" color="#FAF8E8">
             <v-row class="pa-3">
               <v-col cols="12" md="3" class="d-flex flex-column gap-1">
                 <div class="d-flex flex-column align-center">
@@ -325,6 +327,9 @@ import { useRouter } from "vue-router";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import HeaderSubtitle from "@/components/Home/HeaderSubtitle.vue";
 import { computed } from "vue";
+import Searchbar from "../search/searchbar.vue";
+import { use_news_store } from "@/store/news";
+import { storeToRefs } from "pinia";
 const router = useRouter();
 const router_name = computed(() => router.currentRoute.value.name);
 const drawer = ref(false);
@@ -339,8 +344,10 @@ const theme = computed(() => router.currentRoute.value.meta.theme);
 const display = useDisplay();
 
 const show_search_bar = ref(false);
-const search = () => console.log("to search later");
-
+const search = async () => {
+  await use_news_store().index_all_news();
+};
+const { get_all_news } = storeToRefs(use_news_store());
 const scrolled = ref(false);
 
 const main_scroll = () => {

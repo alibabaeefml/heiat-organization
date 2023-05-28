@@ -13,11 +13,12 @@
     loop
     autoplay
   >
-    <swiper-slide v-for="slide in 5" :key="slide">
+    <swiper-slide v-for="slide in slides" :key="slide">
       <v-img
         class="rounded-xl"
         cover
-        src="@/assets/images/68942_842.png"
+        :src="slide.img || default_img"
+        height="300px"
       ></v-img>
       <div
         :class="
@@ -26,12 +27,17 @@
         "
       >
         <h2 class="text-secondary next">
-          خبرنامه سازمان هیئت های و تشکل های مذهبی
+          {{ slide.title_fa || "عنوان اسلاید" }}
         </h2>
         <p class="text-white limited">
-          {{ persian_lorem }}
+          {{ slide.lead_fa || persian_lorem }}
         </p>
-        <v-btn to="/" variant="outlined" color="secondary" text="ادامه مطلب">
+        <v-btn
+          :to="{ path: slide.btn_link }"
+          variant="outlined"
+          color="secondary"
+          text="ادامه مطلب"
+        >
         </v-btn>
       </div>
     </swiper-slide>
@@ -69,4 +75,6 @@ const navigation_options = {
   nextEl: ".next-slide",
   prevEl: ".prev-slide",
 };
+
+const props = defineProps(["slides"]);
 </script>

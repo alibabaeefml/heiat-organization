@@ -43,7 +43,7 @@
                     card_theme: 'primary',
                     link: 'ProvincesSingleNews',
                     title: news_item.title_fa,
-                    text: news_item.desc_fa,
+                    text: news_item.lead_fa,
                   }"
                 />
               </v-col>

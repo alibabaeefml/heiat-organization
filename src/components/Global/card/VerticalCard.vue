@@ -26,7 +26,7 @@
         }"
       >
         <router-link
-          :to="{ name: data.link || 'Home' }"
+          :to="data.link || { name: 'Home' }"
           class="text-decoration-none text-black"
           style="border-bottom: 3px solid var(--primary)"
           >{{ data.link_text || "مشاهده بیشتر" }}</router-link
