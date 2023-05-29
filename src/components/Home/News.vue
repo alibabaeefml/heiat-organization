@@ -22,7 +22,7 @@
               title: latest_news.title_fa,
               text: latest_news.lead_fa,
               img: latest_news.thumbnail,
-              link: { name: 'ProvincesSingleNews', params: { id: latest_news.id || 1 } },
+              link: { name: 'SingleNews', params: { id: latest_news.id || 1 } },
             }"
           />
           
@@ -35,7 +35,7 @@
               title: news.title_fa,
               text: news.lead_fa,
               img: news.thumbnail,
-              link: { name: 'ProvincesSingleNews', params: { id: news.id } },
+              link: { name: 'SingleNews', params: { id: news.id } },
             }"
           />
         </v-col>

@@ -22,6 +22,7 @@ export const use_news_store = defineStore("news", () => {
     const response = await axios.get(url("provincesnews", filters));
     if ([200, 201].includes(response.status)) {
       provinces_news.value = response.data;
+      return response.data
     }
   };
 

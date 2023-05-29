@@ -49,8 +49,7 @@
               </v-col>
               <v-col cols="12">
                 <Pagination
-                  :pages_count="12"
-                  :per_page="12"
+                  :pages_count="5"
                   @callback="paginate"
                 />
               </v-col>
@@ -74,9 +73,9 @@ import { useDisplay } from "vuetify/lib/framework.mjs";
 import { use_province_store } from "@/store/province";
 import { use_news_store } from "@/store/news";
 import { ref } from "vue";
-import { page_count } from "@/store/pagination";
+
 const province = ref({});
-// page_count(use_news_store().get_provinces_news.length, 12)
+
 const set_province_data = async (id) => {
   province.value = use_province_store().get_all_provinces.find(
     (v) => v.id == id
@@ -86,5 +85,7 @@ const set_province_data = async (id) => {
   });
 };
 
-const paginate = (page_number) => console.log(page_number.value);
+const paginate = (page_number) => {
+  use_news_store().index_provinces_news({ page: page_number.value });
+};
 </script>

@@ -43,6 +43,15 @@ const routes = [
         },
       },
       {
+        path: "/single-news/:id",
+        name: "SingleNews",
+        component: () => import("@/views/SingleNews.vue"),
+        meta: {
+          title: "تک خبر",
+          theme: "light",
+        },
+      },
+      {
         path: "/organization-single-news",
         name: "OrganizationSingleNews",
         component: () => import("@/views/OrganizationSingleNews.vue"),

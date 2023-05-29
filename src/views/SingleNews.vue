@@ -11,7 +11,7 @@
           <div class="d-flex align-center justify-space-between">
             <div>
               <h2 class="text-primary">
-                {{ news.title_fa || "تیتر خبر استان" }}
+                {{ news.title_fa || "تیتر خبر" }}
               </h2>
               <div class="mt-2 d-flex gap-1 align-center">
                 <v-icon color="primary">mdi-calendar</v-icon>
@@ -46,12 +46,12 @@
           <h2 class="text-primary">اخبار مرتبط</h2>
           <v-spacer class="my-5"></v-spacer>
           <VerticalCard
-            v-for="item in relative_news.slice(0,3)"
+            v-for="item in relative_news.slice(0, 3)"
             :data="{
               card_theme: 'primary',
               title: item.title_fa,
               text: item.lead_fa,
-              link: { name: 'ProvincesSingleNews', params: { id: item.id } },
+              link: { name: 'SingleNews', params: { id: item.id } },
             }"
           />
         </v-col>
@@ -72,11 +72,11 @@ const relative_news = ref([]);
 
 const router = useRouter();
 const load_data = async () => {
-  news.value = await use_news_store().show_provinces_news({
+  news.value = await use_news_store().show_news({
     id: router.currentRoute.value.params.id,
   });
 
-  relative_news.value = await use_news_store().index_provinces_news({
+  relative_news.value = await use_news_store().index_all_news({
     provinceid: news.value.provinceid,
   });
 };

@@ -12,7 +12,12 @@
       <VerticalCard
         v-for="news_item in data.province_news?.slice(0, 3)"
         :key="news_item.id"
-        :data="{ title: news_item.title_fa, text: news_item.lead_fa }"
+        :data="{
+          title: news_item.title_fa,
+          text: news_item.lead_fa,
+          img: news_item.img,
+          link: { name: 'ProvincesSingleNews', params: { id: news_item.id } },
+        }"
       />
     </ul>
     <h3 v-else class="w-100 h-100 d-flex align-center justify-center">
@@ -23,7 +28,7 @@
         color="primary"
         class="rounded-lg font-weight-bold"
         :width="useDisplay().xs.value ? '100%' : 'auto'"
-        :to="{ name: 'News', params: { 'province_id': data.province?.id } }"
+        :to="{ name: 'News', params: { province_id: data.province?.id } }"
         >نمایش همه</v-btn
       >
     </div>

@@ -40,6 +40,5 @@ watch(active_page, () => {
 
 const props = defineProps({
   pages_count: { default: 1, type: Number },
-  per_page: { default: 12, type: Number },
 });
 </script>
