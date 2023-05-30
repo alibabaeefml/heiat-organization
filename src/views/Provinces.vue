@@ -48,10 +48,7 @@
                 />
               </v-col>
               <v-col cols="12">
-                <Pagination
-                  :pages_count="5"
-                  @callback="paginate"
-                />
+                <Pagination :pages_count="use_news_store().all_news_page_count" @callback="paginate" />
               </v-col>
             </v-row>
           </v-col>
@@ -82,7 +79,9 @@ const set_province_data = async (id) => {
   );
   await use_news_store().index_provinces_news({
     provinceid: id,
+    page: 1,
   });
+  
 };
 
 const paginate = (page_number) => {

@@ -8,8 +8,15 @@
     :space-between="20"
     :navigation="navigation_options"
   >
-    <SwiperSlide v-for="item in 10">
-      <VerticalCard :data="{}" />
+    <SwiperSlide v-for="item in slides">
+      <VerticalCard
+        :data="{
+          title: item.title_fa,
+          text: item.lead_fa,
+          link: { name: 'ProvincesSingleNews', params: { id: item.id } },
+          img: item.img
+        }"
+      />
     </SwiperSlide>
   </Swiper>
 </template>
@@ -34,6 +41,7 @@ const navigation_options = {
 };
 
 const props = defineProps({
+  slides: { default: 5 },
   slides_per_view: { default: 4 },
 });
 </script>

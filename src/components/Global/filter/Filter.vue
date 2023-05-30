@@ -1,12 +1,17 @@
 <template>
   <div class="d-flex flex-column gap-1">
-    <FilterSearchBar />
+    <FilterSearchBar @search="search" />
     <FilterCategories />
-    <FilterProvince/>
+    <FilterProvince />
   </div>
 </template>
 <script setup>
 import FilterSearchBar from "@/components/Global/filter/FilterSearchBar.vue";
-import FilterCategories from "@/components/Global/filter/FilterCategories.vue"
+import FilterCategories from "@/components/Global/filter/FilterCategories.vue";
 import FilterProvince from "./FilterProvince.vue";
+
+const emit = defineEmits(["search"]);
+const search = (e) => {
+  emit("search", e);
+};
 </script>

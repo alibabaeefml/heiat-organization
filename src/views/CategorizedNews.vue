@@ -98,7 +98,7 @@
             ></v-btn>
           </div>
         </div>
-        <HorizontalSwiper class="mt-5" />
+        <HorizontalSwiper class="mt-5" :slides="get_provinces_news" />
       </div>
       <div
         class="d-flex flex-sm-row flex-column align-center justify-space-between"
@@ -145,4 +145,10 @@ import VerticalCard from "@/components/Global/card/VerticalCard.vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import OrganizationNewsSwiper from "@/components/CategorizedNews/OrganizationNewsSwiper.vue";
 import HorizontalSwiper from "@/components/Global/swiper/HorizontalSwiper.vue";
+import { storeToRefs } from "pinia";
+import { use_news_store } from "@/store/news";
+
+const { get_provinces_news } = storeToRefs(use_news_store());
+
+use_news_store().index_provinces_news()
 </script>

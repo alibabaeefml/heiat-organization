@@ -8,6 +8,15 @@ const routes = [
     children: [
       {
         path: "",
+        name: "Intro",
+        component: () => import("@/views/Intro.vue"),
+        meta: {
+          title: "صفحه اصلی",
+          theme: "dark",
+        },
+      },
+      {
+        path: "/home",
         name: "Home",
         component: () => import("@/views/Home.vue"),
         meta: {
@@ -102,7 +111,7 @@ const routes = [
         name: "ContactUs",
         component: () => import("@/views/ContactUs.vue"),
         meta: {
-          title: "ویژه نامه",
+          title: "تماس با ما",
           theme: "light",
         },
       },
