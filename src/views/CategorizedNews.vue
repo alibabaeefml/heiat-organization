@@ -101,7 +101,7 @@
         <HorizontalSwiper class="mt-5" :slides="get_provinces_news" />
       </div>
       <div
-        class="d-flex flex-sm-row flex-column align-center justify-space-between"
+        class="mt-5 d-flex flex-sm-row flex-column align-center justify-space-between"
       >
         <TextGroup title="اخبار سازمان ها" no_desc="true" />
 
@@ -132,11 +132,12 @@
           >نمایش همه</v-btn
         >
       </div>
-      <OrganizationNewsSwiper class="mt-5" />
+      <OrganizationNewsSwiper class="mt-5"  />
       <div class="d-flex justify-end mt-5"></div>
     </div>
   </div>
 </template>
+
 <script setup>
 import TextGroup from "@/components/Global/text/TextGroup.vue";
 
@@ -150,5 +151,6 @@ import { use_news_store } from "@/store/news";
 
 const { get_provinces_news } = storeToRefs(use_news_store());
 
-use_news_store().index_provinces_news()
+use_news_store().index_provinces_news();
+use_news_store().index_organs_news();
 </script>

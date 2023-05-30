@@ -12,6 +12,7 @@
       <p class="subtitle-anim" >{{ latest_news.lead_fa || persian_lorem }}</p>
       
     </div>
+    
   </div>
   
 </template>

@@ -6,7 +6,7 @@ export const use_slider_store = defineStore("slider", () => {
   const main_slider = async () => {
     const response = await axios.get(url("slider"));
     if ([200, 201].includes(response.status)) {
-      return response.data;
+      return response.data.data;
     }
   };
   return {
