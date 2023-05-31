@@ -25,7 +25,7 @@ const routes = [
         },
       },
       {
-        path: "/provinces",
+        path: "/provinces/:province_id?",
         name: "Provinces",
         component: () => import("@/views/Provinces.vue"),
         meta: {
@@ -52,6 +52,15 @@ const routes = [
         },
       },
       {
+        path: "/special-single-news/:id",
+        name: "SpecialSingleNews",
+        component: () => import("@/views/SpecialSingleNews.vue"),
+        meta: {
+          title: "تک ویژه نامه",
+          theme: "light",
+        },
+      },
+      {
         path: "/single-news/:id",
         name: "SingleNews",
         component: () => import("@/views/SingleNews.vue"),
@@ -61,7 +70,7 @@ const routes = [
         },
       },
       {
-        path: "/organization-single-news",
+        path: "/organization-single-news/:id",
         name: "OrganizationSingleNews",
         component: () => import("@/views/OrganizationSingleNews.vue"),
         meta: {
@@ -79,10 +88,10 @@ const routes = [
         },
       },
       {
-        path: "/interprofessional-organizations-categorized-news",
-        name: "InterprofessionalOrganizationsCategorizedNews",
+        path: "/IPO-categorized-news",
+        name: "IPOCategorizedNews",
         component: () =>
-          import("@/views/InterprofessionalOrganizationsCategorizedNews.vue"),
+          import("@/views/IPOCategorizedNews.vue"),
         meta: {
           title: "دسته بندی اخبار تشکل های میان تخصصی",
           theme: "light",

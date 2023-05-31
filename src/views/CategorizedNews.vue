@@ -152,5 +152,5 @@ import { use_news_store } from "@/store/news";
 const { get_provinces_news } = storeToRefs(use_news_store());
 
 use_news_store().index_provinces_news();
-use_news_store().index_organs_news();
+use_news_store().index_organizations_news();
 </script>

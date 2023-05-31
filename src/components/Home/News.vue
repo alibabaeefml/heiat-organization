@@ -9,11 +9,12 @@
           color="primary"
           class="rounded-lg font-weight-bold"
           :width="useDisplay().xs.value ? '100%' : 'auto'"
+          :to="{ name: 'News' }"
           >نمایش همه</v-btn
         >
       </div>
       <v-row class="mt-5">
-        <v-col cols="12" md="5" >
+        <v-col cols="12" md="5">
           <VerticalCard
             :data="{
               width: '100%',
@@ -25,7 +26,6 @@
               link: { name: 'SingleNews', params: { id: latest_news.id || 1 } },
             }"
           />
-          
         </v-col>
         <v-col cols="12" md="7" class="d-flex flex-column gap-1">
           <HorizontalCard
@@ -40,7 +40,6 @@
           />
         </v-col>
       </v-row>
-      
     </div>
   </section>
 </template>
@@ -63,7 +62,6 @@ const get_latest_news = async () => {
     limit: 1,
     page: 1,
   });
-  
 };
 get_latest_news();
 </script>

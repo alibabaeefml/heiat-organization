@@ -10,8 +10,26 @@
         width="20"
         cover
       ></v-img>
-      <v-overlay activator="parent" class="d-flex align-center justify-center w-100">
-        <v-text-field label="جستجو کنید" color="white" base-color="white" style="width: 200px;"> </v-text-field>
+      <v-overlay
+        activator="parent"
+        class="d-flex align-center justify-center w-100"
+        v-model="overlay"
+      >
+        <v-card width="500">
+          <v-btn
+            size="xs"
+            variant="plain"
+            position="absolute"
+            location="top left"
+            class="ma-2"
+            icon="mdi-close"
+            color="black"
+            @click="overlay = false"
+          ></v-btn>
+          <v-card-text class="pa-8">
+            <v-text-field autofocus label="جستجو کنید"> </v-text-field>
+          </v-card-text>
+        </v-card>
       </v-overlay>
     </v-btn>
 
@@ -31,6 +49,9 @@
 import IntroFooter from "@/components/Intro/IntroFooter.vue";
 import TentMenu from "@/components/Intro/TentMenu.vue";
 import IntroMenu from "@/components/Intro/IntroMenu.vue";
+import { ref } from "vue";
+
+const overlay = ref(false);
 </script>
 
 <style scoped>

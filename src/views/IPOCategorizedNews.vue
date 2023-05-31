@@ -51,17 +51,6 @@
       </p>
       <PrimaryNewsSwiper class="mt-5" />
     </div>
-    <!-- lower mask -->
-    <!-- <div
-      class="w-100 position-absolute d-flex align-center justify-end"
-      style="bottom: 0"
-    >
-      <v-img
-        cover
-        src="@/assets/images/white_mask.png"
-        style="object-fit: cover"
-      ></v-img>
-    </div> -->
   </div>
   <div class="position-relative" style="min-height: 1200px">
     <div
@@ -70,20 +59,17 @@
     ></div>
     <div style="padding-inline: 1rem; position: relative; z-index: 11">
       <CulturalCentersOrganization />
-      <InterprofessionalOrganizationCategoryItem
-        class="my-10"
-        v-for="item in 4"
-      />
+      <IPOCategoryItem class="my-10" v-for="item in 4" />
     </div>
   </div>
 </template>
 <script setup>
 import TextGroup from "@/components/Global/text/TextGroup.vue";
-import PrimaryNewsSwiper from "@/components/InterprofessionalOrganizationsCategorizedNews/PrimaryNewsSwiper.vue";
-import CulturalCentersOrganization from "@/components/InterprofessionalOrganizationsCategorizedNews/CulturalCentersOrganization.vue";
+import PrimaryNewsSwiper from "@/components/IPOCategorizedNews/PrimaryNewsSwiper.vue";
+import CulturalCentersOrganization from "@/components/IPOCategorizedNews/CulturalCentersOrganization.vue";
 import { ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
-import InterprofessionalOrganizationCategoryItem from "@/components/InterprofessionalOrganizationsCategorizedNews/InterprofessionalOrganizationCategoryItem.vue";
+import IPOCategoryItem from "@/components/IPOCategorizedNews/IPOCategoryItem.vue";
 const data = ref({});
 </script>
 

@@ -28,7 +28,7 @@
         color="primary"
         class="rounded-lg font-weight-bold"
         :width="useDisplay().xs.value ? '100%' : 'auto'"
-        :to="{ name: 'News', params: { province_id: data.province?.id } }"
+        :to="{ name: 'Provinces', params: { province_id: data.province.id } }"
         >نمایش همه</v-btn
       >
     </div>

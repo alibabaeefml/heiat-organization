@@ -11,7 +11,7 @@
             : 'transparent'
         "
         height="100"
-        class="px-3"
+        class="px-3 "
         :style="{
           width: display.width.value >= 2400 ? '2400px' : '100%',
           left: display.width.value >= 2400 ? 'calc(50% - 1200px)' : 0,
@@ -64,12 +64,12 @@
             استان ها
           </router-link>
           <router-link
-            :to="{ name: 'InterprofessionalOrganizationsCategorizedNews' }"
+            :to="{ name: 'IPOCategorizedNews' }"
             :class="{
               link: true,
               dark: theme == 'dark',
               active:
-                router_name == 'InterprofessionalOrganizationsCategorizedNews',
+                router_name == 'IPOCategorizedNews',
             }"
           >
             تشکل های میان تخصصی
@@ -167,12 +167,12 @@
             استان ها
           </router-link>
           <router-link
-            :to="{ name: 'InterprofessionalOrganizationsCategorizedNews' }"
+            :to="{ name: 'IPOCategorizedNews' }"
             :class="{
               link: true,
               dark: false,
               active:
-                router_name == 'InterprofessionalOrganizationsCategorizedNews',
+                router_name == 'IPOCategorizedNews',
             }"
           >
             تشکل های میان تخصصی
@@ -329,6 +329,7 @@ import { useDisplay } from "vuetify/lib/framework.mjs";
 import HeaderSubtitle from "@/components/Home/HeaderSubtitle.vue";
 import { computed } from "vue";
 import Searchbar from "../search/searchbar.vue";
+
 import { use_news_store } from "@/store/news";
 import { storeToRefs } from "pinia";
 const router = useRouter();

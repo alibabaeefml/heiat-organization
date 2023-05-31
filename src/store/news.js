@@ -9,9 +9,9 @@ export const use_news_store = defineStore("news", () => {
   const provinces_news = ref([]);
   const get_provinces_news = computed(() => provinces_news.value);
   const provinces_news_page_count = ref();
-  const organs_news = ref([]);
-  const get_organs_news = computed(() => organs_news.value);
-  const organs_news_page_count = ref();
+  const organizations_news = ref([]);
+  const get_organizations_news = computed(() => organizations_news.value);
+  const organizations_news_page_count = ref();
 
   const index_all_news = async (filters = {}) => {
     const response = await axios.get(url("news", filters));
@@ -45,22 +45,30 @@ export const use_news_store = defineStore("news", () => {
     }
   };
 
-  const index_organs_news = async (filters = {}) => {
+  const index_organizations_news = async (filters = {}) => {
     const response = await axios.get(url("organizationnews", filters));
     if ([200, 201].includes(response.status)) {
-      organs_news.value = response.data.data;
-      organs_news_page_count.value = response.data.meta.total_page;
+      organizations_news.value = response.data.data;
+      organizations_news_page_count.value = response.data.meta.total_page;
       return response.data.data;
     }
   };
 
-  const show_organs_news = async (filters = {}) => {
+  const show_organizations_news = async (filters = {}) => {
     const response = await axios.get(url("organizationnews", filters));
     if ([200, 201].includes(response.status)) {
       return response.data.data[0];
     }
   };
 
+  const index_news_categories = async () => {
+    const response = await axios.get(url("newscategory"));
+    if ([200, 201].includes(response.status)) {
+      return response.data.data;
+    }
+  };
+
+  
   return {
     index_all_news,
     index_provinces_news,
@@ -69,9 +77,10 @@ export const use_news_store = defineStore("news", () => {
     show_provinces_news,
     show_news,
     all_news_page_count,
-    index_organs_news,
-    organs_news_page_count,
-    get_organs_news,
-    show_organs_news
+    index_organizations_news,
+    organizations_news_page_count,
+    get_organizations_news,
+    show_organizations_news,
+    index_news_categories,
   };
 });

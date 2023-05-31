@@ -11,7 +11,7 @@
           <div class="d-flex align-center justify-space-between">
             <div>
               <h2 class="text-primary">
-                {{ news.title_fa || "تیتر خبر استان" }}
+                {{ news.title_fa || "تیتر ویژه نامه" }}
               </h2>
               <div class="mt-2 d-flex gap-1 align-center">
                 <v-icon color="primary">mdi-calendar</v-icon>

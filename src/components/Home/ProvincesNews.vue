@@ -14,6 +14,7 @@
         class="order-md-2 order-1"
         :style="{ width: useDisplay().mdAndUp.value ? '50%' : '100%' }"
         @on_province_selected="set_province_data"
+        :default_province_id="17"
       />
     </div>
     <v-spacer style="my-10"></v-spacer>

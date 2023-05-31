@@ -21,7 +21,10 @@
           <PrimaryOrganization />
         </v-col>
         <v-col cols="12" md="6" :order="useDisplay().mdAndUp.value ? 2 : 1">
-          <Map @on_province_selected="set_province_data" />
+          <Map
+            @on_province_selected="set_province_data"
+            :default_province_id="province_id || 17"
+          />
         </v-col>
       </v-row>
       <div class="pa-2">
@@ -48,7 +51,10 @@
                 />
               </v-col>
               <v-col cols="12">
-                <Pagination :pages_count="use_news_store().all_news_page_count" @callback="paginate" />
+                <Pagination
+                  :pages_count="use_news_store().all_news_page_count"
+                  @callback="paginate"
+                />
               </v-col>
             </v-row>
           </v-col>
@@ -70,6 +76,7 @@ import { useDisplay } from "vuetify/lib/framework.mjs";
 import { use_province_store } from "@/store/province";
 import { use_news_store } from "@/store/news";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 const province = ref({});
 
@@ -81,10 +88,12 @@ const set_province_data = async (id) => {
     provinceid: id,
     page: 1,
   });
-  
 };
 
 const paginate = (page_number) => {
   use_news_store().index_provinces_news({ page: page_number.value });
 };
+
+const router = useRouter();
+const province_id = router.currentRoute.value.params.province_id;
 </script>

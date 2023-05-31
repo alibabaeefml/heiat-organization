@@ -21,7 +21,7 @@
           class="pa-0"
           color="#aaca54"
           style="min-width: unset"
-          :to="{ name: 'InterprofessionalOrganizationsCategorizedNews' }"
+          :to="{ name: 'IPOCategorizedNews' }"
           >مجامع میان تخصصی</v-btn
         >
       </li>

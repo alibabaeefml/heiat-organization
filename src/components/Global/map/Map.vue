@@ -18,6 +18,9 @@ import { use_province_store } from "@/store/province";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
+const props = defineProps({
+  default_province_id: { default: null, type: Number },
+});
 const { get_all_provinces } = storeToRefs(use_province_store());
 const { get_provinces_news } = storeToRefs(use_news_store());
 function append_map_stats(path, statistic_data, data_code, attrs = {}) {
@@ -49,7 +52,7 @@ function append_map_stats(path, statistic_data, data_code, attrs = {}) {
   };
   Object.assign(defaultAttrs.circle, attrs.circle);
   Object.assign(defaultAttrs.text, attrs.text);
-  
+
   let background_circle = document.createElementNS(path.namespaceURI, "circle");
 
   for (let item in defaultAttrs.circle) {
@@ -68,7 +71,7 @@ function append_map_stats(path, statistic_data, data_code, attrs = {}) {
   for (let item in defaultAttrs.text) {
     data_number.setAttribute(item, defaultAttrs.text[item]);
   }
-  
+
   background_circle.after(data_number);
 }
 
@@ -136,7 +139,7 @@ onMounted(async () => {
     select_province(e.currentTarget.id);
   });
 
-  select_province(17);
+  props.default_province_id ? select_province(props.default_province_id) : null;
 });
 
 const emit = defineEmits(["on_province_selected"]);
@@ -145,6 +148,8 @@ const select_province = (id) => {
   $(`path#${id}`).addClass("active");
   emit("on_province_selected", id);
 };
+
+
 </script>
 
 <style scoped></style>

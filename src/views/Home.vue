@@ -6,7 +6,7 @@
       style="pointer-events: none"
     ></div>
     <ProvincesNews />
-    <InterprofessionalOrganizations />
+    <IPOCategorizedNews />
     <News />
     <MultiMedia color="primary" :center="true" />
     <SpecialNews />
@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import InterprofessionalOrganizations from "@/components/Home/InterprofessionalOrganizations.vue";
+import IPOCategorizedNews from "@/components/Home/IPOCategorizedNews.vue";
 import LetterNews from "@/components/Home/LetterNews.vue";
 import News from "@/components/Home/News.vue";
 import ProvincesNews from "@/components/Home/ProvincesNews.vue";

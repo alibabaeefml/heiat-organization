@@ -19,7 +19,7 @@
       icon
       variant="text"
       class="menu-item"
-      :to="{ name: 'InterprofessionalOrganizationsCategorizedNews' }"
+      :to="{ name: 'IPOCategorizedNews' }"
     >
       <v-img src="@/assets/images/ipo-icon.png" width="20" cover></v-img>
       <v-tooltip activator="parent"> مجامع میان تخصصی </v-tooltip>

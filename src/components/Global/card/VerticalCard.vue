@@ -20,8 +20,8 @@
       <div
         :class="{
           'd-flex': true,
-          'justify-end': data.card_theme == 'primary',
-          'justify-center': data.card_theme == 'secondary',
+          'justify-center': center_link,
+          'justify-end': !center_link,
           'mt-3': true,
         }"
       >
@@ -37,5 +37,5 @@
 </template>
 
 <script setup>
-const props = defineProps(["data"]);
+const props = defineProps(["data", "center_link"]);
 </script>

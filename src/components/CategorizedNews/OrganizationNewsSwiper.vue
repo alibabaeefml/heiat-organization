@@ -1,16 +1,17 @@
 <template>
   <Swiper
     :modules="modules"
-    class="w-100"
+    class="w-100 mt-5"
     autoplay
     loop
-    :slides-per-view="useDisplay().xs.value ? 1 : 4"
+    :slides-per-view="useDisplay().smAndDown.value ? 1 : 4"
     :space-between="20"
     :navigation="navigation_options"
   >
-    <SwiperSlide>
+    <SwiperSlide
+      v-for="(item, i) in use_news_store().get_organizations_news.slice(0, 5)"
+    >
       <VerticalCard
-        v-for="item in use_news_store().get_organs_news.slice(0, 4)"
         style="border: 2px solid var(--primary)"
         class="rounded-xl"
         :data="{
@@ -20,9 +21,19 @@
           link: { name: 'OrganizationSingleNews', params: { id: item.id } },
         }"
       />
-
+    </SwiperSlide>
+  </Swiper>
+  <Swiper
+    :modules="modules"
+    class="w-100 mt-5"
+    autoplay
+    loop
+    :slides-per-view="useDisplay().smAndDown.value ? 1 : 4"
+    :space-between="20"
+    :navigation="navigation_options"
+  >
+    <SwiperSlide v-for="(item, i) in use_news_store().get_organizations_news.slice(4)">
       <VerticalCard
-        v-for="item in use_news_store().get_organs_news.slice(4)"
         style="border: 2px solid var(--primary)"
         class="rounded-xl"
         :data="{
