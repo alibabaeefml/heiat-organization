@@ -13,7 +13,6 @@
         :data="{
           title: item.title_fa,
           text: item.lead_fa,
-          link: { name: 'ProvincesSingleNews', params: { id: item.id } },
           img: item.thumbnail
         }"
       />
