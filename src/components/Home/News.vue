@@ -1,6 +1,6 @@
 <template>
   <section class="wrapper bg-secondary-3 position-relative">
-    <div class="position-relative pa-3" style="z-index: 11">
+    <div class="position-relative pa-16" style="z-index: 11">
       <div
         class="d-flex gap-1 flex-md-row flex-column align-end justify-space-between"
       >

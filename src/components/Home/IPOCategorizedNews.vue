@@ -1,7 +1,7 @@
 <template>
   <section class="bg-white" >
     <div class="position-relative" style="z-index: 11">
-      <v-row class="pa-5">
+      <v-row class="pa-16">
         <v-col md="4" cols="12">
           <TextGroup title="تشکل های میان تخصصی" :limited="false" />
         </v-col>

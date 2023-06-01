@@ -15,7 +15,7 @@
         class="d-flex align-center justify-center w-100"
         v-model="overlay"
       >
-        <v-card width="500">
+        <v-card class="" :width="useDisplay().xs.value ? '90vw' : 500">
           <v-btn
             size="xs"
             variant="plain"
@@ -42,7 +42,7 @@
     <IntroMenu />
     <TentMenu />
   </div>
-  <IntroFooter />
+  <IntroFooter :style="{height: useDisplay().xs.value ? 'max-content' : '5%'}"/>
 </template>
 
 <script setup>
@@ -50,6 +50,7 @@ import IntroFooter from "@/components/Intro/IntroFooter.vue";
 import TentMenu from "@/components/Intro/TentMenu.vue";
 import IntroMenu from "@/components/Intro/IntroMenu.vue";
 import { ref } from "vue";
+import { useDisplay } from "vuetify/lib/framework.mjs";
 
 const overlay = ref(false);
 </script>
@@ -59,7 +60,7 @@ const overlay = ref(false);
   background-image: url(../assets/images/intro-bg.png);
   background-size: cover;
   background-position: center;
-  height: 100%;
+  height: 95%;
   position: relative;
   display: flex;
   align-items: center;

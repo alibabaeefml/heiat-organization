@@ -1,6 +1,6 @@
 <template>
   <router-link
-    :to="{ name: data.link || 'Home' }"
+    :to="data.link"
     class="d-block rounded-xl position-relative overflow-hidden bg-primary"
     
   >

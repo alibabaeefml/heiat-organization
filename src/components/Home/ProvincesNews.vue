@@ -1,7 +1,7 @@
 <template>
   <section class="wrapper bg-secondary-3">
     <div
-      class="position-relative d-flex flex-md-row justify-space-between flex-column pa-5"
+      class="position-relative d-flex flex-md-row justify-space-between flex-column pa-16"
       style="z-index: 11"
     >
       <SelectedProvinceNews

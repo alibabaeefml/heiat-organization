@@ -1,8 +1,8 @@
 <template>
   <v-list
     rounded="lg"
-    width="60"
-    style="position: absolute; top: 20%; right: 1rem"
+    
+    style="position: absolute; top: 20%; right:0; z-index: 10"
     bg-color="#007033"
     class="pa-0 d-flex flex-column align-center"
   >
@@ -31,11 +31,7 @@
     </v-btn>
 
     <v-btn icon variant="text" class="menu-item">
-      <v-img
-        src="@/assets/images/e-services-icon.png"
-        width="20"
-        cover
-      ></v-img>
+      <v-img src="@/assets/images/e-services-icon.png" width="20" cover></v-img>
       <v-tooltip activator="parent"> خدمات الکترونیک </v-tooltip>
     </v-btn>
 
@@ -55,20 +51,12 @@
     </v-btn>
 
     <v-btn icon variant="text" class="menu-item" :to="{ name: 'MultiMedia' }">
-      <v-img
-        src="@/assets/images/multimedia-icon.png"
-        width="20"
-        cover
-      ></v-img>
+      <v-img src="@/assets/images/multimedia-icon.png" width="20" cover></v-img>
       <v-tooltip activator="parent"> چندرسانه ای </v-tooltip>
     </v-btn>
 
     <v-btn icon variant="text" class="menu-item" :to="{ name: 'ContactUs' }">
-      <v-img
-        src="@/assets/images/contact-us-icon.png"
-        width="20"
-        cover
-      ></v-img>
+      <v-img src="@/assets/images/contact-us-icon.png" width="20" cover></v-img>
       <v-tooltip activator="parent"> تماس با ما </v-tooltip>
     </v-btn>
   </v-list>

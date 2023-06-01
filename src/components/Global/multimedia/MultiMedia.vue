@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="position-relative" style="z-index: 11">
+    <div class="position-relative px-16" style="z-index: 11">
       <TextGroup
         title="چند رسانه ای"
         :class="center ? 'text-center mx-auto w-75' : ''"

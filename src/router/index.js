@@ -11,7 +11,7 @@ const routes = [
         name: "Intro",
         component: () => import("@/views/Intro.vue"),
         meta: {
-          title: "صفحه اصلی",
+          title: "سازمان هیئت و تشکل های مذهبی",
           theme: "dark",
         },
       },
@@ -90,15 +90,14 @@ const routes = [
       {
         path: "/IPO-categorized-news",
         name: "IPOCategorizedNews",
-        component: () =>
-          import("@/views/IPOCategorizedNews.vue"),
+        component: () => import("@/views/IPOCategorizedNews.vue"),
         meta: {
           title: "دسته بندی اخبار تشکل های میان تخصصی",
           theme: "light",
         },
       },
       {
-        path: "/special-news",
+        path: "/special-news/:id",
         name: "SpecialNews",
         component: () => import("@/views/SpecialNews.vue"),
         meta: {
@@ -147,7 +146,11 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  scrollBehavior(to, from, savedPosition) {
+    // always scroll to top
+    $("main").scrollTop(0)
+  },
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
 });
 

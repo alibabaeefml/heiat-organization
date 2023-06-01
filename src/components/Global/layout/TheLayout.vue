@@ -11,7 +11,7 @@
             : 'transparent'
         "
         height="100"
-        class="px-3 "
+        class="px-3"
         :style="{
           width: display.width.value >= 2400 ? '2400px' : '100%',
           left: display.width.value >= 2400 ? 'calc(50% - 1200px)' : 0,
@@ -68,8 +68,7 @@
             :class="{
               link: true,
               dark: theme == 'dark',
-              active:
-                router_name == 'IPOCategorizedNews',
+              active: router_name == 'IPOCategorizedNews',
             }"
           >
             تشکل های میان تخصصی
@@ -171,8 +170,7 @@
             :class="{
               link: true,
               dark: false,
-              active:
-                router_name == 'IPOCategorizedNews',
+              active: router_name == 'IPOCategorizedNews',
             }"
           >
             تشکل های میان تخصصی
@@ -227,10 +225,14 @@
       >
         <v-container class="h-100 pa-0" :fluid="display.xlAndDown.value">
           <router-view />
-          <v-footer v-if="router.currentRoute.value.name != 'Intro'" class="pt-5 d-flex flex-column pa-0" color="#FAF8E8">
-            <v-row class="pa-3">
+          <v-footer
+            v-if="router.currentRoute.value.name != 'Intro'"
+            class="pt-5 d-flex flex-column pa-0"
+            color="#FAF8E8"
+          >
+            <v-row class="pa-3 px-16">
               <v-col cols="12" md="3" class="d-flex flex-column gap-1">
-                <div class="d-flex flex-column align-center">
+                <div class="d-flex flex-column">
                   <router-link :to="{ name: 'Home' }">
                     <v-img
                       width="60"
@@ -286,10 +288,17 @@
                 class="d-flex align-md-end align-center flex-column gap-1"
               >
                 <h4>آمار بازدید سایت: {{ visit_stat || 4312 }}</h4>
-                <v-row class="w-100 justify-space-between">
-                  <v-col cols="4" v-for="item in 3">
+                <v-row class="w-100">
+                  <v-col cols="12" md="4" v-for="item in 3">
                     <router-link :to="{ name: item.link || 'Home' }">
-                      <v-img cover :src="item.img || default_img"></v-img>
+                      <v-img
+                        cover
+                        class="mr-auto"
+                        :width="useDisplay().xs.value ? '100%' : 150"
+                        :height="useDisplay().xs.value ? '100%' : 150"
+                        
+                        :src="item.img || default_img"
+                      ></v-img>
                     </router-link>
                   </v-col>
                 </v-row>
@@ -297,7 +306,7 @@
             </v-row>
             <div class="bg-primary w-100">
               <div
-                class="d-flex align-center w-100 flex-sm-row flex-column justify-space-between pa-2"
+                class="d-flex align-center w-100 flex-sm-row flex-column justify-space-between pa-3 px-16"
               >
                 <p>
                   کلیه حقوق این سایت متعلق به سازمان هیأت و تشکل های دینی
@@ -328,7 +337,7 @@ import { useRouter } from "vue-router";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import HeaderSubtitle from "@/components/Home/HeaderSubtitle.vue";
 import { computed } from "vue";
-import Searchbar from "../search/searchbar.vue";
+import Searchbar from "@/components/Global/search/SearchBar.vue";
 
 import { use_news_store } from "@/store/news";
 import { storeToRefs } from "pinia";

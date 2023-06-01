@@ -73,11 +73,11 @@ const relative_news = ref([]);
 
 const router = useRouter();
 const load_data = async () => {
-  news.value = await use_news_store().show_provinces_news({
+  news.value = await use_news_store().show_special_news({
     id: router.currentRoute.value.params.id,
   });
 
-  relative_news.value = await use_news_store().index_provinces_news({
+  relative_news.value = await use_news_store().index_special_news({
     provinceid: news.value.provinceid,
   });
 };

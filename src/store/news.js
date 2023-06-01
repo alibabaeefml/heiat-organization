@@ -12,6 +12,9 @@ export const use_news_store = defineStore("news", () => {
   const organizations_news = ref([]);
   const get_organizations_news = computed(() => organizations_news.value);
   const organizations_news_page_count = ref();
+  const special_news = ref([]);
+  const special_news_page_count = ref([]);
+  const get_special_news = computed(() => get_special_news.value);
 
   const index_all_news = async (filters = {}) => {
     const response = await axios.get(url("news", filters));
@@ -68,7 +71,20 @@ export const use_news_store = defineStore("news", () => {
     }
   };
 
-  
+  const index_special_news = async (filters = {}) => {
+    const response = await axios.get(url("specialsnews", filters));
+    if ([200, 201].includes(response.status)) {
+      special_news_page_count.value = response.data.meta.total_page;
+      special_news.value = response.data.data;
+    }
+  };
+  const show_special_news = async (filters = {}) => {
+    const response = await axios.get(url("specialsnews", filters));
+    if ([200, 201].includes(response.status)) {
+      return response.data.data[0];
+    }
+  };
+
   return {
     index_all_news,
     index_provinces_news,
@@ -82,5 +98,9 @@ export const use_news_store = defineStore("news", () => {
     get_organizations_news,
     show_organizations_news,
     index_news_categories,
+    index_special_news,
+    show_special_news,
+    get_special_news,
+    special_news_page_count,
   };
 });
