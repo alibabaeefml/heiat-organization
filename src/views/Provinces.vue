@@ -45,8 +45,8 @@
                   :data="{
                     card_theme: 'primary',
                     link: 'ProvincesSingleNews',
-                    title: news_item.title_fa,
-                    text: news_item.lead_fa,
+                    title: news_item.title,
+                    text: news_item.lead,
                   }"
                 />
               </v-col>

@@ -29,7 +29,7 @@
             </div>
             <v-img :src="news.img || default_img" height="380" cover></v-img>
           </div>
-          <h2 class="mt-5">{{ news.title_fa || "تیتر خبر سازمان" }}</h2>
+          <h2 class="mt-5">{{ news.title || "تیتر خبر سازمان" }}</h2>
           <div class="d-flex justify-space-between align-center">
             <div class="d-flex align-center gap-1 mt-5">
               <v-avatar size="30" :image="news.author?.img || default_img">
@@ -56,7 +56,7 @@
           ></v-divider>
           <div
             class="text-justify"
-            v-html="news.desc_fa || persian_lorem"
+            v-html="news.desc || persian_lorem"
           ></div>
           <v-divider
             :thickness="3"
@@ -75,16 +75,16 @@
               :src="organization.img || default_img"
             ></v-img>
             <h2 class="text-primary text-center">
-              {{ organization.title_fa || "عنوان سازمان" }}
+              {{ organization.title || "عنوان سازمان" }}
             </h2>
           </div>
 
           <div class="d-flex flex-column gap-1 mt-5">
             <VerticalCard
               :data="{
-                title: item.title_fa,
+                title: item.title,
                 img: item.thumbnail,
-                text: item.lead_fa,
+                text: item.lead,
                 link: { name: 'OrganizationSingleNews', id: item.id },
               }"
               v-for="item in relative_news"

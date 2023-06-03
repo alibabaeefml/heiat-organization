@@ -85,6 +85,7 @@ export const use_news_store = defineStore("news", () => {
     }
   };
 
+
   return {
     index_all_news,
     index_provinces_news,

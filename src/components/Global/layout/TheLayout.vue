@@ -121,8 +121,8 @@
           @click="show_search_bar = !show_search_bar"
         ></v-btn>
         <Searchbar
-          @input="search"
-          :items="get_all_news"
+          @onsearch="search"
+          :items="get_results"
           :theme="theme"
           v-if="show_search_bar"
         />
@@ -133,16 +133,16 @@
           v-if="display.width.value <= 800 || router_name == 'Home'"
         ></v-app-bar-nav-icon>
       </v-app-bar>
-
+      <!-- drawer menu -->
       <v-navigation-drawer
         v-model="drawer"
         location="bottom"
+        class="pa-5 h-75"
+        style="z-index: 9999"
         temporary
-        class="mobile-nav pa-5"
-        style="height: max-content"
       >
         <div
-          class="d-flex flex-column justify-between gap-2 text-center mobile-nav overflow-hidden"
+          class="d-flex flex-column justify-between gap-2 text-center"
           gap="3rem"
         >
           <router-link
@@ -296,7 +296,6 @@
                         class="mr-auto"
                         :width="useDisplay().xs.value ? '100%' : 150"
                         :height="useDisplay().xs.value ? '100%' : 150"
-                        
                         :src="item.img || default_img"
                       ></v-img>
                     </router-link>
@@ -339,8 +338,8 @@ import HeaderSubtitle from "@/components/Home/HeaderSubtitle.vue";
 import { computed } from "vue";
 import Searchbar from "@/components/Global/search/SearchBar.vue";
 
-import { use_news_store } from "@/store/news";
 import { storeToRefs } from "pinia";
+import { use_search_store } from "@/store/search";
 const router = useRouter();
 const router_name = computed(() => router.currentRoute.value.name);
 const drawer = ref(false);
@@ -354,11 +353,12 @@ const theme = computed(() => router.currentRoute.value.meta.theme);
 
 const display = useDisplay();
 
+const { get_results } = storeToRefs(use_search_store());
 const show_search_bar = ref(false);
-const search = async () => {
-  await use_news_store().index_all_news();
+const search = async (search_term) => {
+  await use_search_store().search(search_term, "news");
 };
-const { get_all_news } = storeToRefs(use_news_store());
+
 const scrolled = ref(false);
 
 const main_scroll = () => {

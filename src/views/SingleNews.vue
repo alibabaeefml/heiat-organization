@@ -11,7 +11,7 @@
           <div class="d-flex align-center justify-space-between">
             <div>
               <h2 class="text-primary">
-                {{ news.title_fa || "تیتر خبر" }}
+                {{ news.title || "تیتر خبر" }}
               </h2>
               <div class="mt-2 d-flex gap-1 align-center">
                 <v-icon color="primary">mdi-calendar</v-icon>
@@ -38,7 +38,7 @@
               ></v-rating>
             </div>
           </div>
-          <div class="text-justify" v-html="news.desc_fa"></div>
+          <div class="text-justify" v-html="news.desc"></div>
 
           <Comments class="mt-10" />
         </v-col>
@@ -49,8 +49,8 @@
             v-for="item in relative_news.slice(0, 3)"
             :data="{
               card_theme: 'primary',
-              title: item.title_fa,
-              text: item.lead_fa,
+              title: item.title,
+              text: item.lead,
               link: { name: 'SingleNews', params: { id: item.id } },
             }"
           />

@@ -20,8 +20,8 @@
               width: '100%',
               img_height: '310px',
               card_theme: 'secondary',
-              title: latest_news.title_fa,
-              text: latest_news.lead_fa,
+              title: latest_news.title,
+              text: latest_news.lead,
               img: latest_news.thumbnail,
               link: { name: 'SingleNews', params: { id: latest_news.id || 1 } },
             }"
@@ -32,8 +32,8 @@
             v-for="news in get_all_news.slice(1, 4)"
             :data="{
               img_width: useDisplay().smAndUp.value ? '200px' : '100%',
-              title: news.title_fa,
-              text: news.lead_fa,
+              title: news.title,
+              text: news.lead,
               img: news.thumbnail,
               link: { name: 'SingleNews', params: { id: news.id } },
             }"

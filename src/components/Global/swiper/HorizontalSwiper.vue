@@ -11,8 +11,8 @@
     <SwiperSlide v-for="item in slides">
       <VerticalCard
         :data="{
-          title: item.title_fa,
-          text: item.lead_fa,
+          title: item.title,
+          text: item.lead,
           img: item.thumbnail
         }"
       />

@@ -5,13 +5,13 @@
     bg-color="rgba(255,255,255,.3)"
     class="pl-5"
     label="جستجو"
-    @input="$emit('input')"
     :items="items"
     clearable
     item-value="id"
-    item-title="title_fa"
+    item-title="title"
     v-model="selected"
     no-data-text="خبری یافت نشد"
+    @keydown="search"
     @update:model-value="onselect"
   >
   </v-autocomplete>
@@ -23,6 +23,19 @@ import { useRouter } from "vue-router";
 const props = defineProps(["theme", "items"]);
 const selected = ref();
 const router = useRouter();
+
+const emit = defineEmits(["onsearch"]);
+
+let timeout = null;
+const search = (event) => {
+  clearTimeout(timeout);
+  timeout = setTimeout(() => {
+    if (event.target.value.length) {
+      emit("onsearch", event.target.value);
+    }
+  }, 500);  
+};
+
 const onselect = () => {
   router.push({
     name: "ProvincesSingleNews",

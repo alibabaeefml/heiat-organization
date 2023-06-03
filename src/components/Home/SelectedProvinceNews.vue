@@ -13,8 +13,8 @@
         v-for="news_item in data.province_news?.slice(0, 3)"
         :key="news_item.id"
         :data="{
-          title: news_item.title_fa,
-          text: news_item.lead_fa,
+          title: news_item.title,
+          text: news_item.lead,
           img: news_item.img,
           link: { name: 'ProvincesSingleNews', params: { id: news_item.id } },
         }"

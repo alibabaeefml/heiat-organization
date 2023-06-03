@@ -1,2 +1,29 @@
-https://sazmanheyat.ir/api/get_table/news
-https://sazmanheyat.ir/admin/index
+https://sazmanheyat.ir/api/newslist/
+page = id
+catid = id
+id = id
+search = text
+
+https://sazmanheyat.ir/api/articleslist/
+page = id
+catid = id
+search = text
+id = id
+
+https://sazmanheyat.ir/api/organizationnews/
+page = id
+organization_id = id
+search = text
+id = id
+
+https://sazmanheyat.ir/api/organization/
+page = id
+search = text
+id = id
+
+https://sazmanheyat.ir/api/provincesnews/
+page = id
+search = text
+id = id
+provinceid = id
+catid = id

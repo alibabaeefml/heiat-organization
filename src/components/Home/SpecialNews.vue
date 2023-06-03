@@ -6,7 +6,7 @@
         <v-col cols="12" md="6" v-for="item in specials" :key="item">
           <SpecialNewsItem
             :data="{
-              caption: item.title_fa,
+              caption: item.title,
               img: item.img,
               link: { name: 'SpecialNews', params: { id: item.id } },
             }"

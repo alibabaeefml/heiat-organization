@@ -20,8 +20,8 @@
               <HorizontalCard
                 :data="{
                   img_width: useDisplay().xs.value ? '100%' : '200px',
-                  title: item.title_fa,
-                  text: item.lead_fa,
+                  title: item.title,
+                  text: item.lead,
                   img: item.thummbnail,
                   link: { name: 'SpecialSingleNews', params: { id: item.id } },
                 }"

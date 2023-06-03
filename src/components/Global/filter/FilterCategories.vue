@@ -16,7 +16,7 @@
         <template v-slot:prepend>
           <v-icon icon="mdi-chevron-left"></v-icon>
         </template>
-        <v-list-item-title v-text="item.title_fa"></v-list-item-title>
+        <v-list-item-title v-text="item.title"></v-list-item-title>
       </v-list-item>
     </v-list>
   </v-card>

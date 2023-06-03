@@ -9,7 +9,7 @@
       class="position-absolute h-100 flex-center overflow-hidden"
       style="top: 0; width: 90%; right: 5%"
     >
-      <p class="subtitle-anim" >{{ latest_news.lead_fa || persian_lorem }}</p>
+      <p class="subtitle-anim" >{{ latest_news.lead || persian_lorem }}</p>
       
     </div>
     

@@ -15,8 +15,8 @@
         style="border: 2px solid var(--primary)"
         class="rounded-xl"
         :data="{
-          title: item.title_fa,
-          text: item.lead_fa,
+          title: item.title,
+          text: item.lead,
           img: item.thumbnail,
           link: { name: 'OrganizationSingleNews', params: { id: item.id } },
         }"
@@ -37,8 +37,8 @@
         style="border: 2px solid var(--primary)"
         class="rounded-xl"
         :data="{
-          title: item.title_fa,
-          text: item.lead_fa,
+          title: item.title,
+          text: item.lead,
           img: item.thumbnail,
           link: { name: 'OrganizationSingleNews', params: { id: item.id } },
         }"

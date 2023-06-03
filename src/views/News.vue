@@ -23,8 +23,8 @@
               v-for="item in get_all_news"
               :data="{
                 img_width: useDisplay().smAndUp.value ? '200px' : null,
-                title: item.title_fa,
-                text: item.lead_fa,
+                title: item.title,
+                text: item.lead,
                 link: { name: 'SingleNews', params: { id: item.id } },
               }"
             />

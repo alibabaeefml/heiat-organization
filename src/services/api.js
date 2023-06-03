@@ -1,4 +1,4 @@
-const base_url = "https://sazmanheyat.ir/api/get_table/";
+const base_url = "https://sazmanheyat.ir/api/";
 
 const create_filters = (filters = {}) => {
   let query = "?";

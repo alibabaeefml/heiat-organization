@@ -27,10 +27,10 @@
         "
       >
         <h2 class="text-secondary next">
-          {{ slide.title_fa || "عنوان اسلاید" }}
+          {{ slide.title || "عنوان اسلاید" }}
         </h2>
         <p class="text-white limited">
-          {{ slide.lead_fa || persian_lorem }}
+          {{ slide.lead || persian_lorem }}
         </p>
         <v-btn
           :to="{ path: slide.btn_link }"
