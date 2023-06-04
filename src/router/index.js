@@ -133,6 +133,15 @@ const routes = [
         },
       },
       {
+        path: "/single-article/:id",
+        name: "SingleArticle",
+        component: () => import("@/views/SingleArticle.vue"),
+        meta: {
+          title: "مقاله",
+          theme: "light",
+        },
+      },
+      {
         path: "/:pathMatch(.*)*",
         name: "PageNotFound",
         component: () => import("@/views/PageNotFound.vue"),

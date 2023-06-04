@@ -11,7 +11,7 @@
           <div class="d-flex align-center justify-space-between">
             <div>
               <h2 class="text-primary">
-                {{ news.title || "تیتر خبر استان" }}
+                {{ news.title || "تیتر مقاله" }}
               </h2>
               <div class="mt-2 d-flex gap-1 align-center">
                 <v-icon color="primary">mdi-calendar</v-icon>
@@ -45,7 +45,7 @@
           <h2 class="text-primary">اخبار مرتبط</h2>
           <v-spacer class="my-5"></v-spacer>
           <VerticalCard
-            v-for="item in relative_news.slice(0,3)"
+            v-for="item in relative_news.slice(0, 3)"
             :data="{
               card_theme: 'primary',
               title: item.title,
@@ -64,20 +64,20 @@ import { ref } from "vue";
 import Comments from "@/components/Global/comment/Comments.vue";
 import VerticalCard from "@/components/Global/card/VerticalCard.vue";
 import Actions from "@/components/Global/button_group/Actions.vue";
-import { use_news_store } from "@/store/news";
+import { use_article_store } from "@/store/article";
 import { useRouter } from "vue-router";
 
-const news = ref({});
-const relative_news = ref([]);
+const article = ref({});
+const relative_articles = ref([]);
 
 const router = useRouter();
 const load_data = async () => {
-  news.value = await use_news_store().show_provinces_news({
+  article.value = await use_article_store().show_provinces_article({
     id: router.currentRoute.value.params.id,
   });
 
-  relative_news.value = await use_news_store().index_provinces_news({
-    provinceid: news.value.provinceid,
+  relative_articles.value = await use_article_store().index_provinces_article({
+    provinceid: article.value.provinceid,
   });
 };
 

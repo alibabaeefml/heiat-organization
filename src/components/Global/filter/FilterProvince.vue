@@ -8,20 +8,33 @@
     <v-select
       color="primary"
       label="انتخاب استان"
-      :items="use_province_store().get_all_provinces"
+      :items="get_all_provinces"
       variant="underlined"
       item-value="id"
       item-title="name_fa"
-      v-model="province_id"
-      @update:model-value="
-        use_news_store().index_all_news({ provinceid: item.raw.value })
-      "
+      v-model="selected"
     ></v-select>
   </v-card>
 </template>
 <script setup>
-import { use_news_store } from "@/store/news";
 import { use_province_store } from "@/store/province";
+import { storeToRefs } from "pinia";
+import { computed } from "vue";
 import { ref } from "vue";
-const province_id = ref();
+import { useRouter } from "vue-router";
+const { get_all_provinces } = storeToRefs(use_province_store());
+
+const router = useRouter();
+
+const props = defineProps(["province"]);
+
+const emit = defineEmits(["select_province"]);
+const selected = computed({
+  get() {
+    return props.province;
+  },
+  set(value) {
+    emit("select_province", value);
+  },
+});
 </script>

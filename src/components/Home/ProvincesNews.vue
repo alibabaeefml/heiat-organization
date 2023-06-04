@@ -13,8 +13,8 @@
       <Map
         class="order-md-2 order-1"
         :style="{ width: useDisplay().mdAndUp.value ? '50%' : '100%' }"
-        @on_province_selected="set_province_data"
-        :default_province_id="17"
+        @select_province="set_province_data"
+        :province="data.province"
       />
     </div>
     <v-spacer style="my-10"></v-spacer>
@@ -39,7 +39,7 @@ const set_province_data = async (id) => {
   });
   data.value.province_news = use_news_store().get_provinces_news;
 };
-
+set_province_data(17)
 </script>
 
 <style scoped>

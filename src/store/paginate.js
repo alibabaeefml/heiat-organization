@@ -1,0 +1,1 @@
+export default (data) => data > 12 ? parseInt(data) + data % 12 : 1; 

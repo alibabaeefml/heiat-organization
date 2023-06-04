@@ -16,11 +16,14 @@
 import { use_news_store } from "@/store/news";
 import { use_province_store } from "@/store/province";
 import { storeToRefs } from "pinia";
+import { watch } from "vue";
+import { computed } from "vue";
 import { onMounted } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 const props = defineProps({
-  default_province_id: { default: null, type: Number },
+  province: {},
 });
+
 const { get_all_provinces } = storeToRefs(use_province_store());
 const { get_provinces_news } = storeToRefs(use_news_store());
 function append_map_stats(path, statistic_data, data_code, attrs = {}) {
@@ -139,17 +142,17 @@ onMounted(async () => {
     select_province(e.currentTarget.id);
   });
 
-  props.default_province_id ? select_province(props.default_province_id) : null;
+  select_province(selected.value.id);
 });
 
-const emit = defineEmits(["on_province_selected"]);
+const emit = defineEmits(["select_province"]);
 const select_province = (id) => {
   $("path[data-code]").removeClass("active");
   $(`path#${id}`).addClass("active");
-  emit("on_province_selected", id);
+  emit("select_province", id);
 };
-
-
+const selected = computed(() => props.province);
+watch(selected, () => select_province(selected.value.id));
 </script>
 
 <style scoped></style>

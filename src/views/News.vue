@@ -15,7 +15,7 @@
       <TextGroup title="اخبار" />
       <v-row class="mt-5 pa-3">
         <v-col cols="12" md="3">
-          <Filter @search="search" />
+          <Filter @search="search" :categories="categories" />
         </v-col>
         <v-col cols="12" md="9">
           <div class="d-flex flex-column gap-1">
@@ -29,7 +29,8 @@
               }"
             />
           </div>
-          <Pagination :pages_count="5" />
+          <Pagination :pages_count="paginate(get_all_news.length)" />
+          
         </v-col>
       </v-row>
     </div>
@@ -44,14 +45,19 @@ import { use_news_store } from "@/store/news";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
-
+import paginate from "@/store/paginate";
 const news = ref([]);
-
+const categories = ref([]);
 const search = (search_term) =>
   use_news_store().index_all_news({ search: search_term });
+
 const { get_all_news } = storeToRefs(use_news_store());
+
 const load_data = async () => {
   news.value = await use_news_store().index_all_news();
+  // categories.value = await use_news_store().index_news_categories();
 };
 load_data();
+
+
 </script>

@@ -21,38 +21,38 @@
           <PrimaryOrganization />
         </v-col>
         <v-col cols="12" md="6" :order="useDisplay().mdAndUp.value ? 2 : 1">
-          <Map
-            @on_province_selected="set_province_data"
-            :default_province_id="province_id || 17"
-          />
+          <Map @select_province="set_province_data" :province="province" />
         </v-col>
       </v-row>
       <div class="pa-2">
         <h2>خبر های استان</h2>
         <v-row class="pa-3">
           <v-col cols="12" md="3">
-            <Filter />
+            <Filter
+              province_filter="true"
+              @search="search"
+              @select_province="set_province_data"
+              :province="province"
+            />
           </v-col>
           <v-col cols="12" md="9">
             <v-row>
-              <v-col
-                cols="12"
-                md="3"
-                sm="6"
-                v-for="news_item in use_news_store().get_provinces_news"
-              >
+              <v-col cols="12" md="3" sm="6" v-for="item in get_provinces_news">
                 <VerticalCard
                   :data="{
                     card_theme: 'primary',
-                    link: 'ProvincesSingleNews',
-                    title: news_item.title,
-                    text: news_item.lead,
+                    link: {
+                      name: 'ProvincesSingleNews',
+                      params: { id: item.id },
+                    },
+                    title: item.title,
+                    text: item.lead,
                   }"
                 />
               </v-col>
               <v-col cols="12">
                 <Pagination
-                  :pages_count="use_news_store().all_news_page_count"
+                  :pages_count="pages(get_provinces_news.length)"
                   @callback="paginate"
                 />
               </v-col>
@@ -77,8 +77,9 @@ import { use_province_store } from "@/store/province";
 import { use_news_store } from "@/store/news";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-
+import pages from "@/store/paginate";
 const province = ref({});
+const router = useRouter();
 
 const set_province_data = async (id) => {
   province.value = use_province_store().get_all_provinces.find(
@@ -90,10 +91,21 @@ const set_province_data = async (id) => {
   });
 };
 
+set_province_data(router.currentRoute.value.params.province_id);
+
+const { get_provinces_news } = storeToRefs(use_news_store());
+
 const paginate = (page_number) => {
   use_news_store().index_provinces_news({ page: page_number.value });
 };
 
-const router = useRouter();
-const province_id = router.currentRoute.value.params.province_id;
+import { storeToRefs } from "pinia";
+
+const categories = ref([]);
+
+const search = (search_term) =>
+  use_news_store().index_provinces_news({
+    search: search_term,
+    provinceid: province.value.id,
+  });
 </script>
