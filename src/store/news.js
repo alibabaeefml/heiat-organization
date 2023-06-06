@@ -3,14 +3,9 @@ import { ref, computed } from "vue";
 import axios from "axios";
 import { url } from "@/services/api.js";
 export const use_news_store = defineStore("news", () => {
+  // Main News
   const all_news = ref([]);
   const get_all_news = computed(() => all_news.value);
-  const provinces_news = ref([]);
-  const get_provinces_news = computed(() => provinces_news.value);
-  const organizations_news = ref([]);
-  const get_organizations_news = computed(() => organizations_news.value);
-  const special_news = ref([]);
-  const get_special_news = computed(() => get_special_news.value);
 
   const index_all_news = async (filters = {}) => {
     const response = await axios.get(url("news", filters));
@@ -26,7 +21,16 @@ export const use_news_store = defineStore("news", () => {
       return response.data.data[0];
     }
   };
+  const index_news_categories = async () => {
+    const response = await axios.get(url("newscategory"));
+    if ([200, 201].includes(response.status)) {
+      return response.data.data;
+    }
+  };
 
+  // Provinces News
+  const provinces_news = ref([]);
+  const get_provinces_news = computed(() => provinces_news.value);
   const index_provinces_news = async (filters = {}) => {
     const response = await axios.get(url("provincesnews", filters));
     if ([200, 201].includes(response.status)) {
@@ -41,6 +45,10 @@ export const use_news_store = defineStore("news", () => {
       return response.data.data[0];
     }
   };
+
+  // Organizations News
+  const organizations_news = ref([]);
+  const get_organizations_news = computed(() => organizations_news.value);
 
   const index_organizations_news = async (filters = {}) => {
     const response = await axios.get(url("organizationnews", filters));
@@ -57,13 +65,9 @@ export const use_news_store = defineStore("news", () => {
     }
   };
 
-  const index_news_categories = async () => {
-    const response = await axios.get(url("newscategory"));
-    if ([200, 201].includes(response.status)) {
-      return response.data.data;
-    }
-  };
-
+  // Special News
+  const special_news = ref([]);
+  const get_special_news = computed(() => get_special_news.value);
   const index_special_news = async (filters = {}) => {
     const response = await axios.get(url("specialsnews", filters));
     if ([200, 201].includes(response.status)) {
@@ -76,7 +80,6 @@ export const use_news_store = defineStore("news", () => {
       return response.data.data[0];
     }
   };
-
 
   return {
     index_all_news,

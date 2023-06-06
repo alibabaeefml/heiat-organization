@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-white" >
+  <section class="bg-white">
     <div class="position-relative" style="z-index: 11">
       <v-row class="pa-16">
         <v-col md="4" cols="12">
@@ -11,8 +11,11 @@
               :data="{
                 card_theme: 'primary',
                 width: useDisplay().smAndUp.value ? '270px' : null,
+                title: organ.title,
+                text:organ.text,
+                lead:organ.lead,
               }"
-              v-for="organ in 5"
+              v-for="organ in get_organizations"
             />
           </div>
         </v-col>
@@ -23,7 +26,12 @@
 <script setup>
 import VerticalCard from "@/components/Global/card/VerticalCard.vue";
 import TextGroup from "@/components/Global/text/TextGroup.vue";
+import { use_news_store } from "@/store/news";
+import { use_organization_store } from "@/store/organization";
+import { storeToRefs } from "pinia";
 import { ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
-</script>
 
+const { get_organizations } = storeToRefs(use_organization_store());
+use_organization_store().index_organizations();
+</script>

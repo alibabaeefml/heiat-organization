@@ -34,11 +34,29 @@ const routes = [
         },
       },
       {
-        path: "/news/:province_id?",
+        path: "/news",
         name: "News",
         component: () => import("@/views/News.vue"),
         meta: {
           title: "لیست اخبار",
+          theme: "light",
+        },
+      },
+      {
+        path: "/provinces-news",
+        name: "ProvincesNews",
+        component: () => import("@/views/ProvincesNews.vue"),
+        meta: {
+          title: "لیست اخبار استان ها",
+          theme: "light",
+        },
+      },
+      {
+        path: "/organizations-news",
+        name: "OrganizationsNews",
+        component: () => import("@/views/OrganizationsNews.vue"),
+        meta: {
+          title: "لیست اخبار تشکل ها",
           theme: "light",
         },
       },
@@ -88,9 +106,9 @@ const routes = [
         },
       },
       {
-        path: "/IPO-categorized-news",
-        name: "IPOCategorizedNews",
-        component: () => import("@/views/IPOCategorizedNews.vue"),
+        path: "/organizations",
+        name: "Organizations",
+        component: () => import("@/views/Organizations.vue"),
         meta: {
           title: "دسته بندی اخبار تشکل های میان تخصصی",
           theme: "light",

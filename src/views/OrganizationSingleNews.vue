@@ -1,5 +1,5 @@
 <template>
-  <div class="position-relative">
+  <div class="position-relative mb-3">
     <div
       class="w-100 h-100 position-absolute pattern-div"
       style="pointer-events: none"
@@ -54,10 +54,7 @@
             color="primary"
             class="my-3 border-opacity-100"
           ></v-divider>
-          <div
-            class="text-justify"
-            v-html="news.desc || persian_lorem"
-          ></div>
+          <div class="text-justify" v-html="news.desc || persian_lorem"></div>
           <v-divider
             :thickness="3"
             color="primary"
@@ -70,8 +67,8 @@
           <div class="d-flex flex-column gap-1 align-center">
             <h2 class="text-primary">اخبار مرتبط به</h2>
             <v-img
-              cover
-              class="w-100 h-100"
+              width="100%"
+              height="300"
               :src="organization.img || default_img"
             ></v-img>
             <h2 class="text-primary text-center">
@@ -113,9 +110,8 @@ const rating = ref();
 const router = useRouter();
 
 const load_data = async () => {
-  news.value = await use_news_store().show_organizations_news({
-    id: router.currentRoute.value.params.id,
-  });
+  const { id } = router.currentRoute.value.params;
+  news.value = await use_news_store().show_organizations_news({ id });
 
   relative_news.value = await use_news_store().index_organizations_news({
     organization_id: news.value.organization_id,
@@ -127,5 +123,4 @@ const load_data = async () => {
 };
 
 load_data();
-
 </script>

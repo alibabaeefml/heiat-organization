@@ -9,7 +9,11 @@
         />
       </v-col>
       <v-col class="d-flex flex-column gap-1" cols="12" md="6">
-        <CaptionedAudio :data="{ theme: theme }" v-for="audio in 4" :key="audio" />
+        <CaptionedAudio
+          :data="{ theme: theme }"
+          v-for="audio in 4"
+          :key="audio"
+        />
       </v-col>
     </v-row>
     <v-card>
@@ -26,7 +30,11 @@
             {{ selected_audio.title || persian_lorem }}
           </h3>
         </div>
-        <audio-player :theme="`var(--${theme})`" file="src/assets/Boresh.mp3" dir="ltr"></audio-player>
+        <audio-player
+          :theme="`var(--${theme})`"
+          file="src/assets/Boresh.mp3"
+          dir="ltr"
+        ></audio-player>
       </div>
     </v-card>
   </div>
@@ -38,7 +46,7 @@ import { ref } from "vue";
 
 const selected_audio = ref({});
 
-const props = defineProps(["theme"])
+const props = defineProps(["theme"]);
 </script>
 
 <style scoped>

@@ -12,16 +12,16 @@
         z-index: 11;
       "
     >
-      <TextGroup title="اخبار" />
+      <TextGroup title="لیست اخبار تشکل ها" />
       <v-row class="mt-5 pa-3">
         <v-col cols="12" md="3">
           <Filter
             class="mt-3"
             @search="search"
             @select_cat="select_cat"
-            :categories="categories"
+            :categories="get_organizations"
             @reset_filter="
-              use_news_store().index_all_news();
+              use_news_store().index_organizations_news();
               filter_key = !filter_key;
             "
             :key="filter_key"
@@ -30,7 +30,7 @@
         <v-col cols="12" md="9">
           <div class="d-flex flex-column gap-1">
             <HorizontalCard
-              v-for="item in get_all_news"
+              v-for="item in get_organizations_news"
               :data="{
                 img_width: useDisplay().smAndUp.value ? '200px' : null,
                 title: item.title,
@@ -39,7 +39,7 @@
               }"
             />
           </div>
-          <Pagination :pages_count="paginate(get_all_news.length)" />
+          <Pagination :pages_count="paginate(get_organizations_news.length)" />
         </v-col>
       </v-row>
     </div>
@@ -55,24 +55,23 @@ import { storeToRefs } from "pinia";
 import { ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import paginate from "@/store/paginate";
-import router from "@/router";
-const news = ref([]);
-const categories = ref([]);
-const search = (search_term) =>
-  use_news_store().index_all_news({ search: search_term });
+import { use_organization_store } from "@/store/organization";
 
-const select_cat = (catid) => {
-  use_news_store().index_all_news({ catid });
+const search = (search_term) =>
+  use_news_store().index_organizations_news({ search: search_term });
+
+const select_cat = (organization_id) => {
+  use_news_store().index_organizations_news({ organization_id });
 };
 
-const { get_all_news } = storeToRefs(use_news_store());
+const { get_organizations_news } = storeToRefs(use_news_store());
+const { get_organizations } = storeToRefs(use_organization_store());
 
 const load_data = async () => {
-  news.value = await use_news_store().index_all_news();
-  categories.value = await use_news_store().index_news_categories();
+  await use_news_store().index_organizations_news();
+  await use_organization_store().index_organizations();
 };
 load_data();
 
 const filter_key = ref(false);
-
 </script>

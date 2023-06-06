@@ -32,7 +32,7 @@
       size="small"
       class="menu-item"
       style="position: absolute; left: 6.5rem; bottom: 4rem"
-      :to="{ name: 'IPOCategorizedNews' }"
+      :to="{ name: 'Organizations' }"
     >
       <v-img src="@/assets/images/ipo-white-icon.png" width="20" cover></v-img>
       <v-tooltip activator="parent"> مجامع میان تخصصی </v-tooltip>

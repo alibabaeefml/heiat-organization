@@ -13,7 +13,8 @@
         :data="{
           title: item.title,
           text: item.lead,
-          img: item.thumbnail
+          img: item.thumbnail,
+          link: { name: route_name, params: { id: item.id } },
         }"
       />
     </SwiperSlide>
@@ -42,5 +43,6 @@ const navigation_options = {
 const props = defineProps({
   slides: { default: 5 },
   slides_per_view: { default: 4 },
+  route_name: { default: "" },
 });
 </script>

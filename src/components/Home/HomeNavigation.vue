@@ -50,7 +50,7 @@
         </g>
       </svg>
     </nav-item>
-    <nav-item name="تشکل ها" route_name="IPOCategorizedNews">
+    <nav-item name="تشکل ها" route_name="Organizations">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="54.829"

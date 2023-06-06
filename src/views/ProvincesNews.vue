@@ -12,7 +12,7 @@
         z-index: 11;
       "
     >
-      <TextGroup title="اخبار" />
+      <TextGroup title="لیست اخبار استان ها" />
       <v-row class="mt-5 pa-3">
         <v-col cols="12" md="3">
           <Filter
@@ -55,7 +55,7 @@ import { storeToRefs } from "pinia";
 import { ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import paginate from "@/store/paginate";
-import router from "@/router";
+
 const news = ref([]);
 const categories = ref([]);
 const search = (search_term) =>

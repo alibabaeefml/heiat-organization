@@ -64,11 +64,11 @@
             استان ها
           </router-link>
           <router-link
-            :to="{ name: 'IPOCategorizedNews' }"
+            :to="{ name: 'Organizations' }"
             :class="{
               link: true,
               dark: theme == 'dark',
-              active: router_name == 'IPOCategorizedNews',
+              active: router_name == 'Organizations',
             }"
           >
             تشکل های میان تخصصی
@@ -166,11 +166,11 @@
             استان ها
           </router-link>
           <router-link
-            :to="{ name: 'IPOCategorizedNews' }"
+            :to="{ name: 'Organizations' }"
             :class="{
               link: true,
               dark: false,
-              active: router_name == 'IPOCategorizedNews',
+              active: router_name == 'Organizations',
             }"
           >
             تشکل های میان تخصصی
@@ -229,6 +229,7 @@
             v-if="router.currentRoute.value.name != 'Intro'"
             class="pt-5 d-flex flex-column pa-0"
             color="#FAF8E8"
+            
           >
             <v-row class="pa-3 px-16">
               <v-col cols="12" md="3" class="d-flex flex-column gap-1">

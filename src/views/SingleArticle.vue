@@ -5,23 +5,23 @@
       style="pointer-events: none"
     ></div>
     <div style="padding-top: 10rem; position: relative; z-index: 11">
-      <v-img height="380" cover :src="news.img || default_img"> </v-img>
+      <v-img height="380" cover :src="article.img || default_img"> </v-img>
       <v-row class="pa-3">
         <v-col cols="12" md="9">
           <div class="d-flex align-center justify-space-between">
             <div>
               <h2 class="text-primary">
-                {{ news.title || "تیتر مقاله" }}
+                {{ article.title || "تیتر مقاله" }}
               </h2>
               <div class="mt-2 d-flex gap-1 align-center">
                 <v-icon color="primary">mdi-calendar</v-icon>
                 <p>
-                  {{ news.date || "یازدهم مرداد ۱۴۰۱" }}
+                  {{ article.date || "یازدهم مرداد ۱۴۰۱" }}
                   -
                   {{
-                    new Date(Number(news.timecreated)).getHours() +
+                    new Date(Number(article.timecreated)).getHours() +
                     ":" +
-                    new Date(Number(news.timecreated)).getMinutes()
+                    new Date(Number(article.timecreated)).getMinutes()
                   }}
                 </p>
               </div>
@@ -38,20 +38,20 @@
               ></v-rating>
             </div>
           </div>
-          <div class="text-justify" v-html="news.desc"></div>
+          <div class="text-justify" v-html="article.desc || persian_lorem"></div>
           <Comments class="mt-10" />
         </v-col>
         <v-col cols="12" md="3">
           <h2 class="text-primary">اخبار مرتبط</h2>
           <v-spacer class="my-5"></v-spacer>
           <VerticalCard
-            v-for="item in relative_news.slice(0, 3)"
+            v-for="item in relative_articles.slice(0, 3)"
             :data="{
               card_theme: 'primary',
               title: item.title,
               img: item.thumbnail,
               text: item.lead,
-              link: { name: 'ProvincesSingleNews', params: { id: item.id } },
+              link: { name: 'SingleArticle', params: { id: item.id } },
             }"
           />
         </v-col>
@@ -72,13 +72,12 @@ const relative_articles = ref([]);
 
 const router = useRouter();
 const load_data = async () => {
-  article.value = await use_article_store().show_provinces_article({
+  let response =  await use_article_store().show_article({
     id: router.currentRoute.value.params.id,
-  });
-
-  relative_articles.value = await use_article_store().index_provinces_article({
-    provinceid: article.value.provinceid,
-  });
+  })
+  article.value = response.data[0];
+  console.log(article.value)
+ relative_articles.value = response.allarticlescat
 };
 
 load_data();

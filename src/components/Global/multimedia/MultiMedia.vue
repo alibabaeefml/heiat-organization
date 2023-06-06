@@ -44,3 +44,9 @@ const props = defineProps({
   center: {},
 });
 </script>
+
+<style scoped>
+.v-tab {
+  font-weight: 900;
+}
+</style>

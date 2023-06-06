@@ -37,22 +37,31 @@
             color="primary"
             class="rounded-lg font-weight-bold"
             :width="useDisplay().xs.value ? '100%' : 'max-content'"
+            :to="{ name: 'News' }"
             >نمایش همه</v-btn
           >
         </div>
       </div>
       <v-row class="mt-5">
-        <v-col cols="12" md="5" v-if="useDisplay().smAndUp.value">
+        <v-col
+          cols="12"
+          md="5"
+          v-if="get_all_news.length && useDisplay().smAndUp.value"
+        >
           <VerticalCard
             :data="{
               width: '100%',
               img_height: '310px',
               card_theme: 'secondary',
+              title: get_all_news[0].title,
+              text: get_all_news[0].lead,
+              img: get_all_news[0].thumbnail,
+              link: { name: 'News', params: { id: get_all_news[0]?.id } },
             }"
           />
         </v-col>
         <v-col cols="12" md="7" class="d-flex flex-column gap-1">
-          <PrimaryNewsSwiper />
+          <PrimaryNewsSwiper :slides="get_all_news" />
         </v-col>
       </v-row>
     </div>
@@ -88,7 +97,7 @@
             <v-btn
               color="primary"
               class="rounded-lg font-weight-bold"
-              :to="{ name: 'News' }"
+              :to="{ name: 'ProvincesNews' }"
               >نمایش همه</v-btn
             >
             <v-btn
@@ -98,12 +107,16 @@
             ></v-btn>
           </div>
         </div>
-        <HorizontalSwiper class="mt-5" :slides="get_provinces_news" />
+        <HorizontalSwiper
+          class="mt-5"
+          :slides="get_provinces_news"
+          route_name="ProvincesSingleNews"
+        />
       </div>
       <div
         class="mt-5 d-flex flex-sm-row flex-column align-center justify-space-between"
       >
-        <TextGroup title="اخبار سازمان ها" no_desc="true" />
+        <TextGroup title="اخبار تشکل ها" no_desc="true" />
 
         <div
           class="d-flex flex-sm-row flex-column align-center gap-1"
@@ -127,12 +140,12 @@
         <v-btn
           color="primary"
           class="rounded-lg font-weight-bold"
-          :to="{ name: 'News' }"
+          :to="{ name: 'OrganizationsNews' }"
           :block="useDisplay().xs.value"
           >نمایش همه</v-btn
         >
       </div>
-      <OrganizationNewsSwiper class="mt-5"  />
+      <OrganizationNewsSwiper class="mt-5" />
       <div class="d-flex justify-end mt-5"></div>
     </div>
   </div>
@@ -149,8 +162,9 @@ import HorizontalSwiper from "@/components/Global/swiper/HorizontalSwiper.vue";
 import { storeToRefs } from "pinia";
 import { use_news_store } from "@/store/news";
 
-const { get_provinces_news } = storeToRefs(use_news_store());
+const { get_provinces_news, get_all_news } = storeToRefs(use_news_store());
 
 use_news_store().index_provinces_news();
 use_news_store().index_organizations_news();
+use_news_store().index_all_news({ special: 1 });
 </script>

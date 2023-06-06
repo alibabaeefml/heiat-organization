@@ -16,7 +16,7 @@ export const use_article_store = defineStore("article", () => {
   const show_article = async (filters = {}) => {
     const response = await axios.get(url("articles", filters));
     if ([200, 201].includes(response.status)) {
-      return response.data.data[0];
+      return response.data;
     }
   };
   return {

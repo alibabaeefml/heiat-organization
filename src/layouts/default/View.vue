@@ -51,12 +51,12 @@ li {
   border-radius: 1rem;
 }
 p.limited {
-  height: 60px;
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
   text-align: justify;
-  @media (max-width: 640px) {
-    height: 190px;
-  }
 }
 .jvectormap-container {
   height: 100%;
@@ -99,6 +99,4 @@ p.limited {
   left: 0;
   z-index: 10;
 }
-
-
 </style>

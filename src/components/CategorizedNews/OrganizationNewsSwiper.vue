@@ -1,4 +1,5 @@
 <template>
+<div>
   <Swiper
     :modules="modules"
     class="w-100 mt-5"
@@ -45,6 +46,7 @@
       />
     </SwiperSlide>
   </Swiper>
+</div>
 </template>
 
 <script setup>
