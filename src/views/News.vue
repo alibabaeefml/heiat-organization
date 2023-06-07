@@ -35,6 +35,7 @@
                 img_width: useDisplay().smAndUp.value ? '200px' : null,
                 title: item.title,
                 text: item.lead,
+                img:item.thumbnail,
                 link: { name: 'SingleNews', params: { id: item.id } },
               }"
             />

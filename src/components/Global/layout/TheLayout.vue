@@ -229,7 +229,6 @@
             v-if="router.currentRoute.value.name != 'Intro'"
             class="pt-5 d-flex flex-column pa-0"
             color="#FAF8E8"
-            
           >
             <v-row class="pa-3 px-16">
               <v-col cols="12" md="3" class="d-flex flex-column gap-1">
@@ -291,10 +290,10 @@
                 <h4>آمار بازدید سایت: {{ visit_stat || 4312 }}</h4>
                 <v-row class="w-100">
                   <v-col cols="12" md="4" v-for="item in 3">
-                    <router-link :to="{ name: item.link || 'Home' }">
+                    <router-link to="">
                       <v-img
                         cover
-                        class="mr-auto"
+                        :class="useDisplay().sm.value ? 'ma-auto' : 'mr-auto'"
                         :width="useDisplay().xs.value ? '100%' : 150"
                         :height="useDisplay().xs.value ? '100%' : 150"
                         :src="item.img || default_img"

@@ -49,6 +49,7 @@
           v-if="get_all_news.length && useDisplay().smAndUp.value"
         >
           <VerticalCard
+            v-if="get_all_news.length"
             :data="{
               width: '100%',
               img_height: '310px',

@@ -1,7 +1,11 @@
 <template>
   <div class="d-flex flex-column gap-1">
     <FilterSearchBar @search="search" />
-    <FilterCategories :categories="categories" @select_cat="select_cat" />
+    <FilterCategories
+      v-if="categories.length"
+      :categories="categories"
+      @select_cat="select_cat"
+    />
     <FilterProvince
       v-if="province_filter"
       @select_province="select_province"
@@ -33,8 +37,8 @@ const select_cat = (e) => {
   emit("select_cat", e);
 };
 const props = defineProps({
-  province_filter: { default: false },
+  province_filter: { type: Boolean },
   categories: { default: [] },
-  province: {},
+  province: { default: null},
 });
 </script>

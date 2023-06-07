@@ -7,13 +7,13 @@ export const use_article_store = defineStore("article", () => {
   const articles = ref([]);
   const get_articles = computed(() => articles.value);
 
-  const index_articles = async (filters = {}) => {
+  const index_articles = async (filters = null) => {
     const response = await axios.get(url("articles", filters));
     if ([200, 201].includes(response.status)) {
       articles.value = response.data.data;
     }
   };
-  const show_article = async (filters = {}) => {
+  const show_article = async (filters = null) => {
     const response = await axios.get(url("articles", filters));
     if ([200, 201].includes(response.status)) {
       return response.data;

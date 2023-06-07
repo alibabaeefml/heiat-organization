@@ -18,19 +18,24 @@
           <Filter
             class="mt-3"
             @search="search"
-            @select_cat="select_cat"
-            :categories="categories"
             @reset_filter="
-              use_news_store().index_all_news();
+              use_news_store().index_provinces_news();
+              province = null
               filter_key = !filter_key;
             "
+            province_filter
+            @select_province="select_province"
+            :province="province"
             :key="filter_key"
           />
         </v-col>
         <v-col cols="12" md="9">
-          <div class="d-flex flex-column gap-1">
+          <div
+            class="d-flex flex-column gap-1"
+            v-if="get_provinces_news.length"
+          >
             <HorizontalCard
-              v-for="item in get_all_news"
+              v-for="item in get_provinces_news"
               :data="{
                 img_width: useDisplay().smAndUp.value ? '200px' : null,
                 title: item.title,
@@ -39,7 +44,11 @@
               }"
             />
           </div>
-          <Pagination :pages_count="paginate(get_all_news.length)" />
+          <h2 v-else>خبری موجود نیست</h2>
+          <Pagination
+            :pages_count="paginate(get_provinces_news.length)"
+            v-if="get_provinces_news.length"
+          />
         </v-col>
       </v-row>
     </div>
@@ -55,24 +64,23 @@ import { storeToRefs } from "pinia";
 import { ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import paginate from "@/store/paginate";
+import { use_province_store } from "@/store/province";
 
-const news = ref([]);
-const categories = ref([]);
 const search = (search_term) =>
-  use_news_store().index_all_news({ search: search_term });
+  use_news_store().index_provinces_news({ search: search_term });
 
-const select_cat = (catid) => {
-  use_news_store().index_all_news({ catid });
-};
-
-const { get_all_news } = storeToRefs(use_news_store());
+const { get_provinces_news } = storeToRefs(use_news_store());
+const { get_all_provinces } = storeToRefs(use_province_store());
 
 const load_data = async () => {
-  news.value = await use_news_store().index_all_news();
-  categories.value = await use_news_store().index_news_categories();
+  await use_news_store().index_provinces_news();
 };
 load_data();
 
 const filter_key = ref(false);
-
+const province = ref(null);
+const select_province = async (provinceid) => {
+  province.value = get_all_provinces.value.find((v) => v.id == provinceid);
+  await use_news_store().index_provinces_news({ provinceid });
+};
 </script>

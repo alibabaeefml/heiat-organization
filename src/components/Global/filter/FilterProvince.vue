@@ -13,6 +13,7 @@
       item-value="id"
       item-title="name_fa"
       v-model="selected"
+      no-data-text="انتخاب کنید"
     ></v-select>
   </v-card>
 </template>
@@ -20,11 +21,9 @@
 import { use_province_store } from "@/store/province";
 import { storeToRefs } from "pinia";
 import { computed } from "vue";
-import { ref } from "vue";
-import { useRouter } from "vue-router";
 const { get_all_provinces } = storeToRefs(use_province_store());
 
-const router = useRouter();
+
 
 const props = defineProps(["province"]);
 

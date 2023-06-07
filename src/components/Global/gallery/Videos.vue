@@ -9,15 +9,14 @@
   <v-row height="500">
     <v-col cols="12" md="9" class="pa-8">
       <CaptionedVideo
+        v-if="selected_video"
         :data="{
-          card_style: { height: '100%' },
-          img_style: { height: '100%' },
-          video_style: {
-            'object-fit': 'cover',
-            width: '100%',
-            height: '100%',
-          },
+          poster: selected_video.img,
+          video: selected_video.file_url,
+          caption: selected_video.title,
         }"
+        height="500"
+        controls
       />
     </v-col>
     <v-col cols="12" md="3">
@@ -47,16 +46,17 @@
         loop
         autoplay
       >
-        <swiper-slide v-for="slide in 5" class="d-flex flex-column gap-1">
+        <swiper-slide
+          v-for="video in get_videos.slice(0, 3)"
+          class="d-flex flex-column gap-1"
+        >
           <CaptionedVideo
             :data="{
-              video_style: {
-                'object-fit': 'cover',
-                width: '100%',
-                height: '100%',
-              },
+              poster: video.img,
+              caption: video.title,
             }"
-            v-for="slide in 3"
+            height="150"
+            @click="selected_video = video"
           />
         </swiper-slide>
       </swiper>
@@ -74,6 +74,10 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+import { use_video_store } from "@/store/video";
+import { storeToRefs } from "pinia";
+import { ref } from "vue";
+import { computed } from "vue";
 
 const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay];
 
@@ -81,4 +85,12 @@ const navigation_options = {
   nextEl: ".next-slide",
   prevEl: ".prev-slide",
 };
+
+const { get_videos } = storeToRefs(use_video_store());
+
+const selected_video = ref(null);
+
+use_video_store()
+  .index_videos()
+  .then(() => (selected_video.value = get_videos.value[0]));
 </script>

@@ -151,6 +151,15 @@ const routes = [
         },
       },
       {
+        path: "/single-album/:id?",
+        name: "SingleAlbum",
+        component: () => import("@/views/SingleAlbum.vue"),
+        meta: {
+          title: "تک آلبوم",
+          theme: "light",
+        },
+      },
+      {
         path: "/single-article/:id",
         name: "SingleArticle",
         component: () => import("@/views/SingleArticle.vue"),
@@ -175,7 +184,7 @@ const routes = [
 const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     // always scroll to top
-    $("main").scrollTop(0)
+    $("main").scrollTop(0);
   },
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
