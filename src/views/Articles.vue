@@ -12,7 +12,7 @@
         z-index: 11;
       "
     >
-      <TextGroup title="اخبار" />
+      <TextGroup title="لیست مقالات" />
       <v-row class="mt-5 pa-3">
         <v-col cols="12" md="3">
           <Filter
@@ -21,7 +21,7 @@
             @select_cat="select_cat"
             :categories="categories"
             @reset_filter="
-              use_news_store().index_news();
+              use_article_store().index_articles();
               filter_key = !filter_key;
             "
             :key="filter_key"
@@ -30,7 +30,7 @@
         <v-col cols="12" md="9">
           <div class="d-flex flex-column gap-1">
             <HorizontalCard
-              v-for="item in get_news"
+              v-for="item in get_articles"
               :data="{
                 img_width: useDisplay().smAndUp.value ? '200px' : null,
                 title: item.title,
@@ -40,7 +40,7 @@
               }"
             />
           </div>
-          <Pagination :pages_count="paginate(get_news.length)" />
+          <Pagination :pages_count="paginate(get_articles.length)" />
         </v-col>
       </v-row>
     </div>
@@ -51,26 +51,25 @@ import HorizontalCard from "@/components/Global/card/HorizontalCard.vue";
 import Filter from "@/components/Global/filter/Filter.vue";
 import Pagination from "@/components/Global/filter/Pagination.vue";
 import TextGroup from "@/components/Global/text/TextGroup.vue";
-import { use_news_store } from "@/store/news";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import paginate from "@/store/paginate";
-import router from "@/router";
-const news = ref([]);
+import { use_article_store } from "@/store/article";
+
 const categories = ref([]);
 const search = (search_term) =>
-  use_news_store().index_news({ search: search_term });
+  use_article_store().index_articles({ search: search_term });
 
 const select_cat = (catid) => {
-  use_news_store().index_news({ catid });
+  use_article_store().index_articles({ catid });
 };
 
-const { get_news } = storeToRefs(use_news_store());
+const { get_articles } = storeToRefs(use_article_store());
 
 const load_data = async () => {
-  news.value = await use_news_store().index_news();
-  categories.value = await use_news_store().index_news_categories();
+  use_article_store().index_articles();
+  categories.value = await use_article_store().index_articles_categories();
 };
 load_data();
 

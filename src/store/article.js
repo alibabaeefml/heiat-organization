@@ -13,15 +13,25 @@ export const use_article_store = defineStore("article", () => {
       articles.value = response.data.data;
     }
   };
+
+  const index_articles_categories = async (filters = null) => {
+    const response = await axios.get(url("articlescategory", filters));
+    if ([200, 201].includes(response.status)) {
+      articles.value = response.data.data;
+    }
+  };
+
   const show_article = async (filters = null) => {
     const response = await axios.get(url("articles", filters));
     if ([200, 201].includes(response.status)) {
       return response.data;
     }
   };
+
   return {
     index_articles,
     get_articles,
     show_article,
+    index_articles_categories,
   };
 });

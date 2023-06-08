@@ -29,7 +29,7 @@
         </v-col>
         <v-col cols="12" md="7" class="d-flex flex-column gap-1">
           <HorizontalCard
-            v-for="news in get_all_news.slice(1, 4)"
+            v-for="news in get_news.slice(1, 4)"
             :data="{
               img_width: useDisplay().smAndUp.value ? '200px' : '100%',
               title: news.title,
@@ -52,8 +52,8 @@ import { use_news_store } from "@/store/news";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 
-use_news_store().index_all_news();
-const { get_all_news } = storeToRefs(use_news_store());
+use_news_store().index_news();
+const { get_news } = storeToRefs(use_news_store());
 
 const latest_news = ref({});
 

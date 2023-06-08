@@ -46,23 +46,23 @@
         <v-col
           cols="12"
           md="5"
-          v-if="get_all_news.length && useDisplay().smAndUp.value"
+          v-if="get_news.length && useDisplay().smAndUp.value"
         >
           <VerticalCard
-            v-if="get_all_news.length"
+            v-if="get_news.length"
             :data="{
               width: '100%',
               img_height: '310px',
               card_theme: 'secondary',
-              title: get_all_news[0].title,
-              text: get_all_news[0].lead,
-              img: get_all_news[0].thumbnail,
-              link: { name: 'News', params: { id: get_all_news[0]?.id } },
+              title: get_news[0].title,
+              text: get_news[0].lead,
+              img: get_news[0].thumbnail,
+              link: { name: 'News', params: { id: get_news[0]?.id } },
             }"
           />
         </v-col>
         <v-col cols="12" md="7" class="d-flex flex-column gap-1">
-          <PrimaryNewsSwiper :slides="get_all_news" />
+          <PrimaryNewsSwiper :slides="get_news" />
         </v-col>
       </v-row>
     </div>
@@ -163,9 +163,9 @@ import HorizontalSwiper from "@/components/Global/swiper/HorizontalSwiper.vue";
 import { storeToRefs } from "pinia";
 import { use_news_store } from "@/store/news";
 
-const { get_provinces_news, get_all_news } = storeToRefs(use_news_store());
+const { get_provinces_news, get_news } = storeToRefs(use_news_store());
 
 use_news_store().index_provinces_news();
 use_news_store().index_organizations_news();
-use_news_store().index_all_news({ special: 1 });
+use_news_store().index_news({ special: 1 });
 </script>

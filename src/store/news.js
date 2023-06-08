@@ -4,13 +4,13 @@ import axios from "axios";
 import { url } from "@/services/api.js";
 export const use_news_store = defineStore("news", () => {
   // Main News
-  const all_news = ref([]);
-  const get_all_news = computed(() => all_news.value);
+  const news = ref([]);
+  const get_news = computed(() => news.value);
 
-  const index_all_news = async (filters = null) => {
+  const index_news = async (filters = null) => {
     const response = await axios.get(url("news", filters));
     if ([200, 201].includes(response.status)) {
-      all_news.value = response.data.data;
+      news.value = response.data.data;
       return response.data.data;
     }
   };
@@ -82,9 +82,9 @@ export const use_news_store = defineStore("news", () => {
   };
 
   return {
-    index_all_news,
+    index_news,
     index_provinces_news,
-    get_all_news,
+    get_news,
     get_provinces_news,
     show_provinces_news,
     show_news,

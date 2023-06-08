@@ -151,6 +151,24 @@ const routes = [
         },
       },
       {
+        path: "/articles",
+        name: "Articles",
+        component: () => import("@/views/Articles.vue"),
+        meta: {
+          title: "لیست مقالات",
+          theme: "light",
+        },
+      },
+      {
+        path: "/albums",
+        name: "Albums",
+        component: () => import("@/views/Albums.vue"),
+        meta: {
+          title: "لیست آلبوم ها",
+          theme: "light",
+        },
+      },
+      {
         path: "/single-album/:id?",
         name: "SingleAlbum",
         component: () => import("@/views/SingleAlbum.vue"),

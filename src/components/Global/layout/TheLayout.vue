@@ -83,16 +83,67 @@
           >
             اخبار
           </router-link>
-          <router-link
-            :to="{ name: 'MultiMedia' }"
-            :class="{
-              link: true,
-              dark: theme == 'dark',
-              active: router_name == 'MultiMedia',
-            }"
-          >
-            چندرسانه ای
-          </router-link>
+          <div>
+            <v-menu open-on-hover >
+            <template v-slot:activator="{ props }">
+              <router-link
+                :to="{ name: 'MultiMedia' }"
+                :class="{
+                  link: true,
+                  dark: theme == 'dark',
+                  active: router_name == 'MultiMedia',
+                }"
+                v-bind="props"
+              >
+                چندرسانه ای
+              </router-link>
+            </template>
+
+            <v-list class="mt-1 d-flex flex-column gap-1 text-center bg-secondary">
+              <router-link
+                :to="{ name: 'MultiMedia' }"
+                :class="{
+                  link: true,
+                  dark: theme == 'dark',
+                  active: router_name == 'MultiMedia',
+                }"
+              >
+                فیلم
+              </router-link>
+              <router-link
+                :to="{ name: 'MultiMedia' }"
+                :class="{
+                  link: true,
+                  dark: theme == 'dark',
+                  active: router_name == 'MultiMedia',
+                }"
+              >
+                صوت
+              </router-link>
+              <router-link
+                :to="{ name: 'Albums' }"
+                :class="{
+                  link: true,
+                  dark: theme == 'dark',
+                  active: router_name == 'Albums',
+                }"
+              >
+                آلبوم
+              </router-link>
+              <router-link
+                :to="{ name: 'Articles' }"
+                :class="{
+                  link: true,
+                  dark: theme == 'dark',
+                  active: router_name == 'Articles',
+                }"
+              >
+                مقاله
+              </router-link>
+            </v-list>
+          </v-menu>
+          </div>
+        
           <router-link
             :to="{ name: 'AboutUs' }"
             :class="{

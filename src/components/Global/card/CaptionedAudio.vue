@@ -12,7 +12,7 @@
         {{ audio.title || persian_lorem }}
       </h3>
       <span
-        >{{ data.name || "راوی" }} -
+        >{{ audio.speaker || "ناشناس" }} -
         <span>{{ duration || "00:00:00" }}</span></span
       >
     </div>
