@@ -37,7 +37,7 @@ import Videos from "@/components/Global/gallery/Videos.vue";
 import TextGroup from "@/components/Global/text/TextGroup.vue";
 import { ref } from "vue";
 
-const media_tab = ref("audios");
+const media_tab = ref("videos");
 
 const props = defineProps({
   theme: { default: "primary" },

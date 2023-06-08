@@ -22,7 +22,7 @@
     <v-col cols="12" md="3">
       <div
         class="d-flex d-md-none gap-1 pa-5 justify-center"
-        v-if="useDisplay().mdAndDown.value"
+       
       >
         <v-btn
           class="next-slide"
@@ -61,6 +61,7 @@
         </swiper-slide>
       </swiper>
     </v-col>
+    
   </v-row>
 </template>
 <script setup>
@@ -77,14 +78,13 @@ import "swiper/css/navigation";
 import { use_video_store } from "@/store/video";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
-import { computed } from "vue";
 
 const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay];
-
 const navigation_options = {
   nextEl: ".next-slide",
   prevEl: ".prev-slide",
 };
+
 
 const { get_videos } = storeToRefs(use_video_store());
 
@@ -93,4 +93,6 @@ const selected_video = ref(null);
 use_video_store()
   .index_videos()
   .then(() => (selected_video.value = get_videos.value[0]));
+
+  
 </script>

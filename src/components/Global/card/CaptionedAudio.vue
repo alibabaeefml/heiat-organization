@@ -1,17 +1,19 @@
 <template>
   <v-card
     :class="
-      'text-' + data.theme + ' d-flex justify-space-between pa-2 rounded-lg'
+      'text-' +
+      data.theme +
+      ' d-flex justify-space-between pa-2 rounded-lg gap-1'
     "
   >
     <v-avatar :image="data.avatar || default_img" size="59"></v-avatar>
     <div class="d-flex flex-column gap-1 w-75">
       <h3 class="overflow-hidden" style="height: 25px">
-        {{ data.title || persian_lorem }}
+        {{ audio.title || persian_lorem }}
       </h3>
       <span
         >{{ data.name || "راوی" }} -
-        <span>{{ data.duration || "00:00:00" }}</span></span
+        <span>{{ duration || "00:00:00" }}</span></span
       >
     </div>
     <v-btn
@@ -26,8 +28,19 @@
 <script setup>
 import { ref } from "vue";
 const paused = ref(true);
-const props = defineProps(["data"]);
+const props = defineProps(["data", "audio"]);
+const emit = defineEmits(["select_audio"]);
 const audio_control = () => {
-  paused.value = !paused.value;
+  emit("select_audio", props.audio);
+};
+
+const duration = ref(null);
+let audio_el = new Audio();
+audio_el.src = props.audio.file_url;
+audio_el.onloadedmetadata = () => {
+  var date = new Date(0);
+  date.setSeconds(audio_el.duration); // specify value for SECONDS here
+  var timeString = date.toISOString().substring(11, 19);
+  duration.value = timeString;
 };
 </script>

@@ -58,7 +58,7 @@
       style="pointer-events: none"
     ></div>
     <div style="padding-inline: 1rem; position: relative; z-index: 11">
-      <CulturalCentersOrganization />
+      <FirstOrganization />
       <OrganizationCategoryItem class="my-10" v-for="item in 4" />
     </div>
   </div>
@@ -66,7 +66,7 @@
 <script setup>
 import TextGroup from "@/components/Global/text/TextGroup.vue";
 import PrimaryNewsSwiper from "@/components/Organizations/PrimaryNewsSwiper.vue";
-import CulturalCentersOrganization from "@/components/Organizations/CulturalCentersOrganization.vue";
+import FirstOrganization from "@/components/Organizations/FirstOrganization.vue";
 import { ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import OrganizationCategoryItem from "@/components/Organizations/OrganizationCategoryItem.vue";
