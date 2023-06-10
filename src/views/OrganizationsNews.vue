@@ -31,11 +31,12 @@
           <div class="d-flex flex-column gap-1">
             <HorizontalCard
               v-for="item in get_organizations_news"
+              :key="item.id"
               :data="{
                 img_width: useDisplay().smAndUp.value ? '200px' : null,
                 title: item.title,
                 text: item.lead,
-                link: { name: 'SingleNews', params: { id: item.id } },
+                link: { name: 'OrganizationsSingleNews', params: { id: item.id } },
               }"
             />
           </div>

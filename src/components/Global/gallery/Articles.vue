@@ -4,15 +4,17 @@
       class="d-flex flex-column gap-1"
       cols="12"
       md="6"
-      v-for="doc in get_articles"
+      v-for="item in get_articles"
+      :key="item.id"
     >
       <HorizontalCard
         :data="{
           img_width: useDisplay().smAndUp.value ? '200px' : null,
           link_text: 'مشاهده بیشتر',
-          title: doc.title,
-          lead:doc.lead,
-          link:{name:'SingleArticle',params:{id:doc.id}}
+          title: item.title,
+          lead:item.lead,
+          img:item.thumbnail,
+          link:{name:'SingleArticle',params:{id:item.id}}
         }"
       />
     </v-col>

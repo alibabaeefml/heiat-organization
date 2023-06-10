@@ -37,7 +37,7 @@
           </v-col>
           <v-col cols="12" md="9">
             <v-row>
-              <v-col cols="12" md="3" sm="6" v-for="item in get_provinces_news">
+              <v-col cols="12" md="3" sm="6" v-for="item in get_provinces_news" :key="item.id">
                 <VerticalCard
                   :data="{
                     card_theme: 'primary',
@@ -78,7 +78,7 @@ import { use_news_store } from "@/store/news";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import pages from "@/store/paginate";
-const province = ref({});
+const province = ref(null);
 const router = useRouter();
 
 const set_province_data = async (id) => {
@@ -91,7 +91,8 @@ const set_province_data = async (id) => {
   });
 };
 
-set_province_data(router.currentRoute.value.params.province_id);
+const { province_id } = router.currentRoute.value.params;
+set_province_data(province_id || 17);
 
 const { get_provinces_news } = storeToRefs(use_news_store());
 

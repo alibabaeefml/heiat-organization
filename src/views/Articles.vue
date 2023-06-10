@@ -31,12 +31,13 @@
           <div class="d-flex flex-column gap-1">
             <HorizontalCard
               v-for="item in get_articles"
+              :key="item.id"
               :data="{
                 img_width: useDisplay().smAndUp.value ? '200px' : null,
                 title: item.title,
                 text: item.lead,
-                img:item.thumbnail,
-                link: { name: 'SingleNews', params: { id: item.id } },
+                img: item.thumbnail,
+                link: { name: 'SingleArticle', params: { id: item.id } },
               }"
             />
           </div>
@@ -74,5 +75,4 @@ const load_data = async () => {
 load_data();
 
 const filter_key = ref(false);
-
 </script>

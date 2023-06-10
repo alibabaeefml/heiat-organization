@@ -19,7 +19,7 @@
           title: item.title,
           text: item.lead,
           img: item.thumbnail,
-          link: { name: 'OrganizationSingleNews', params: { id: item.id } },
+          link: { name: 'OrganizationsSingleNews', params: { id: item.id } },
         }"
       />
     </SwiperSlide>
@@ -41,7 +41,7 @@
           title: item.title,
           text: item.lead,
           img: item.thumbnail,
-          link: { name: 'OrganizationSingleNews', params: { id: item.id } },
+          link: { name: 'OrganizationsSingleNews', params: { id: item.id } },
         }"
       />
     </SwiperSlide>

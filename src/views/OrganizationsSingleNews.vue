@@ -82,9 +82,10 @@
                 title: item.title,
                 img: item.thumbnail,
                 text: item.lead,
-                link: { name: 'OrganizationSingleNews', id: item.id },
+                link: { name: 'OrganizationsSingleNews', id: item.id },
               }"
               v-for="item in relative_news"
+              :key="item.id"
             />
           </div>
         </v-col>

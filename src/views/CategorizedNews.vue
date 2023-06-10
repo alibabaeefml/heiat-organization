@@ -7,10 +7,10 @@
     <div
       style="
         padding-top: 10rem;
-        padding-inline: 2rem;
         position: relative;
         z-index: 11;
       "
+      class="px-16"
     >
       <div
         class="d-flex flex-sm-row flex-column align-center justify-space-between"
@@ -57,7 +57,7 @@
               title: get_news[0].title,
               text: get_news[0].lead,
               img: get_news[0].thumbnail,
-              link: { name: 'News', params: { id: get_news[0]?.id } },
+              link: { name: 'SingleNews', params: { id: get_news[0]?.id } },
             }"
           />
         </v-col>
@@ -84,7 +84,7 @@
       class="w-100 h-100 position-absolute pattern-div"
       style="pointer-events: none"
     ></div>
-    <div style="padding-inline: 2rem; position: relative; z-index: 11">
+    <div class="px-16" style=" position: relative; z-index: 11">
       <div class="d-flex flex-column align-center justify-space-between">
         <TextGroup class="text-center" title="اخبار استان ها" no_desc="true" />
 

@@ -7,14 +7,14 @@
     :space-between="20"
     :navigation="navigation_options"
   >
-    <SwiperSlide v-for="item in slides.slice(0, 3)">
+    <SwiperSlide v-for="item in slides.slice(0, 3)" :key="item.id">
       <HorizontalCard
         :data="{
           img_width: useDisplay().smAndUp.value ? '200px' : '100%',
           title: item.title,
           text: item.lead,
           img: item.thumbnail,
-          link: { name: 'News', params: { id: item.id } },
+          link: { name: 'SingleNews', params: { id: item.id } },
         }"
       />
     </SwiperSlide>
@@ -28,7 +28,7 @@
     :navigation="navigation_options"
     v-if="slides.length >= 6"
   >
-    <SwiperSlide v-for="item in slides.slice(3, 6)">
+    <SwiperSlide v-for="item in slides.slice(3, 6)" :key="item.id">
       <HorizontalCard
         :data="{
           img_width: useDisplay().smAndUp.value ? '200px' : '100%',
@@ -49,7 +49,7 @@
     :navigation="navigation_options"
     v-if="slides.length > 6"
   >
-    <SwiperSlide v-for="item in slides.slice(6)">
+    <SwiperSlide v-for="item in slides.slice(6)" :key="item.id">
       <HorizontalCard
         :data="{
           img_width: useDisplay().smAndUp.value ? '200px' : '100%',
@@ -85,4 +85,5 @@ const navigation_options = {
 const props = defineProps({
   slides: { default: [], type: Array },
 });
+
 </script>

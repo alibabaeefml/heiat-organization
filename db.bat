@@ -1,1 +1,0 @@
-start chrome "https://srv.modernhost.org:2083/cpsess6588231478/3rdparty/phpMyAdmin/index.php"

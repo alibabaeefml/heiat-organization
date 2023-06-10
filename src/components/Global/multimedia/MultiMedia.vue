@@ -31,7 +31,7 @@
 </template>
 <script setup>
 import Audios from "@/components/Global/gallery/Audios.vue";
-import Docs from "@/components/Global/gallery/Docs.vue";
+import Docs from "@/components/Global/gallery/Articles.vue";
 import Photos from "@/components/Global/gallery/Photos.vue";
 import Videos from "@/components/Global/gallery/Videos.vue";
 import TextGroup from "@/components/Global/text/TextGroup.vue";

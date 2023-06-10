@@ -5,19 +5,14 @@
       style="pointer-events: none"
     ></div>
     <div
-      class=""
-      style="
-        padding-top: 10rem;
-        padding-inline: 1rem;
-        position: relative;
-        z-index: 11;
-      "
+      class="px-16"
+      style="padding-top: 10rem; position: relative; z-index: 11"
     >
       <div
         class="d-flex flex-sm-row flex-column align-center justify-space-between"
       >
         <TextGroup
-          title="اخبار برگزیده مجامع میان تخصصی"
+          title="اخبار برگزیده تشکل های میان تخصصی"
           title_class="text-secondary-4"
           no_desc="true"
         />
@@ -42,14 +37,15 @@
             color="secondary-4"
             class="rounded-lg font-weight-bold"
             :width="useDisplay().xs.value ? '100%' : 'max-content'"
+            :to="{ name: 'OrganizationsNews' }"
             >نمایش همه</v-btn
           >
         </div>
       </div>
       <p class="limited">
-        {{ data.desc || persian_lorem }}
+        {{ persian_lorem }}
       </p>
-      <PrimaryNewsSwiper class="mt-5" />
+      <PrimaryNewsSwiper class="mt-5" :slides="organizations_primary_news" />
     </div>
   </div>
   <div class="position-relative" style="min-height: 1200px">
@@ -57,9 +53,14 @@
       class="w-100 h-100 position-absolute pattern-div"
       style="pointer-events: none"
     ></div>
-    <div style="padding-inline: 1rem; position: relative; z-index: 11">
-      <FirstOrganization />
-      <OrganizationCategoryItem class="my-10" v-for="item in 4" />
+    <div style="position: relative; z-index: 11" class="px-16">
+      <FirstOrganization :data="get_organizations[0]" />
+      <OrganizationCategoryItem
+        :data="item"
+        class="my-10"
+        v-for="item in get_organizations.slice(1)"
+        :key="item.id"
+      />
     </div>
   </div>
 </template>
@@ -70,7 +71,21 @@ import FirstOrganization from "@/components/Organizations/FirstOrganization.vue"
 import { ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import OrganizationCategoryItem from "@/components/Organizations/OrganizationCategoryItem.vue";
-const data = ref({});
+import { use_news_store } from "@/store/news";
+import { use_organization_store } from "@/store/organization";
+import { storeToRefs } from "pinia";
+
+const organizations_primary_news = ref([]);
+const { get_organizations } = storeToRefs(use_organization_store());
+
+const load_date = async () => {
+  organizations_primary_news.value =
+    await use_news_store().index_organizations_news({
+      special: 1,
+    });
+  await use_organization_store().index_organizations();
+};
+load_date();
 </script>
 
 <style scoped>

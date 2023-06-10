@@ -12,6 +12,7 @@
     :navigation="navigation_options"
     loop
     autoplay
+   
   >
     <swiper-slide v-for="slide in slides" :key="slide">
       <v-img
@@ -44,7 +45,7 @@
     <div
       class="position-absolute d-flex justify-space-between"
       :style="
-        (useDisplay().smAndUp.value ? 'top: 60%' : 'bottom:0') +
+        (useDisplay().smAndUp.value ? 'top: 70%' : 'bottom:0') +
         ';left: 5%; width: 90%;  z-index: 10;'
       "
     >
@@ -68,10 +69,11 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+import { computed, ref } from "vue";
 
 const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay];
 
-const navigation_options = {
+let navigation_options = {
   nextEl: ".next-slide",
   prevEl: ".prev-slide",
 };

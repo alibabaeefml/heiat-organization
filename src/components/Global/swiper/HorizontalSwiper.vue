@@ -8,7 +8,7 @@
     :space-between="20"
     :navigation="navigation_options"
   >
-    <SwiperSlide v-for="item in slides">
+    <SwiperSlide v-for="item in slides" :key="item.id">
       <VerticalCard
         :data="{
           title: item.title,

@@ -88,9 +88,9 @@ const routes = [
         },
       },
       {
-        path: "/organization-single-news/:id",
-        name: "OrganizationSingleNews",
-        component: () => import("@/views/OrganizationSingleNews.vue"),
+        path: "/organizations-single-news/:id",
+        name: "OrganizationsSingleNews",
+        component: () => import("@/views/OrganizationsSingleNews.vue"),
         meta: {
           title: "تک خبر سازمان / تشکل",
           theme: "light",
