@@ -84,7 +84,7 @@
                 text: item.lead,
                 link: { name: 'OrganizationsSingleNews', id: item.id },
               }"
-              v-for="item in relative_news"
+              v-for="item in relevants"
               :key="item.id"
             />
           </div>
@@ -104,7 +104,7 @@ import { use_organization_store } from "@/store/organization";
 import { useRouter } from "vue-router";
 
 const news = ref({});
-const relative_news = ref([]);
+const relevants = ref([]);
 const organization = ref({});
 const rating = ref();
 
@@ -112,11 +112,9 @@ const router = useRouter();
 
 const load_data = async () => {
   const { id } = router.currentRoute.value.params;
-  news.value = await use_news_store().show_organizations_news({ id });
-
-  relative_news.value = await use_news_store().index_organizations_news({
-    organization_id: news.value.organization_id,
-  });
+  const res = await use_news_store().show_organizations_news({ id });
+  news.value = res.data[0];
+  relevants.value = res.relevants;
 
   organization.value = await use_organization_store().show_organization({
     id: news.value.organization_id,

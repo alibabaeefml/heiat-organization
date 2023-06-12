@@ -46,13 +46,13 @@
           <h2 class="text-primary">اخبار مرتبط</h2>
           <v-spacer class="my-5"></v-spacer>
           <VerticalCard
-            v-for="item in relative_news.slice(0,3)"
+            v-for="item in relevants"
             :data="{
               card_theme: 'primary',
               title: item.title,
               img: item.thumbnail,
               text: item.lead,
-              link: { name: 'ProvincesSingleNews', params: { id: item.id } },
+              link: { name: 'SpecialSingleNews', params: { id: item.id } },
             }"
           />
         </v-col>
@@ -66,22 +66,25 @@ import Comments from "@/components/Global/comment/Comments.vue";
 import VerticalCard from "@/components/Global/card/VerticalCard.vue";
 import Actions from "@/components/Global/button_group/Actions.vue";
 import { use_news_store } from "@/store/news";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+import { watch } from "vue";
 
 const news = ref({});
-const relative_news = ref([]);
+const relevants = ref([]);
 
 const router = useRouter();
 const load_data = async () => {
-  news.value = await use_news_store().show_special_news({
-    id: router.currentRoute.value.params.id,
+  const { id } = router.currentRoute.value.params;
+  const res = await use_news_store().show_special_news({
+    id,
   });
+  news.value = res.data[0];
 
-  relative_news.value = await use_news_store().index_special_news({
-    provinceid: news.value.provinceid,
-  });
+  relevants.value = res.relevants;
 };
 
 load_data();
+const route = useRoute();
+watch(route, load_data);
 const rating = ref();
 </script>

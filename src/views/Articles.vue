@@ -28,20 +28,30 @@
           />
         </v-col>
         <v-col cols="12" md="9">
-          <div class="d-flex flex-column gap-1">
-            <HorizontalCard
-              v-for="item in get_articles"
-              :key="item.id"
-              :data="{
-                img_width: useDisplay().smAndUp.value ? '200px' : null,
-                title: item.title,
-                text: item.lead,
-                img: item.thumbnail,
-                link: { name: 'SingleArticle', params: { id: item.id } },
-              }"
-            />
+          <v-row v-if="pages">
+            <v-col cols="12" class="d-flex flex-column gap-1">
+              <HorizontalCard
+                v-for="item in get_articles"
+                :data="{
+                  img_width: useDisplay().smAndUp.value ? '200px' : null,
+                  title: item.title,
+                  text: item.lead,
+                  img: item.thumbnail,
+                  link: { name: 'SingleNews', params: { id: item.id } },
+                }"
+              />
+            </v-col>
+            <v-col cols="12">
+              <Pagination :pages_count="pages" @click="paginate" />
+            </v-col>
+          </v-row>
+          <div
+            v-else
+            class="d-flex align-center justify-center"
+            style="height: 300px"
+          >
+            <h3>خبری موجود نیست</h3>
           </div>
-          <Pagination :pages_count="paginate(get_articles.length)" />
         </v-col>
       </v-row>
     </div>
@@ -55,9 +65,13 @@ import TextGroup from "@/components/Global/text/TextGroup.vue";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
-import paginate from "@/store/paginate";
 import { use_article_store } from "@/store/article";
-
+import { use_paginate_store } from "@/store/paginate";
+const paginate_store = use_paginate_store();
+const { pages } = storeToRefs(paginate_store);
+const paginate = (page_number) => {
+  use_news_store().index_news({ page: page_number.value });
+};
 const categories = ref([]);
 const search = (search_term) =>
   use_article_store().index_articles({ search: search_term });
@@ -69,7 +83,7 @@ const select_cat = (catid) => {
 const { get_articles } = storeToRefs(use_article_store());
 
 const load_data = async () => {
-  use_article_store().index_articles();
+  await use_article_store().index_articles();
   categories.value = await use_article_store().index_articles_categories();
 };
 load_data();

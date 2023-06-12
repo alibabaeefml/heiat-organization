@@ -28,19 +28,34 @@
           />
         </v-col>
         <v-col cols="12" md="9">
-          <div class="d-flex flex-column gap-1">
-            <HorizontalCard
-              v-for="item in get_organizations_news"
-              :key="item.id"
-              :data="{
-                img_width: useDisplay().smAndUp.value ? '200px' : null,
-                title: item.title,
-                text: item.lead,
-                link: { name: 'OrganizationsSingleNews', params: { id: item.id } },
-              }"
-            />
+          <v-row v-if="pages">
+            <v-col cols="12" class="d-flex flex-column gap-1">
+              <HorizontalCard
+                v-for="item in get_organizations_news"
+                :key="item.id"
+                :data="{
+                  img_width: useDisplay().smAndUp.value ? '200px' : null,
+                  title: item.title,
+                  text: item.lead,
+                  img:item.thumbnail,
+                  link: {
+                    name: 'OrganizationsSingleNews',
+                    params: { id: item.id },
+                  },
+                }"
+              />
+            </v-col>
+            <v-col cols="12">
+              <Pagination :pages_count="pages" @callback="paginate" />
+            </v-col>
+          </v-row>
+          <div
+            v-else
+            class="d-flex align-center justify-center"
+            style="height: 300px"
+          >
+            <h3>خبری موجود نیست</h3>
           </div>
-          <Pagination :pages_count="paginate(get_organizations_news.length)" />
         </v-col>
       </v-row>
     </div>
@@ -55,14 +70,17 @@ import { use_news_store } from "@/store/news";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
-import paginate from "@/store/paginate";
 import { use_organization_store } from "@/store/organization";
+import { use_paginate_store } from "@/store/paginate";
+const paginate_store = use_paginate_store();
+const { pages } = storeToRefs(paginate_store);
 
 const search = (search_term) =>
   use_news_store().index_organizations_news({ search: search_term });
 
-const select_cat = (organization_id) => {
-  use_news_store().index_organizations_news({ organization_id });
+const select_cat = async (organization_id) => {
+  await use_news_store().index_organizations_news({ organization_id });
+  
 };
 
 const { get_organizations_news } = storeToRefs(use_news_store());
@@ -73,6 +91,10 @@ const load_data = async () => {
   await use_organization_store().index_organizations();
 };
 load_data();
+
+const paginate = (page_number) => {
+  use_news_store().index_provinces_news({ page: page_number.value });
+};
 
 const filter_key = ref(false);
 </script>

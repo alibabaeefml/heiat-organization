@@ -28,19 +28,30 @@
           />
         </v-col>
         <v-col cols="12" md="9">
-          <div class="d-flex flex-column gap-1">
-            <HorizontalCard
-              v-for="item in get_news"
-              :data="{
-                img_width: useDisplay().smAndUp.value ? '200px' : null,
-                title: item.title,
-                text: item.lead,
-                img:item.thumbnail,
-                link: { name: 'SingleNews', params: { id: item.id } },
-              }"
-            />
+          <v-row v-if="pages">
+            <v-col cols="12" class="d-flex flex-column gap-1">
+              <HorizontalCard
+                v-for="item in get_news"
+                :data="{
+                  img_width: useDisplay().smAndUp.value ? '200px' : null,
+                  title: item.title,
+                  text: item.lead,
+                  img: item.thumbnail,
+                  link: { name: 'SingleNews', params: { id: item.id } },
+                }"
+              />
+            </v-col>
+            <v-col cols="12">
+              <Pagination :pages_count="pages" @click="paginate" />
+            </v-col>
+          </v-row>
+          <div
+            v-else
+            class="d-flex align-center justify-center"
+            style="height: 300px"
+          >
+            <h3>خبری موجود نیست</h3>
           </div>
-          <Pagination :pages_count="paginate(get_news.length)" />
         </v-col>
       </v-row>
     </div>
@@ -55,8 +66,10 @@ import { use_news_store } from "@/store/news";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
-import paginate from "@/store/paginate";
-import router from "@/router";
+import { use_paginate_store } from "@/store/paginate";
+const paginate_store = use_paginate_store();
+const { pages } = storeToRefs(paginate_store);
+
 const news = ref([]);
 const categories = ref([]);
 const search = (search_term) =>
@@ -76,4 +89,7 @@ load_data();
 
 const filter_key = ref(false);
 
+const paginate = (page_number) => {
+  use_news_store().index_news({ page: page_number.value });
+};
 </script>

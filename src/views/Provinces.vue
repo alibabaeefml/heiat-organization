@@ -4,7 +4,10 @@
       class="w-100 h-100 position-absolute pattern-div"
       style="pointer-events: none"
     ></div>
-    <div style="padding-top: 10rem; position: relative; z-index: 11" class="px-16">
+    <div
+      style="padding-top: 10rem; position: relative; z-index: 11"
+      class="px-16"
+    >
       <h1
         class="text-primary justify-center d-flex align-center gap-1 mx-auto"
         style="width: max-content; border-bottom: 3px solid var(--primary)"
@@ -37,10 +40,12 @@
               @search="search"
               @select_province="set_province_data"
               :province="province"
+              @reset_filter="filter_key = !filter_key"
+              :key="filter_key"
             />
           </v-col>
           <v-col cols="12" md="9">
-            <v-row>
+            <v-row v-if="pages">
               <v-col
                 cols="12"
                 md="3"
@@ -55,7 +60,7 @@
                       name: 'ProvincesSingleNews',
                       params: { id: item.id },
                     },
-                    img:item.img,
+                    img: item.img,
                     title: item.title,
                     text: item.lead,
                   }"
@@ -63,11 +68,14 @@
               </v-col>
               <v-col cols="12">
                 <Pagination
-                  :pages_count="pages(get_provinces_news.length)"
+                  :pages_count="pages"
                   @callback="paginate"
                 />
               </v-col>
             </v-row>
+            <div v-else class="d-flex align-center justify-center" style="height: 300px;">
+            <h3>خبری موجود نیست</h3>
+            </div>
           </v-col>
         </v-row>
       </div>
@@ -82,26 +90,31 @@ import Pagination from "@/components/Global/filter/Pagination.vue";
 import Map from "@/components/Global/map/Map.vue";
 import TextGroup from "@/components/Global/text/TextGroup.vue";
 import PrimaryOrganization from "@/components/Provinces/PrimaryOrganizations.vue";
-
+import { use_paginate_store } from "@/store/paginate";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import { use_province_store } from "@/store/province";
 import { use_news_store } from "@/store/news";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import pages from "@/store/paginate";
+import { storeToRefs } from "pinia";
+import { use_organization_store } from "@/store/organization";
+
 const province = ref(null);
 const router = useRouter();
-
+const paginate_store = use_paginate_store();
+const { pages } = storeToRefs(paginate_store);
+const filter_key = ref(false);
 const set_province_data = async (id) => {
   province.value = use_province_store().get_all_provinces.find(
     (v) => v.id == id
   );
   await use_news_store().index_provinces_news({
     provinceid: id,
-    page: 1,
   });
 
   await use_organization_store().index_organizations({ provinceid: id });
+
+  await paginate_store.get_pages("provincesnews", { provinceid: id });
 };
 const { get_organizations } = storeToRefs(use_organization_store());
 const { province_id } = router.currentRoute.value.params;
@@ -112,11 +125,6 @@ const { get_provinces_news } = storeToRefs(use_news_store());
 const paginate = (page_number) => {
   use_news_store().index_provinces_news({ page: page_number.value });
 };
-
-import { storeToRefs } from "pinia";
-import { use_organization_store } from "@/store/organization";
-
-const categories = ref([]);
 
 const search = (search_term) =>
   use_news_store().index_provinces_news({

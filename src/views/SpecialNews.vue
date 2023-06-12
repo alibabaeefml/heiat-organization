@@ -8,27 +8,45 @@
       <v-img cover height="700" :src="special.img || default_img"></v-img>
       <v-row class="pa-16">
         <v-col cols="12" md="3">
-          <Filter />
+          <Filter
+            class="mt-3"
+            @search="search"
+            @reset_filter="
+              load_data();
+              filter_key = !filter_key;
+            "
+            :key="filter_key"
+          />
         </v-col>
         <v-col cols="12" md="9">
-          <v-row>
+          <v-row v-if="pages">
             <v-col
               cols="12"
-              md="6"
-              v-for="item in use_news_store().get_special_news"
+              class="d-flex flex-column gap-1"
+              v-if="get_special_news.length"
             >
               <HorizontalCard
+                v-for="item in get_special_news"
                 :data="{
-                  img_width: useDisplay().xs.value ? '100%' : '200px',
+                  img_width: useDisplay().smAndUp.value ? '200px' : null,
                   title: item.title,
                   text: item.lead,
-                  img: item.thummbnail,
+                  img: item.thumbnail,
                   link: { name: 'SpecialSingleNews', params: { id: item.id } },
                 }"
               />
             </v-col>
+            <v-col cols="12">
+              <Pagination :pages_count="pages" @callback="paginate" />
+            </v-col>
           </v-row>
-          <Pagination :pages_count="use_news_store().special_news_page_count" />
+          <div
+            v-else
+            class="d-flex align-center justify-center"
+            style="height: 300px"
+          >
+            <h3>خبری موجود نیست</h3>
+          </div>
         </v-col>
       </v-row>
     </div>
@@ -40,9 +58,14 @@ import Filter from "@/components/Global/filter/Filter.vue";
 import Pagination from "@/components/Global/filter/Pagination.vue";
 import { use_news_store } from "@/store/news";
 import { use_special_store } from "@/store/special";
+import { storeToRefs } from "pinia";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useDisplay } from "vuetify/lib/framework.mjs";
+const { get_special_news } = storeToRefs(use_news_store());
+import { use_paginate_store } from "@/store/paginate";
+const paginate_store = use_paginate_store();
+const { pages } = storeToRefs(paginate_store);
 const special = ref({});
 
 const router = useRouter();
@@ -55,4 +78,11 @@ const load_data = async () => {
   });
 };
 load_data();
+const search = async (search) => {
+  await use_news_store().index_special_news({ search });
+};
+const filter_key = ref(false);
+const paginate = (page_number) => {
+  use_news_store().index_provinces_news({ page: page_number.value });
+};
 </script>

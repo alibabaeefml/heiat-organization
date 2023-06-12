@@ -38,14 +38,17 @@
               ></v-rating>
             </div>
           </div>
-          <div class="text-justify" v-html="article.desc || persian_lorem"></div>
+          <div
+            class="text-justify"
+            v-html="article.desc || persian_lorem"
+          ></div>
           <Comments class="mt-10" />
         </v-col>
         <v-col cols="12" md="3">
           <h2 class="text-primary">اخبار مرتبط</h2>
           <v-spacer class="my-5"></v-spacer>
           <VerticalCard
-            v-for="item in relative_articles.slice(0, 3)"
+            v-for="item in relevants"
             :data="{
               card_theme: 'primary',
               title: item.title,
@@ -68,16 +71,16 @@ import { use_article_store } from "@/store/article";
 import { useRouter } from "vue-router";
 
 const article = ref({});
-const relative_articles = ref([]);
+const relevants = ref([]);
 
 const router = useRouter();
 const load_data = async () => {
-  let response =  await use_article_store().show_article({
+  let response = await use_article_store().show_article({
     id: router.currentRoute.value.params.id,
-  })
+  });
   article.value = response.data[0];
-  console.log(article.value)
- relative_articles.value = response.allarticlescat
+
+  relevants.value = response.relevants;
 };
 
 load_data();

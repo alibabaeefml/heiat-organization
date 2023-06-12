@@ -45,7 +45,7 @@
           <h2 class="text-primary">اخبار مرتبط</h2>
           <v-spacer class="my-5"></v-spacer>
           <VerticalCard
-            v-for="item in relative_news.slice(0,3)"
+            v-for="item in relevants"
             :data="{
               card_theme: 'primary',
               title: item.title,
@@ -68,17 +68,15 @@ import { use_news_store } from "@/store/news";
 import { useRouter } from "vue-router";
 
 const news = ref({});
-const relative_news = ref([]);
+const relevants = ref([]);
 
 const router = useRouter();
 const load_data = async () => {
-  news.value = await use_news_store().show_provinces_news({
+  const res = await use_news_store().show_provinces_news({
     id: router.currentRoute.value.params.id,
   });
-
-  relative_news.value = await use_news_store().index_provinces_news({
-    provinceid: news.value.provinceid,
-  });
+  news.value = res.data[0];
+  relevants.value = res.relevants;
 };
 
 load_data();

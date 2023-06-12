@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 import axios from "axios";
 import { url } from "@/services/api.js";
+import { use_paginate_store } from "./paginate";
 export const use_news_store = defineStore("news", () => {
   // Main News
   const news = ref([]);
@@ -11,6 +12,7 @@ export const use_news_store = defineStore("news", () => {
     const response = await axios.get(url("news", filters));
     if ([200, 201].includes(response.status)) {
       news.value = response.data.data;
+      use_paginate_store().state = response.data.pages;
       return response.data.data;
     }
   };
@@ -18,7 +20,7 @@ export const use_news_store = defineStore("news", () => {
   const show_news = async (filters = null) => {
     const response = await axios.get(url("news", filters));
     if ([200, 201].includes(response.status)) {
-      return response.data.data[0];
+      return response.data;
     }
   };
   const index_news_categories = async () => {
@@ -34,6 +36,7 @@ export const use_news_store = defineStore("news", () => {
   const index_provinces_news = async (filters = null) => {
     const response = await axios.get(url("provincesnews", filters));
     if ([200, 201].includes(response.status)) {
+      use_paginate_store().state = response.data.pages;
       provinces_news.value = response.data.data;
       return response.data.data;
     }
@@ -42,7 +45,7 @@ export const use_news_store = defineStore("news", () => {
   const show_provinces_news = async (filters = null) => {
     const response = await axios.get(url("provincesnews", filters));
     if ([200, 201].includes(response.status)) {
-      return response.data.data[0];
+      return response.data;
     }
   };
 
@@ -54,6 +57,7 @@ export const use_news_store = defineStore("news", () => {
     const response = await axios.get(url("organizationnews", filters));
     if ([200, 201].includes(response.status)) {
       organizations_news.value = response.data.data;
+      use_paginate_store().state = response.data.pages;
       return response.data.data;
     }
   };
@@ -61,23 +65,24 @@ export const use_news_store = defineStore("news", () => {
   const show_organizations_news = async (filters = null) => {
     const response = await axios.get(url("organizationnews", filters));
     if ([200, 201].includes(response.status)) {
-      return response.data.data[0];
+      return response.data;
     }
   };
 
   // Special News
   const special_news = ref([]);
-  const get_special_news = computed(() => get_special_news.value);
+  const get_special_news = computed(() => special_news.value);
   const index_special_news = async (filters = null) => {
     const response = await axios.get(url("specialsnews", filters));
     if ([200, 201].includes(response.status)) {
+      use_paginate_store().state = response.data.pages;
       special_news.value = response.data.data;
     }
   };
   const show_special_news = async (filters = null) => {
     const response = await axios.get(url("specialsnews", filters));
     if ([200, 201].includes(response.status)) {
-      return response.data.data[0];
+      return response.data;
     }
   };
 

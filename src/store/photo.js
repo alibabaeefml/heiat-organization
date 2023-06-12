@@ -11,6 +11,7 @@ export const use_photo_store = defineStore("photo", () => {
     const response = await axios.get(url("gallery", filters));
     if ([200, 201].includes(response.status)) {
       albums.value = response.data.data;
+      use_paginate_store().state = response.data.pages;
       return response.data.data;
     }
   };

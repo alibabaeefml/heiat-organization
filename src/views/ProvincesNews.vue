@@ -20,7 +20,7 @@
             @search="search"
             @reset_filter="
               use_news_store().index_provinces_news();
-              province = null
+              province = null;
               filter_key = !filter_key;
             "
             province_filter
@@ -30,25 +30,34 @@
           />
         </v-col>
         <v-col cols="12" md="9">
+          <v-row v-if="pages">
+            <v-col
+              cols="12"
+              class="d-flex flex-column gap-1"
+              v-if="get_provinces_news.length"
+            >
+              <HorizontalCard
+                v-for="item in get_provinces_news"
+                :data="{
+                  img_width: useDisplay().smAndUp.value ? '200px' : null,
+                  title: item.title,
+                  text: item.lead,
+                  img: item.thumbnail,
+                  link: { name: 'SingleNews', params: { id: item.id } },
+                }"
+              />
+            </v-col>
+            <v-col cols="12">
+              <Pagination :pages_count="pages" @callback="paginate" />
+            </v-col>
+          </v-row>
           <div
-            class="d-flex flex-column gap-1"
-            v-if="get_provinces_news.length"
+            v-else
+            class="d-flex align-center justify-center"
+            style="height: 300px"
           >
-            <HorizontalCard
-              v-for="item in get_provinces_news"
-              :data="{
-                img_width: useDisplay().smAndUp.value ? '200px' : null,
-                title: item.title,
-                text: item.lead,
-                link: { name: 'SingleNews', params: { id: item.id } },
-              }"
-            />
+            <h3>خبری موجود نیست</h3>
           </div>
-          <h2 v-else>خبری موجود نیست</h2>
-          <Pagination
-            :pages_count="paginate(get_provinces_news.length)"
-            v-if="get_provinces_news.length"
-          />
         </v-col>
       </v-row>
     </div>
@@ -63,8 +72,10 @@ import { use_news_store } from "@/store/news";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
-import paginate from "@/store/paginate";
+import { use_paginate_store } from "@/store/paginate";
 import { use_province_store } from "@/store/province";
+const paginate_store = use_paginate_store();
+const { pages } = storeToRefs(paginate_store);
 
 const search = (search_term) =>
   use_news_store().index_provinces_news({ search: search_term });
@@ -74,13 +85,19 @@ const { get_all_provinces } = storeToRefs(use_province_store());
 
 const load_data = async () => {
   await use_news_store().index_provinces_news();
+  await paginate_store.get_pages("provincesnews");
 };
 load_data();
 
 const filter_key = ref(false);
 const province = ref(null);
+
 const select_province = async (provinceid) => {
   province.value = get_all_provinces.value.find((v) => v.id == provinceid);
   await use_news_store().index_provinces_news({ provinceid });
+};
+
+const paginate = (page_number) => {
+  use_news_store().index_provinces_news({ page: page_number.value });
 };
 </script>
