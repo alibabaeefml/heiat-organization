@@ -1,9 +1,9 @@
 <template>
   <div class="d-flex flex-column">
     <TextGroup
-      pretitle="اخبار مربوط به"
+      :pretitle="language.value.index_sec2_provinces_title"
       :title="'استان ' + data.province?.name_fa"
-      no_desc="true"
+      :desc="language.value.index_sec2_provinces_desc"
     />
     <ul
       v-if="data.province_news?.length"

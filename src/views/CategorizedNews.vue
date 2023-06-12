@@ -5,17 +5,17 @@
       style="pointer-events: none"
     ></div>
     <div
-      style="
-        padding-top: 10rem;
-        position: relative;
-        z-index: 11;
-      "
+      style="padding-top: 10rem; position: relative; z-index: 11"
       class="px-16"
     >
       <div
         class="d-flex flex-sm-row flex-column align-center justify-space-between"
       >
-        <TextGroup title="اخبار برگزیده" no_desc="true" />
+        <TextGroup
+          :title="language.value.news_sec1_title"
+          :pretitle="language.value.news_sec1_subtitle"
+          no_desc="true"
+        />
 
         <div
           class="d-flex flex-sm-row flex-column align-center gap-1"
@@ -84,9 +84,14 @@
       class="w-100 h-100 position-absolute pattern-div"
       style="pointer-events: none"
     ></div>
-    <div class="px-16" style=" position: relative; z-index: 11">
+    <div class="px-16" style="position: relative; z-index: 11">
       <div class="d-flex flex-column align-center justify-space-between">
-        <TextGroup class="text-center" title="اخبار استان ها" no_desc="true" />
+        <TextGroup
+          class="text-center"
+          :title="language.value.news_sec2_title"
+          :pretitle="language.value.news_sec2_subtitle"
+          no_desc="true"
+        />
 
         <div class="d-flex flex-column align-center gap-1 w-100">
           <div class="d-flex align-center justify-space-between w-100 gap-1">
@@ -117,7 +122,11 @@
       <div
         class="mt-5 d-flex flex-sm-row flex-column align-center justify-space-between"
       >
-        <TextGroup title="اخبار تشکل ها" no_desc="true" />
+        <TextGroup
+          :title="language.value.news_sec3_title"
+          :pretitle="language.value.news_sec3_subtitle"
+          no_desc="true"
+        />
 
         <div
           class="d-flex flex-sm-row flex-column align-center gap-1"

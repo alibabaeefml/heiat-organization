@@ -4,7 +4,11 @@
       <div
         class="d-flex gap-1 flex-md-row flex-column align-end justify-space-between"
       >
-        <TextGroup title="اخبار" />
+        <TextGroup
+          :title="language.value.index_sec4_news_title"
+          :pretitle="language.value.index_sec4_news_subtitle"
+          :desc="language.value.index_sec4_news_desc"
+        />
         <v-btn
           color="primary"
           class="rounded-lg font-weight-bold"

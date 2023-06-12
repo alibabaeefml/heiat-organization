@@ -12,16 +12,17 @@
         "
         height="100"
         class="px-3"
+        
         :style="{
           width: display.width.value >= 2400 ? '2400px' : '100%',
           left: display.width.value >= 2400 ? 'calc(50% - 1200px)' : 0,
           backdropFilter: 'blur(5px)',
+          zIndex:20
         }"
       >
         <div class="d-flex flex-column align-center">
           <router-link :to="{ name: 'Home' }">
-            <v-img width="60" height="60" src="@/assets/images/logo.png">
-            </v-img>
+            <v-img width="60" height="60" :src="get_settings?.logo"> </v-img>
           </router-link>
           <span
             :style="{
@@ -32,6 +33,7 @@
             >سازمان هیئت و تشکل های دینی</span
           >
         </div>
+
         <v-spacer></v-spacer>
         <HeaderSubtitle
           v-if="display.smAndUp.value && router_name == 'Home'"
@@ -84,66 +86,68 @@
             اخبار
           </router-link>
           <div>
-            <v-menu open-on-hover >
-            <template v-slot:activator="{ props }">
-              <router-link
-                :to="{ name: 'MultiMedia' }"
-                :class="{
-                  link: true,
-                  dark: theme == 'dark',
-                  active: router_name == 'MultiMedia',
-                }"
-                v-bind="props"
-              >
-                چندرسانه ای
-              </router-link>
-            </template>
+            <v-menu open-on-hover>
+              <template v-slot:activator="{ props }">
+                <router-link
+                  :to="{ name: 'MultiMedia' }"
+                  :class="{
+                    link: true,
+                    dark: theme == 'dark',
+                    active: router_name == 'MultiMedia',
+                  }"
+                  v-bind="props"
+                >
+                  چندرسانه ای
+                </router-link>
+              </template>
 
-            <v-list class="mt-1 d-flex flex-column gap-1 text-center bg-secondary">
-              <router-link
-                :to="{ name: 'MultiMedia' }"
-                :class="{
-                  link: true,
-                  dark: theme == 'dark',
-                  active: router_name == 'MultiMedia',
-                }"
+              <v-list
+                class="mt-1 d-flex flex-column gap-1 text-center bg-secondary"
               >
-                فیلم
-              </router-link>
-              <router-link
-                :to="{ name: 'MultiMedia' }"
-                :class="{
-                  link: true,
-                  dark: theme == 'dark',
-                  active: router_name == 'MultiMedia',
-                }"
-              >
-                صوت
-              </router-link>
-              <router-link
-                :to="{ name: 'Albums' }"
-                :class="{
-                  link: true,
-                  dark: theme == 'dark',
-                  active: router_name == 'Albums',
-                }"
-              >
-                آلبوم
-              </router-link>
-              <router-link
-                :to="{ name: 'Articles' }"
-                :class="{
-                  link: true,
-                  dark: theme == 'dark',
-                  active: router_name == 'Articles',
-                }"
-              >
-                مقاله
-              </router-link>
-            </v-list>
-          </v-menu>
+                <router-link
+                  :to="{ name: 'MultiMedia' }"
+                  :class="{
+                    link: true,
+                    dark: theme == 'dark',
+                    active: router_name == 'MultiMedia',
+                  }"
+                >
+                  فیلم
+                </router-link>
+                <router-link
+                  :to="{ name: 'MultiMedia' }"
+                  :class="{
+                    link: true,
+                    dark: theme == 'dark',
+                    active: router_name == 'MultiMedia',
+                  }"
+                >
+                  صوت
+                </router-link>
+                <router-link
+                  :to="{ name: 'Albums' }"
+                  :class="{
+                    link: true,
+                    dark: theme == 'dark',
+                    active: router_name == 'Albums',
+                  }"
+                >
+                  آلبوم
+                </router-link>
+                <router-link
+                  :to="{ name: 'Articles' }"
+                  :class="{
+                    link: true,
+                    dark: theme == 'dark',
+                    active: router_name == 'Articles',
+                  }"
+                >
+                  مقاله
+                </router-link>
+              </v-list>
+            </v-menu>
           </div>
-        
+
           <router-link
             :to="{ name: 'AboutUs' }"
             :class="{
@@ -175,6 +179,7 @@
           @onsearch="search"
           :items="get_results"
           :theme="theme"
+          item_link="SingleNews"
           v-if="show_search_bar"
         />
         <v-app-bar-nav-icon
@@ -285,11 +290,7 @@
               <v-col cols="12" md="3" class="d-flex flex-column gap-1">
                 <div class="d-flex flex-column">
                   <router-link :to="{ name: 'Home' }">
-                    <v-img
-                      width="60"
-                      height="60"
-                      src="@/assets/images/logo.png"
-                    >
+                    <v-img width="60" height="60" :src="get_settings?.logo">
                     </v-img>
                   </router-link>
                   <h3
@@ -302,7 +303,7 @@
                     سازمان هیئت و تشکل های دینی
                   </h3>
                 </div>
-                <p class="limited">{{ persian_lorem }}</p>
+                <p class="limited">{{ language.value.footer_aboutus }}</p>
               </v-col>
               <v-col
                 cols="12"
@@ -310,25 +311,51 @@
                 class="text-center d-flex flex-column align-center"
               >
                 <h3 class="text-primary">دسترسی سریع</h3>
-                <v-row class="d-flex justify-center mt-2"
-                  ><v-col cols="6" class="d-flex flex-column">
+                <v-row class="d-flex justify-center mt-2 font-weight-bold"
+                  ><v-col cols="6" class="d-flex flex-column align-center">
                     <v-btn
-                      variant="plain"
-                      :to="{ name: item.link || 'Home' }"
-                      v-for="item in 5"
+                      variant="text"
+                      :to="{ name: 'Home' }"
                       width="max-content"
                     >
-                      {{ item.title || "لورم ایپسوم" }}
+                      صفحه اصلی
+                    </v-btn>
+                    <v-btn
+                      variant="text"
+                      :to="{ name: 'AboutUs' }"
+                      width="max-content"
+                    >
+                      درباره ما
+                    </v-btn>
+                    <v-btn
+                      variant="text"
+                      :to="{ name: 'ContactUs' }"
+                      width="max-content"
+                    >
+                      تماس با ما
                     </v-btn>
                   </v-col>
-                  <v-col cols="6" class="d-flex flex-column">
+                  <v-col cols="6" class="d-flex flex-column align-center">
                     <v-btn
-                      variant="plain"
-                      :to="{ name: item.link || 'Home' }"
-                      v-for="item in 5"
+                      variant="text"
+                      :to="{ name: 'Organizations' }"
                       width="max-content"
                     >
-                      {{ item.title || "لورم ایپسوم" }}
+                      اخبار تشکل ها
+                    </v-btn>
+                    <v-btn
+                      variant="text"
+                      :to="{ name: 'News' }"
+                      width="max-content"
+                    >
+                      اخبار سازمان
+                    </v-btn>
+                    <v-btn
+                      variant="text"
+                      :to="{ name: 'Albums' }"
+                      width="max-content"
+                    >
+                      گالری
                     </v-btn>
                   </v-col></v-row
                 >
@@ -340,14 +367,42 @@
               >
                 <h4>آمار بازدید سایت: {{ visit_stat || 4312 }}</h4>
                 <v-row class="w-100">
-                  <v-col cols="12" md="4" v-for="item in 3">
-                    <router-link to="">
+                  <v-col cols="12" md="4">
+                    <router-link
+                      :to="get_settings?.footer_icon1_link || '/home'"
+                    >
                       <v-img
                         cover
                         :class="useDisplay().sm.value ? 'ma-auto' : 'mr-auto'"
                         :width="useDisplay().xs.value ? '100%' : 150"
                         :height="useDisplay().xs.value ? '100%' : 150"
-                        :src="item.img || default_img"
+                        :src="get_settings?.footer_icon1_img || default_img"
+                      ></v-img>
+                    </router-link>
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <router-link
+                      :to="get_settings?.footer_icon1_link || '/home'"
+                    >
+                      <v-img
+                        cover
+                        :class="useDisplay().sm.value ? 'ma-auto' : 'mr-auto'"
+                        :width="useDisplay().xs.value ? '100%' : 150"
+                        :height="useDisplay().xs.value ? '100%' : 150"
+                        :src="get_settings?.footer_icon2_img || default_img"
+                      ></v-img>
+                    </router-link>
+                  </v-col>
+                  <v-col cols="12" md="4">
+                    <router-link
+                      :to="get_settings?.footer_icon1_link || '/home'"
+                    >
+                      <v-img
+                        cover
+                        :class="useDisplay().sm.value ? 'ma-auto' : 'mr-auto'"
+                        :width="useDisplay().xs.value ? '100%' : 150"
+                        :height="useDisplay().xs.value ? '100%' : 150"
+                        :src="get_settings?.footer_icon3_img || default_img"
                       ></v-img>
                     </router-link>
                   </v-col>
@@ -367,7 +422,8 @@
                     v-for="item in socials"
                     :key="item"
                     :icon="item.icon"
-                    variant="plain"
+                    :to="item.link"
+                    variant="text"
                     size="small"
                   >
                   </v-btn>
@@ -391,6 +447,9 @@ import Searchbar from "@/components/Global/search/SearchBar.vue";
 
 import { storeToRefs } from "pinia";
 import { use_search_store } from "@/store/search";
+import { getCurrentInstance } from "vue";
+import { use_settings_store } from "@/store/settings";
+
 const router = useRouter();
 const router_name = computed(() => router.currentRoute.value.name);
 const drawer = ref(false);
@@ -417,26 +476,27 @@ const main_scroll = () => {
   scroll_top > 0 ? (scrolled.value = true) : (scrolled.value = false);
 };
 
+const { footer_icon1_url, footer_icon2_url, footer_icon3_url } =
+  getCurrentInstance().appContext.config.globalProperties.language.value;
 const socials = ref([
   {
     icon: "mdi-facebook",
-    link: "Home",
+    link: footer_icon1_url,
   },
   {
     icon: "mdi-instagram",
-    link: "Home",
+    link: footer_icon2_url,
   },
   {
     icon: "mdi-youtube",
-    link: "Home",
-  },
-  {
-    icon: "mdi-linkedin",
-    link: "Home",
+    link: footer_icon3_url,
   },
 ]);
 
 const visit_stat = ref();
+
+const { get_settings } = storeToRefs(use_settings_store());
+use_settings_store().index_settings();
 </script>
 
 <style scoped>

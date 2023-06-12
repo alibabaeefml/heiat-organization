@@ -99,4 +99,9 @@ p.limited {
   left: 0;
   z-index: 10;
 }
+.px-16 {
+  @media (max-width: 500px) {
+    padding: 1rem!important;
+  }
+}
 </style>

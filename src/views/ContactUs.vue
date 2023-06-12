@@ -1,3 +1,4 @@
+4
 <template>
   <div class="position-relative">
     <div
@@ -8,12 +9,11 @@
       style="
         padding-top: 10rem;
         padding-bottom: 5rem;
-        padding-inline: 2rem;
         position: relative;
         z-index: 11;
       "
     >
-      <v-row class="pa-3">
+      <v-row class="px-16">
         <v-col cols="12" md="6">
           <v-form action="">
             <span class="d-sm-flex gap-1">
@@ -70,22 +70,33 @@
           <div
             class="mt-5 pa-3 bg-secondary-3 rounded-lg text-primary font-bold"
           >
-            <p>آدرس: {{ data.location || "لورم ایپسوم" }}</p>
+            <p>{{ language.value.contactus_address || "آدرس: لورم ایپسوم" }}</p>
             <p class="mt-5">
-              شماره تماس: {{ data.phone_number || "لورم ایپسوم" }}
+              {{ language.value.contactus_phones || "شماره تماس: لورم ایپسوم" }}
             </p>
           </div>
         </v-col>
-        <v-col cols="12" md="6" class="d-flex justify-center align-center bg-secondary rounded-xl" > <v-icon size="100" color="primary">mdi-map-marker</v-icon> </v-col>
+        <v-col
+          cols="12"
+          md="6"
+        >
+          <v-img
+            class="rounded-xl w-100 h-100"
+            cover
+            
+            :src="get_settings?.aboutus_map_img"
+          ></v-img>
+        </v-col>
       </v-row>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { use_settings_store } from "@/store/settings";
+import { storeToRefs } from "pinia";
 
-const data = ref({});
+const { get_settings } = storeToRefs(use_settings_store());
 </script>
 
 <style scoped></style>

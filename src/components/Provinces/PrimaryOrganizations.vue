@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="d-flex flex-sm-row flex-column justify-space-between align-center">
+    <div
+      class="d-flex flex-sm-row flex-column justify-space-between align-center"
+    >
       <h2 class="text-primary">تشکل های برتر استان</h2>
       <div class="d-flex gap-1 pa-5 justify-end">
         <v-btn
@@ -25,11 +27,27 @@
       :navigation="navigation_options"
       loop
       autoplay
+      v-if="slides.length"
     >
-      <swiper-slide v-for="slide in 5" class="d-flex flex-column gap-1">
-        <VerticalCard :data="{ card_theme: 'primary' }" />
+      <swiper-slide v-for="item in slides" class="d-flex flex-column gap-1">
+        <VerticalCard
+          :data="{
+            card_theme: 'primary',
+            title: item.title,
+            text: item.text,
+            img: item.img,
+          }"
+          :is_cover="false"
+        />
       </swiper-slide>
     </swiper>
+    <div
+      class="d-flex align-center justify-center"
+      style="height: 300px"
+      v-else
+    >
+      <h3>تشکلی در این استان وجود ندارد</h3>
+    </div>
   </div>
 </template>
 
@@ -49,4 +67,7 @@ const navigation_options = {
   nextEl: ".next-slide",
   prevEl: ".prev-slide",
 };
+const props = defineProps({
+  slides: { default: [] },
+});
 </script>

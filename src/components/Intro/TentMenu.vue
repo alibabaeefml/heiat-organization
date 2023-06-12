@@ -4,6 +4,7 @@
       'min-width': '600px',
       position: 'relative',
       scale: useDisplay().xs.value ? 0.5 : 1,
+      
     }"
   >
     <img
@@ -16,7 +17,7 @@
       color="#8cca54"
       size="small"
       class="menu-item"
-      style="position: absolute; left: 2rem; bottom: 5rem"
+      style="position: absolute; left: 30px; bottom: 70px;"
       :to="{ name: 'Provinces' }"
     >
       <v-img
@@ -31,7 +32,7 @@
       color="#8cca54"
       size="small"
       class="menu-item"
-      style="position: absolute; left: 6.5rem; bottom: 4rem"
+      style="position: absolute; left: 95px; bottom: 50px"
       :to="{ name: 'Organizations' }"
     >
       <v-img src="@/assets/images/ipo-white-icon.png" width="20" cover></v-img>
@@ -42,7 +43,7 @@
       color="#8cca54"
       size="small"
       class="menu-item"
-      style="position: absolute; left: 11rem; bottom: 3rem"
+      style="position: absolute; left: 155px; bottom: 40px"
     >
       <v-img
         src="@/assets/images/e-services-white-icon.png"
@@ -57,14 +58,10 @@
       color="#8cca54"
       size="small"
       class="menu-item"
-      style="position: absolute; right: 2rem; bottom: 5rem"
+      style="position: absolute; right: 30px; bottom: 70px;"
       :to="{ name: 'CategorizedNews' }"
     >
-      <v-img
-        src="@/assets/images/news-white-icon.png"
-        width="20"
-        cover
-      ></v-img>
+      <v-img src="@/assets/images/news-white-icon.png" width="20" cover></v-img>
       <v-tooltip activator="parent" location="right"> اخبار </v-tooltip>
     </v-btn>
     <v-btn
@@ -72,7 +69,7 @@
       color="#8cca54"
       size="small"
       class="menu-item"
-      style="position: absolute; right: 6.5rem; bottom: 4rem"
+      style="position: absolute; right: 95px; bottom: 50px"
     >
       <v-img
         src="@/assets/images/events-white-icon.png"
@@ -86,7 +83,7 @@
       color="#8cca54"
       size="small"
       class="menu-item"
-      style="position: absolute; right: 11rem; bottom: 3rem"
+      style="position: absolute; right: 155px; bottom: 40px"
       :to="{ name: 'MultiMedia' }"
     >
       <v-img

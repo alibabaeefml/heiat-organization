@@ -2,7 +2,9 @@
   <section>
     <div class="position-relative px-16" style="z-index: 11">
       <TextGroup
-        title="چند رسانه ای"
+        :pretitle="language.value.index_sec5_gallery_subtitle"
+        :title="language.value.index_sec5_gallery_title"
+        :desc="language.value.index_sec5_gallery_desc"
         :class="center ? 'text-center mx-auto w-75' : ''"
         :title_class="'text-' + theme"
       />

@@ -12,7 +12,7 @@
         z-index: 11;
       "
     >
-      <TextGroup title="لیست آلبوم ها" />
+      <TextGroup :title="language.value.gallery_sec1_title" :pretitle="language.value.gallery_sec1_subtitle" :desc="language.value.gallery_sec1_desc" />
       <v-row class="mt-5 pa-3">
         <v-col cols="12" md="3">
           <Filter

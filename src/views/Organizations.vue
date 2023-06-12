@@ -12,7 +12,9 @@
         class="d-flex flex-sm-row flex-column align-center justify-space-between"
       >
         <TextGroup
-          title="اخبار برگزیده تشکل های میان تخصصی"
+          :pretitle="language.value.orgnews_sec1_subtitle"
+          :title="language.value.orgnews_sec1_title"
+          :desc="language.value.orgnews_sec1_desc"
           title_class="text-secondary-4"
           no_desc="true"
         />

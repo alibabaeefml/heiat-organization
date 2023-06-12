@@ -10,7 +10,7 @@
       class="rounded-xl"
       :width="data.img_width || '100%'"
       :height="data.img_height || '200px'"
-      cover
+      :cover="is_cover"
       :src="data.img || default_img"
     ></v-img>
 
@@ -37,5 +37,9 @@
 </template>
 
 <script setup>
-const props = defineProps(["data", "center_link"]);
+const props = defineProps({
+  data: {},
+  center_link: null,
+  is_cover: { default: true },
+});
 </script>

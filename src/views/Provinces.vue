@@ -4,7 +4,7 @@
       class="w-100 h-100 position-absolute pattern-div"
       style="pointer-events: none"
     ></div>
-    <div style="padding-top: 10rem; position: relative; z-index: 11">
+    <div style="padding-top: 10rem; position: relative; z-index: 11" class="px-16">
       <h1
         class="text-primary justify-center d-flex align-center gap-1 mx-auto"
         style="width: max-content; border-bottom: 3px solid var(--primary)"
@@ -17,8 +17,12 @@
       ></div>
       <v-row class="pa-3">
         <v-col cols="12" md="6" :order="useDisplay().mdAndUp.value ? 1 : 2">
-          <TextGroup pretitle="استان" :title="province.name_fa" />
-          <PrimaryOrganization />
+          <TextGroup
+            :pretitle="language.value.provincenews_title"
+            :title="province.name_fa"
+            :desc="language.value.provincenews_desc"
+          />
+          <PrimaryOrganization class="mt-5" :slides="get_organizations" />
         </v-col>
         <v-col cols="12" md="6" :order="useDisplay().mdAndUp.value ? 2 : 1">
           <Map @select_province="set_province_data" :province="province" />
@@ -37,7 +41,13 @@
           </v-col>
           <v-col cols="12" md="9">
             <v-row>
-              <v-col cols="12" md="3" sm="6" v-for="item in get_provinces_news" :key="item.id">
+              <v-col
+                cols="12"
+                md="3"
+                sm="6"
+                v-for="item in get_provinces_news"
+                :key="item.id"
+              >
                 <VerticalCard
                   :data="{
                     card_theme: 'primary',
@@ -45,6 +55,7 @@
                       name: 'ProvincesSingleNews',
                       params: { id: item.id },
                     },
+                    img:item.img,
                     title: item.title,
                     text: item.lead,
                   }"
@@ -89,8 +100,10 @@ const set_province_data = async (id) => {
     provinceid: id,
     page: 1,
   });
-};
 
+  await use_organization_store().index_organizations({ provinceid: id });
+};
+const { get_organizations } = storeToRefs(use_organization_store());
 const { province_id } = router.currentRoute.value.params;
 set_province_data(province_id || 17);
 
@@ -101,6 +114,7 @@ const paginate = (page_number) => {
 };
 
 import { storeToRefs } from "pinia";
+import { use_organization_store } from "@/store/organization";
 
 const categories = ref([]);
 

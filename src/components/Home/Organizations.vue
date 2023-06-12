@@ -3,7 +3,12 @@
     <div class="position-relative" style="z-index: 11">
       <v-row class="pa-16">
         <v-col md="4" cols="12">
-          <TextGroup title="تشکل های میان تخصصی" :limited="false" />
+          <TextGroup
+            :pretitle="language.value.index_sec3_orgs_subtitle"
+            :title="language.value.index_sec3_orgs_title"
+            :desc="language.value.index_sec3_orgs_desc"
+            :limited="false"
+          />
         </v-col>
         <v-col md="8" cols="12">
           <div class="d-flex flex-wrap justify-center gap-1">
@@ -12,9 +17,11 @@
                 card_theme: 'primary',
                 width: useDisplay().smAndUp.value ? '270px' : null,
                 title: organ.title,
-                text:organ.text,
-                lead:organ.lead,
+                text: organ.text,
+                lead: organ.lead,
+                img: organ.img,
               }"
+              :is_cover="false"
               v-for="organ in get_organizations"
             />
           </div>

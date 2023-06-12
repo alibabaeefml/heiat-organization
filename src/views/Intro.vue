@@ -27,7 +27,11 @@
             @click="overlay = false"
           ></v-btn>
           <v-card-text class="pa-8">
-            <v-text-field autofocus label="جستجو کنید"> </v-text-field>
+            <SearchBar
+              @onsearch="search"
+              :items="get_news"
+              item_link="News"
+            />
           </v-card-text>
         </v-card>
       </v-overlay>
@@ -42,7 +46,9 @@
     <IntroMenu />
     <TentMenu />
   </div>
-  <IntroFooter :style="{height: useDisplay().xs.value ? 'max-content' : '5%'}"/>
+  <IntroFooter
+    :style="{ height: useDisplay().xs.value ? 'max-content' : '5%' }"
+  />
 </template>
 
 <script setup>
@@ -51,13 +57,20 @@ import TentMenu from "@/components/Intro/TentMenu.vue";
 import IntroMenu from "@/components/Intro/IntroMenu.vue";
 import { ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
+import SearchBar from "@/components/Global/search/SearchBar.vue";
+import { use_news_store } from "@/store/news";
+import { storeToRefs } from "pinia";
 
 const overlay = ref(false);
+const { get_news } = storeToRefs(use_news_store());
+const search = (search) => {
+  use_news_store().index_news({ search });
+};
 </script>
 
 <style scoped>
 .intro-wrapper {
-  background-image: url(../assets/images/intro-bg.png);
+  background-image: url(../assets/images/intro-bg.jpg);
   background-size: cover;
   background-position: center;
   height: 95%;

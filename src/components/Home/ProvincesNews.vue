@@ -17,8 +17,9 @@
         :province="data.province"
       />
     </div>
-    <v-spacer style="my-10"></v-spacer>
+    
   </section>
+  
 </template>
 <script setup>
 import SelectedProvinceNews from "@/components/Home/SelectedProvinceNews.vue";
@@ -27,6 +28,7 @@ import { useDisplay } from "vuetify/lib/framework.mjs";
 import Map from "../Global/map/Map.vue";
 import { use_province_store } from "@/store/province";
 import { use_news_store } from "@/store/news";
+
 
 const data = ref({});
 
@@ -39,7 +41,9 @@ const set_province_data = async (id) => {
   });
   data.value.province_news = use_news_store().get_provinces_news;
 };
-set_province_data(17)
+set_province_data(17);
+
+
 </script>
 
 <style scoped>

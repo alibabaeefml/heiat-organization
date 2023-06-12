@@ -20,7 +20,7 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
-const props = defineProps(["theme", "items"]);
+const props = defineProps(["theme", "items", "item_link"]);
 const selected = ref();
 const router = useRouter();
 
@@ -33,12 +33,12 @@ const search = (event) => {
     if (event.target.value.length) {
       emit("onsearch", event.target.value);
     }
-  }, 500);  
+  }, 500);
 };
 
 const onselect = () => {
   router.push({
-    name: "ProvincesSingleNews",
+    name: props.item_link,
     params: { id: selected.value },
   });
 };

@@ -8,7 +8,7 @@
         height: '500px',
       }"
     ></div>
-    <p>* استان مد نظر خود را انتخاب کنید</p>
+    <p>{{ language.value.index_sec2_provinces_maptitle }}</p>
   </div>
 </template>
 
