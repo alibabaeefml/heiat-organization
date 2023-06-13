@@ -1,20 +1,10 @@
 <template>
-  <div class="position-relative">
-    <img
-      src="@/assets/images/subtitle-bg.png"
-      style="object-fit: cover; width: 100%; height: 100%"
-      alt=""
-    />
-    <div
-      class="position-absolute h-100 flex-center overflow-hidden"
-      style="top: 0; width: 90%; right: 5%"
-    >
+  <div class="position-relative overflow-hidden bg-secondary pa-3 rounded-lg">
+    <div class=" mx-auto overflow-hidden" style="width: 99%;">
       <p class="subtitle-anim" >{{ latest_news.lead || persian_lorem }}</p>
-      
+
     </div>
-    
   </div>
-  
 </template>
 <script setup>
 import { use_news_store } from "@/store/news";
@@ -28,11 +18,11 @@ const get_latest_news = async () => {
     page: 1,
   });
 };
-get_latest_news()
+get_latest_news();
 </script>
 
 <style scoped>
-@keyframes anim {
+@keyframes animation {
   from {
     transform: translate(-500px, 0);
   }
@@ -41,7 +31,7 @@ get_latest_news()
   }
 }
 .subtitle-anim {
-  animation: anim 15s infinite;
+  animation: animation 15s infinite;
   animation-timing-function: linear;
   white-space: pre;
 }

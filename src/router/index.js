@@ -106,7 +106,7 @@ const routes = [
         },
       },
       {
-        path: "/organizations",
+        path: "/organizations/:scroll_to?",
         name: "Organizations",
         component: () => import("@/views/Organizations.vue"),
         meta: {
@@ -210,5 +210,6 @@ const router = createRouter({
 
 router.beforeEach((to, from) => {
   document.title = to.meta.title;
+ 
 });
 export default router;

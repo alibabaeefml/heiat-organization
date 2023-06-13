@@ -3,7 +3,7 @@
     :slides-per-view="1"
     :space-between="50"
     :class="{
-      'w-50': useDisplay().mdAndUp.value,
+      'w-75': useDisplay().mdAndUp.value,
       'w-100': useDisplay().mdAndDown.value,
       'pa-5': true,
     }"

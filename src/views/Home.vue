@@ -1,5 +1,5 @@
 <template>
-  <LetterNews />
+  <HomeSlider />
   <div class="position-relative">
     <div
       class="w-100 h-100 position-absolute pattern-div"
@@ -15,7 +15,7 @@
 
 <script setup>
 import Organizations from "@/components/Home/Organizations.vue";
-import LetterNews from "@/components/Home/LetterNews.vue";
+import HomeSlider from "@/components/Home/HomeSlider.vue";
 import News from "@/components/Home/News.vue";
 import ProvincesNews from "@/components/Home/ProvincesNews.vue";
 import MultiMedia from "@/components/Global/multimedia/MultiMedia.vue";

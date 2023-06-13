@@ -2,7 +2,7 @@
   <v-card>
     <v-layout>
       <v-app-bar
-        v-if="router.currentRoute.value.name != 'Intro'"
+        v-if="router.currentRoute.value.name != 'Intro' && show_app_bar"
         :color="
           scrolled
             ? theme == 'dark'
@@ -11,13 +11,12 @@
             : 'transparent'
         "
         height="100"
-        class="px-3"
-        
+        class="px-3 app_bar_slide_animation"
         :style="{
           width: display.width.value >= 2400 ? '2400px' : '100%',
           left: display.width.value >= 2400 ? 'calc(50% - 1200px)' : 0,
           backdropFilter: 'blur(5px)',
-          zIndex:20
+          zIndex: 20,
         }"
       >
         <div class="d-flex flex-column align-center">
@@ -35,9 +34,10 @@
         </div>
 
         <v-spacer></v-spacer>
-        <HeaderSubtitle
+        <HeaderSurtitle
           v-if="display.smAndUp.value && router_name == 'Home'"
           style="width: 50%"
+          class="mx-2"
         />
 
         <div
@@ -180,6 +180,7 @@
           :items="get_results"
           :theme="theme"
           item_link="SingleNews"
+          class="mx-1"
           v-if="show_search_bar"
         />
         <v-app-bar-nav-icon
@@ -441,7 +442,7 @@ import { watch } from "vue";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useDisplay } from "vuetify/lib/framework.mjs";
-import HeaderSubtitle from "@/components/Home/HeaderSubtitle.vue";
+import HeaderSurtitle from "@/components/Home/HeaderSurtitle.vue";
 import { computed } from "vue";
 import Searchbar from "@/components/Global/search/SearchBar.vue";
 
@@ -471,9 +472,20 @@ const search = async (search_term) => {
 
 const scrolled = ref(false);
 
+let lastScrollTop = 0;
+const show_app_bar = ref(true);
 const main_scroll = () => {
   let scroll_top = document.querySelector("main").scrollTop;
   scroll_top > 0 ? (scrolled.value = true) : (scrolled.value = false);
+
+  if (scroll_top > lastScrollTop) {
+    // bottom
+    show_app_bar.value = false;
+  } else {
+    // top
+    show_app_bar.value = true;
+  }
+  lastScrollTop = scroll_top <= 0 ? 0 : scroll_top;
 };
 
 const { footer_icon1_url, footer_icon2_url, footer_icon3_url } =
@@ -524,5 +536,17 @@ use_settings_store().index_settings();
 }
 .link.dark:after {
   background-color: var(--secondary);
+}
+
+@keyframes app_bar_slide_animation {
+  from {
+    top: -200px;
+  }
+  to {
+    top: 0;
+  }
+}
+.app_bar_slide_animation {
+  animation: app_bar_slide_animation 0.5s forwards;
 }
 </style>

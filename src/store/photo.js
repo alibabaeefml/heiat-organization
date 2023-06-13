@@ -2,6 +2,7 @@ import { url } from "@/services/api";
 import axios from "axios";
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
+import { use_paginate_store } from "./paginate";
 
 export const use_photo_store = defineStore("photo", () => {
   const albums = ref([]);

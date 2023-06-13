@@ -20,6 +20,10 @@
                 text: organ.text,
                 lead: organ.lead,
                 img: organ.img,
+                link: {
+                  name: 'Organizations',
+                  params: { scroll_to: organ?.id },
+                },
               }"
               :is_cover="false"
               v-for="organ in get_organizations"
@@ -33,10 +37,8 @@
 <script setup>
 import VerticalCard from "@/components/Global/card/VerticalCard.vue";
 import TextGroup from "@/components/Global/text/TextGroup.vue";
-import { use_news_store } from "@/store/news";
 import { use_organization_store } from "@/store/organization";
 import { storeToRefs } from "pinia";
-import { ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 
 const { get_organizations } = storeToRefs(use_organization_store());

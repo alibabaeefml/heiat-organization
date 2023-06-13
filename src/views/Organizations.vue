@@ -56,10 +56,14 @@
       style="pointer-events: none"
     ></div>
     <div style="position: relative; z-index: 11" class="px-16">
-      <FirstOrganization :data="get_organizations[0]" />
+      <FirstOrganization
+        :id="'organ' + get_organizations[0]?.id"
+        :data="get_organizations[0]"
+      />
       <OrganizationCategoryItem
         :data="item"
         class="my-10"
+        :id="'organ' + item.id"
         v-for="item in get_organizations.slice(1)"
         :key="item.id"
       />
@@ -76,6 +80,8 @@ import OrganizationCategoryItem from "@/components/Organizations/OrganizationCat
 import { use_news_store } from "@/store/news";
 import { use_organization_store } from "@/store/organization";
 import { storeToRefs } from "pinia";
+import { useRoute, useRouter } from "vue-router";
+import { onMounted } from "vue";
 
 const organizations_primary_news = ref([]);
 const { get_organizations } = storeToRefs(use_organization_store());
@@ -88,6 +94,15 @@ const load_date = async () => {
   await use_organization_store().index_organizations();
 };
 load_date();
+const scroll_id = useRoute().params.scroll_to;
+
+onMounted(() => {
+  setTimeout(() => {
+    document.querySelector("main").scrollTop = document.getElementById(
+      `organ${scroll_id}`
+    ).offsetTop;
+  }, 300);
+});
 </script>
 
 <style scoped>

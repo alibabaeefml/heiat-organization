@@ -6,7 +6,7 @@
       ' d-flex justify-space-between pa-2 rounded-lg gap-1'
     "
   >
-    <v-avatar :image="data.avatar || default_img" size="59"></v-avatar>
+    <v-avatar :image="audio.img || default_img" size="59"></v-avatar>
     <div class="d-flex flex-column gap-1 w-75">
       <h3 class="overflow-hidden" style="height: 25px">
         {{ audio.title || persian_lorem }}

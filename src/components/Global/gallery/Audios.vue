@@ -22,7 +22,7 @@
       >
         <div class="d-flex gap-1 align-center">
           <v-avatar
-            :image="selected_audio.avatar || default_img"
+            :image="selected_audio.img || default_img"
             size="59"
           ></v-avatar>
           <h3 class="overflow-hidden" style="height: 25px">

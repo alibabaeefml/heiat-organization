@@ -103,7 +103,7 @@ onMounted(async () => {
     },
   });
 
-  $("[data-code]").each((i, e) => {
+  $("[data-code]").each(async (i, e) => {
     let province_name = e.getAttribute("data-code");
     get_all_provinces.value.map((v) => {
       if (v.name_en == province_name) {
@@ -131,13 +131,20 @@ onMounted(async () => {
         },
       };
     }
+    const news = await use_news_store().index_provinces_news({
+      provinceid: e.id,
+    });
+    
     append_map_stats(
       document.querySelector(`[data-code='${province_name}']`),
-      get_provinces_news.value.filter((v) => v.provinceid == e.id).length,
+      news.length,
       province_name,
       custom_attr
     );
+
+    // console.log(get_provinces_news.value.filter((v) => v.provinceid == e.id))
   });
+
   $("#iran_map path").click((e) => {
     select_province(e.currentTarget.id);
   });

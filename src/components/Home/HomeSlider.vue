@@ -1,6 +1,6 @@
 <template>
   <section class="wrapper d-flex flex-column">
-    <LetterNewsSwiper :slides="slides" />
+    <HomeSwiper :slides="slides" />
     <home-navigation
       v-if="useDisplay().mdAndUp.value"
       class="position-absolute"
@@ -10,7 +10,7 @@
 </template>
 <script setup>
 import { useDisplay } from "vuetify/lib/framework.mjs";
-import LetterNewsSwiper from "./LetterNewsSwiper.vue";
+import HomeSwiper from "./HomeSwiper.vue";
 import HomeNavigation from "./HomeNavigation.vue";
 import { use_slider_store } from "@/store/slider";
 import { ref } from "vue";
