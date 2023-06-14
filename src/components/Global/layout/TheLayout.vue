@@ -194,12 +194,18 @@
       <v-navigation-drawer
         v-model="drawer"
         location="bottom"
-        class="pa-5 h-75"
-        style="z-index: 9999"
+        class="pa-5"
+        :class="{ 'h-75': useDisplay().xs.value }"
+        style="
+          z-index: 9999;
+          height: max-content;
+          width: 300px;
+          left: calc(50% - 150px);
+        "
         temporary
       >
         <div
-          class="d-flex flex-column justify-between gap-2 text-center"
+          class="d-flex flex-column justify-between gap-2 text-center overflow-hidden"
           gap="3rem"
         >
           <router-link
