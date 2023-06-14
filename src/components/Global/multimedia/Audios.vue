@@ -30,6 +30,7 @@
           </h3>
         </div>
         <audio-player
+          :style="{ scale: useDisplay().xs.value ? 0.6 : 1 }"
           :theme="`var(--${theme})`"
           :file="selected_audio.file_url"
           dir="ltr"
@@ -46,6 +47,7 @@ import AudioPlayer from "@/components/Global/multimedia/AudioPlayer.vue";
 import { use_audio_store } from "@/store/audio";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
+import { useDisplay } from "vuetify/lib/framework.mjs";
 
 const selected_audio = ref({});
 const autoplay = ref(false);

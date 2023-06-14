@@ -49,7 +49,7 @@
 import { ref } from "vue";
 import Comments from "@/components/Global/comment/Comments.vue";
 import Actions from "@/components/Global/button_group/Actions.vue";
-import PhotosSwiper from "@/components/Global/gallery/PhotosSwiper.vue";
+import PhotosSwiper from "@/components/Global/multimedia/PhotosSwiper.vue";
 import { useRoute, useRouter } from "vue-router";
 import { use_photo_store } from "@/store/photo";
 import { watch } from "vue";

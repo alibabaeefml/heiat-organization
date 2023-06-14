@@ -7,7 +7,6 @@
     <div
       style="
         padding-top: 10rem;
-        padding-inline: 2rem;
         position: relative;
         z-index: 11;
       "
