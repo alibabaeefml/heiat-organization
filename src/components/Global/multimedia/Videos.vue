@@ -39,10 +39,7 @@
           'pa-5': true,
         }"
         :modules="modules"
-        :navigation="{
-          nextEl: '.next-slide',
-          prevEl: '.prev-slide',
-        }"
+        :navigation="navigation_options"
         loop
         autoplay
       >
@@ -77,13 +74,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { use_video_store } from "@/store/video";
 import { storeToRefs } from "pinia";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 
 const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay];
-let navigation_options = {
+let navigation_options = ref({
   prevEl: ".prev-slide",
   nextEl: ".next-slide",
-};
+});
 
 const { get_videos } = storeToRefs(use_video_store());
 

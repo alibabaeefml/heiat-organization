@@ -1,10 +1,16 @@
 <template>
-  <li
+  <v-card
     :class="{
       'overflow-hidden': true,
-      'bg-white rounded-sm': data.card_theme == 'primary',
+      'bg-transparent': true,
+      'bg-white': data.card_theme == 'primary',
     }"
-    :style="{ width: data.width || '100%' }"
+    rounded="xl"
+    :style="{
+      width: data.width || '100%',
+      boxShadow: 'unset',
+      position: 'relative',
+    }"
   >
     <v-img
       class="rounded-xl"
@@ -26,6 +32,7 @@
         }"
       >
         <router-link
+          v-if="show_link"
           :to="data.link || { name: 'Home' }"
           class="text-decoration-none text-black"
           style="border-bottom: 3px solid var(--primary)"
@@ -33,7 +40,22 @@
         >
       </div>
     </div>
-  </li>
+
+    <div
+      style="
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+      "
+      class="d-flex align-center justify-center"
+      v-if="play_icon"
+    >
+      <v-icon color="#000" size="50">mdi-play</v-icon>
+    </div>
+  </v-card>
 </template>
 
 <script setup>
@@ -41,5 +63,7 @@ const props = defineProps({
   data: {},
   center_link: null,
   is_cover: { default: true },
+  show_link: { default: true },
+  play_icon: null,
 });
 </script>

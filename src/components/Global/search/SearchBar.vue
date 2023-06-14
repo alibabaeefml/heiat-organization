@@ -2,7 +2,7 @@
   <v-autocomplete
     :color="theme == 'dark' ? '#fff' : '#000'"
     :bg-color="bg_color || 'rgba(255,255,255,.3)'"
-    class="searchbar "
+    class="searchbar"
     rounded="lg"
     :class="{ 'w-100': useDisplay().xs.value ? true : false }"
     label="جستجو"
@@ -15,6 +15,7 @@
     no-data-text="خبری یافت نشد"
     @keydown="search"
     @update:model-value="onselect"
+    
   >
   </v-autocomplete>
 </template>

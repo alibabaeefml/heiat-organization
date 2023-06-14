@@ -1,6 +1,6 @@
 <template>
   <div class="player" :style="{ color: theme, border: `1px solid ${theme}` }">
-    <div class="player-controls">
+    <div class="player-controls" :class="controls_custom_class">
       <div>
         <a v-on:click.prevent="playing = !playing" title="Play/Pause" href="#">
           <svg
@@ -21,7 +21,7 @@
           </svg>
         </a>
       </div>
-      <div>
+      <div v-if="!$vuetify.display.xs">
         <a v-on:click.prevent="stop" title="Stop" href="#">
           <svg
             width="18px"
@@ -36,11 +36,8 @@
         </a>
       </div>
       <div
-        style="
-          display: flex;
-          justify-content: center;
-          flex-direction: column;
-        "
+        :class="{ 'w-100': !$vuetify.display.xs }"
+        style="display: flex; justify-content: center; flex-direction: column"
       >
         <div
           v-on:click="seek"
@@ -53,12 +50,12 @@
             class="player-seeker"
           ></div>
         </div>
-        <div class="player-time" style="font-size: .7rem;">
+        <div class="player-time" style="font-size: 0.7rem">
           <div class="player-time-current">{{ currentTime }}</div>
           <div class="player-time-total">{{ durationTime }}</div>
         </div>
       </div>
-      <div>
+      <div v-if="!$vuetify.display.xs">
         <a v-on:click.prevent="download" href="#">
           <svg
             width="18px"
@@ -176,6 +173,7 @@ export default {
     theme: {
       type: String,
     },
+    controls_custom_class: {},
   },
   data: () => ({
     audio: undefined,
@@ -280,9 +278,7 @@ export default {
   position: relative;
 }
 @media (max-width: 600px) {
-  .player {
-    scale: 0.5;
-  }
+  
 }
 .player-controls {
   display: flex;

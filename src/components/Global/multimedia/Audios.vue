@@ -33,8 +33,8 @@
           :theme="`var(--${theme})`"
           :file="selected_audio.file_url"
           dir="ltr"
-          auto-play
           :key="selected_audio"
+          :auto-play="autoplay"
         ></audio-player>
       </div>
     </v-card>
@@ -42,15 +42,16 @@
 </template>
 <script setup>
 import CaptionedAudio from "@/components/Global/card/CaptionedAudio.vue";
-import AudioPlayer from "@/components/Global/gallery/AudioPlayer.vue";
+import AudioPlayer from "@/components/Global/multimedia/AudioPlayer.vue";
 import { use_audio_store } from "@/store/audio";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 
 const selected_audio = ref({});
-
+const autoplay = ref(false);
 const select_audio = (audio) => {
   selected_audio.value = audio;
+  autoplay.value = true;
 };
 const props = defineProps(["theme"]);
 

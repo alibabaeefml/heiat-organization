@@ -105,21 +105,21 @@
                 class="mt-1 d-flex flex-column gap-1 text-center bg-secondary"
               >
                 <router-link
-                  :to="{ name: 'MultiMedia' }"
+                  :to="{ name: 'Videos' }"
                   :class="{
                     link: true,
                     dark: theme == 'dark',
-                    active: router_name == 'MultiMedia',
+                    active: router_name == 'Videos',
                   }"
                 >
                   فیلم
                 </router-link>
                 <router-link
-                  :to="{ name: 'MultiMedia' }"
+                  :to="{ name: 'Audios' }"
                   :class="{
                     link: true,
                     dark: theme == 'dark',
-                    active: router_name == 'MultiMedia',
+                    active: router_name == 'Audios',
                   }"
                 >
                   صوت

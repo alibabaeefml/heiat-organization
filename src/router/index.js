@@ -169,6 +169,24 @@ const routes = [
         },
       },
       {
+        path: "/videos",
+        name: "Videos",
+        component: () => import("@/views/Videos.vue"),
+        meta: {
+          title: "لیست ویدیو ها",
+          theme: "light",
+        },
+      },
+      {
+        path: "/audios",
+        name: "Audios",
+        component: () => import("@/views/Audios.vue"),
+        meta: {
+          title: "لیست صوت ها",
+          theme: "light",
+        },
+      },
+      {
         path: "/single-album/:id?",
         name: "SingleAlbum",
         component: () => import("@/views/SingleAlbum.vue"),

@@ -40,7 +40,10 @@
               @search="search"
               @select_province="set_province_data"
               :province="province"
-              @reset_filter="filter_key = !filter_key"
+              @reset_filter="
+                search('');
+                filter_key = !filter_key;
+              "
               :key="filter_key"
             />
           </v-col>
@@ -67,14 +70,15 @@
                 />
               </v-col>
               <v-col cols="12">
-                <Pagination
-                  :pages_count="pages"
-                  @callback="paginate"
-                />
+                <Pagination :pages_count="pages" @callback="paginate" />
               </v-col>
             </v-row>
-            <div v-else class="d-flex align-center justify-center" style="height: 300px;">
-            <h3>خبری موجود نیست</h3>
+            <div
+              v-else
+              class="d-flex align-center justify-center"
+              style="height: 300px"
+            >
+              <h3>خبری موجود نیست</h3>
             </div>
           </v-col>
         </v-row>
