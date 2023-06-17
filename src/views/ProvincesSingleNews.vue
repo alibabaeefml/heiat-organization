@@ -39,7 +39,7 @@
             </div>
           </div>
           <div class="text-justify" v-html="news.desc"></div>
-          <Comments class="mt-10" />
+          <Comments class="mt-10" table="provincesnews" :post_id="news.id" />
         </v-col>
         <v-col cols="12" md="3">
           <h2 class="text-primary">اخبار مرتبط</h2>

@@ -40,7 +40,12 @@
         <div class="text-justify" v-html="album.desc"></div>
         <h2 class="mt-5">تصاویر مربوطه</h2>
         <PhotosSwiper :slides="album.album" v-if="album.album" />
-        <Comments :cols="useDisplay().mdAndUp.value ? 6 : 12" class="mt-10" />
+        <Comments
+          table="gallery"
+        :post_id="album.id"
+          :cols="useDisplay().mdAndUp.value ? 6 : 12"
+          class="mt-10"
+        />
       </div>
     </div>
   </div>

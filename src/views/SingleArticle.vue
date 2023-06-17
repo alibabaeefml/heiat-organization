@@ -42,7 +42,7 @@
             class="text-justify"
             v-html="article.desc || persian_lorem"
           ></div>
-          <Comments class="mt-10" />
+          <Comments class="mt-10" table="articles" :post_id="article.id" />
         </v-col>
         <v-col cols="12" md="3">
           <h2 class="text-primary">اخبار مرتبط</h2>

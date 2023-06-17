@@ -40,7 +40,11 @@
           </div>
           <div class="text-justify" v-html="news.desc"></div>
 
-          <Comments class="mt-10" />
+          <Comments
+            class="mt-10"
+            table="news"
+            :post_id="router.currentRoute.value.params.id"
+          />
         </v-col>
         <v-col cols="12" md="3">
           <h2 class="text-primary">اخبار مرتبط</h2>
@@ -51,7 +55,7 @@
               card_theme: 'primary',
               title: item.title,
               text: item.lead,
-              img:item.thumbnail,
+              img: item.thumbnail,
               link: { name: 'SingleNews', params: { id: item.id } },
             }"
           />
@@ -76,7 +80,7 @@ const load_data = async () => {
     id: router.currentRoute.value.params.id,
   });
   news.value = res.data[0];
-  relevants.value = res.relevants
+  relevants.value = res.relevants;
 };
 
 load_data();

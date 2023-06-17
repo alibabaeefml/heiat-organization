@@ -60,7 +60,7 @@
             color="primary"
             class="my-3 border-opacity-100"
           ></v-divider>
-          <Comments />
+          <Comments table="organizationnews" :post_id="news.id" />
         </v-col>
 
         <v-col cols="12" md="3">
