@@ -2,14 +2,13 @@
   <v-card
     :class="{
       'overflow-hidden': true,
-      'bg-transparent': true,
-      'bg-white': data.card_theme == 'primary',
     }"
     rounded="xl"
     :style="{
       width: data.width || '100%',
       boxShadow: 'unset',
       position: 'relative',
+      'background-color': background || 'transparent',
     }"
   >
     <v-img
@@ -61,6 +60,7 @@
 <script setup>
 const props = defineProps({
   data: {},
+  background: { default: null },
   center_link: null,
   is_cover: { default: true },
   show_link: { default: true },

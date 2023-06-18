@@ -60,10 +60,11 @@ import { use_news_store } from "@/store/news";
 import { use_special_store } from "@/store/special";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 const { get_special_news } = storeToRefs(use_news_store());
 import { use_paginate_store } from "@/store/paginate";
+import { watch } from "vue";
 const paginate_store = use_paginate_store();
 const { pages } = storeToRefs(paginate_store);
 const special = ref({});
@@ -81,6 +82,8 @@ load_data();
 const search = async (search) => {
   await use_news_store().index_special_news({ search });
 };
+const route = useRoute();
+watch(route, load_data);
 const filter_key = ref(false);
 const paginate = (page_number) => {
   use_news_store().index_provinces_news({ page: page_number.value });

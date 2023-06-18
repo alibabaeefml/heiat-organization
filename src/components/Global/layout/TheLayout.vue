@@ -293,35 +293,39 @@
             class="pt-5 d-flex flex-column pa-0"
             color="#FAF8E8"
           >
-            <v-row class="pa-3 px-16">
-              <v-col cols="12" md="3" class="d-flex flex-column gap-1">
+            <v-row class="py-3 px-16 w-100" :no-gutters="useDisplay().mdAndUp.value">
+              <v-col cols="12" md="4" class="d-flex flex-column gap-1">
                 <div class="d-flex flex-column">
-                  <router-link :to="{ name: 'Home' }">
-                    <v-img width="60" height="60" :src="get_settings?.logo">
-                    </v-img>
-                  </router-link>
-                  <h3
-                    :style="{
-                      'font-size': '7px',
-                      'letter-spacing': '-0.5px',
-                    }"
-                    class="text-primary"
+                  <router-link
+                    class="text-decoration-none"
+                    :to="{ name: 'Home' }"
                   >
-                    سازمان هیئت و تشکل های دینی
-                  </h3>
+                    <v-img width="120" height="120" :src="get_settings?.logo">
+                    </v-img>
+                    <h3
+                      :style="{
+                        'font-size': '10px',
+                        'letter-spacing': '-0.5px',
+                      }"
+                      class="text-primary"
+                    >
+                      سازمان هیئت و تشکل های دینی
+                    </h3>
+                  </router-link>
                 </div>
                 <p class="limited">{{ language.value.footer_aboutus }}</p>
               </v-col>
               <v-col
                 cols="12"
-                md="3"
+                md="4"
                 class="text-center d-flex flex-column align-center"
               >
                 <h3 class="text-primary">دسترسی سریع</h3>
-                <v-row class="d-flex justify-center mt-2 font-weight-bold"
+                <v-row class="mt-2 font-weight-bold"
                   ><v-col cols="6" class="d-flex flex-column align-center">
                     <v-btn
                       variant="text"
+                      :active="false"
                       :to="{ name: 'Home' }"
                       width="max-content"
                     >
@@ -329,6 +333,7 @@
                     </v-btn>
                     <v-btn
                       variant="text"
+                      :active="false"
                       :to="{ name: 'AboutUs' }"
                       width="max-content"
                     >
@@ -336,6 +341,7 @@
                     </v-btn>
                     <v-btn
                       variant="text"
+                      :active="false"
                       :to="{ name: 'ContactUs' }"
                       width="max-content"
                     >
@@ -345,6 +351,7 @@
                   <v-col cols="6" class="d-flex flex-column align-center">
                     <v-btn
                       variant="text"
+                      :active="false"
                       :to="{ name: 'Organizations' }"
                       width="max-content"
                     >
@@ -352,6 +359,7 @@
                     </v-btn>
                     <v-btn
                       variant="text"
+                      :active="false"
                       :to="{ name: 'News' }"
                       width="max-content"
                     >
@@ -359,61 +367,62 @@
                     </v-btn>
                     <v-btn
                       variant="text"
+                      :active="false"
                       :to="{ name: 'Albums' }"
                       width="max-content"
                     >
                       گالری
                     </v-btn>
-                  </v-col></v-row
-                >
+                  </v-col>
+                </v-row>
               </v-col>
-              <v-col
-                cols="12"
-                md="6"
-                class="d-flex align-md-end align-center flex-column gap-1"
-              >
-                <h4>آمار بازدید سایت: {{ visit_stat || 4312 }}</h4>
-                <v-row class="w-100">
-                  <v-col cols="12" md="4">
+              <v-col cols="12" md="4">
+                <div class="d-flex align-md-end align-center flex-column gap-1">
+                  <h4>آمار بازدید سایت: {{ visit_stat || 4312 }}</h4>
+                  <div
+                    class="d-flex flex-sm-row flex-column justify-center justify-sm-end w-100"
+                  >
                     <router-link
+                      :style="{
+                        width: useDisplay().xs.value ? '50%' : '160px',
+                        margin:'auto'
+                      }"
                       :to="get_settings?.footer_icon1_link || '/home'"
                     >
                       <v-img
                         cover
-                        :class="useDisplay().sm.value ? 'ma-auto' : 'mr-auto'"
-                        :width="useDisplay().xs.value ? '100%' : 150"
-                        :height="useDisplay().xs.value ? '100%' : 150"
+                        class="rounded-lg"
                         :src="get_settings?.footer_icon1_img || default_img"
                       ></v-img>
                     </router-link>
-                  </v-col>
-                  <v-col cols="12" md="4">
                     <router-link
+                      :style="{
+                        width: useDisplay().xs.value ? '50%' : '160px',
+                        margin:'auto'
+                      }"
                       :to="get_settings?.footer_icon1_link || '/home'"
                     >
                       <v-img
                         cover
-                        :class="useDisplay().sm.value ? 'ma-auto' : 'mr-auto'"
-                        :width="useDisplay().xs.value ? '100%' : 150"
-                        :height="useDisplay().xs.value ? '100%' : 150"
+                        class="rounded-lg"
                         :src="get_settings?.footer_icon2_img || default_img"
                       ></v-img>
                     </router-link>
-                  </v-col>
-                  <v-col cols="12" md="4">
                     <router-link
+                      :style="{
+                        width: useDisplay().xs.value ? '50%' : '160px',
+                        margin:'auto'
+                      }"
                       :to="get_settings?.footer_icon1_link || '/home'"
                     >
                       <v-img
                         cover
-                        :class="useDisplay().sm.value ? 'ma-auto' : 'mr-auto'"
-                        :width="useDisplay().xs.value ? '100%' : 150"
-                        :height="useDisplay().xs.value ? '100%' : 150"
+                        class="rounded-lg"
                         :src="get_settings?.footer_icon3_img || default_img"
                       ></v-img>
                     </router-link>
-                  </v-col>
-                </v-row>
+                  </div>
+                </div>
               </v-col>
             </v-row>
             <div class="bg-primary w-100">
@@ -430,7 +439,7 @@
                     :key="item"
                     :icon="item.icon"
                     :to="item.link"
-                    variant="text"
+                    variant="plain"
                     size="small"
                   >
                   </v-btn>

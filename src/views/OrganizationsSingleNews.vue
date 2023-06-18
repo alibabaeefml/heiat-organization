@@ -101,7 +101,8 @@ import Actions from "@/components/Global/button_group/Actions.vue";
 import { ref } from "vue";
 import { use_news_store } from "@/store/news";
 import { use_organization_store } from "@/store/organization";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+import { watch } from "vue";
 
 const news = ref({});
 const relevants = ref([]);
@@ -122,4 +123,6 @@ const load_data = async () => {
 };
 
 load_data();
+const route = useRoute();
+watch(route, load_data);
 </script>

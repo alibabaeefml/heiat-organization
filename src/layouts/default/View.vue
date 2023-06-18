@@ -84,11 +84,11 @@ p.limited {
 .jvectormap-region.jvectormap-element.active {
   fill: var(--primary);
 }
-.jvectormap-region.jvectormap-element.active + circle + text {
+circle.active + text {
   fill: var(--primary) !important;
   pointer-events: none;
 }
-.jvectormap-region.jvectormap-element.active + circle {
+circle.active {
   fill: var(--secondary-3) !important;
   pointer-events: none;
 }
@@ -104,5 +104,14 @@ p.limited {
   .px-16 {
     padding-inline: 1rem !important;
   }
+}
+
+.v-btn {
+  border-radius: 1rem;
+}
+
+.prev-slide,
+.next-slide {
+  color: var(--primary) !important;
 }
 </style>

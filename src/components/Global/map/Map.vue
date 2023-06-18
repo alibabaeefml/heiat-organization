@@ -25,8 +25,22 @@ const props = defineProps({
 });
 
 const { get_all_provinces } = storeToRefs(use_province_store());
-const { get_provinces_news } = storeToRefs(use_news_store());
-function append_map_stats(path, statistic_data, data_code, attrs = {}) {
+
+const calc_circle_radient = (key) => {
+  switch (key) {
+    case value < 10:
+      return 8;
+    case value > 10 && value < 50:
+      return 10;
+    case value > 50:
+      return 13;
+
+    default:
+      return 8;
+  }
+};
+
+ function append_map_stats(path, statistic_data, data_code, attrs = {}) {
   let bbox = path.getBBox();
   let x = bbox.x + bbox.width / 2;
   let y = bbox.y + bbox.height / 2;
@@ -36,6 +50,7 @@ function append_map_stats(path, statistic_data, data_code, attrs = {}) {
       cx: x,
       cy: y,
       r: 8,
+      id: path.id,
       "data-code": data_code,
       style: `pointerEvents: none;
         userSelect: none;
@@ -50,7 +65,7 @@ function append_map_stats(path, statistic_data, data_code, attrs = {}) {
       style: `pointer-events: none;
         user-select: none;
         fill: #fff;
-        font-size: 8px`,
+        font-size: 12px`,
     },
   };
   Object.assign(defaultAttrs.circle, attrs.circle);
@@ -63,7 +78,7 @@ function append_map_stats(path, statistic_data, data_code, attrs = {}) {
   }
 
   // append circle after svg path
-  path.after(background_circle);
+  $("#iran_map #19").after(background_circle);
 
   // Create a <text> element
   let data_number = document.createElementNS(path.namespaceURI, "text");
@@ -134,7 +149,7 @@ onMounted(async () => {
     const news = await use_news_store().index_provinces_news({
       provinceid: e.id,
     });
-    
+
     append_map_stats(
       document.querySelector(`[data-code='${province_name}']`),
       news.length,
@@ -142,7 +157,6 @@ onMounted(async () => {
       custom_attr
     );
 
-    // console.log(get_provinces_news.value.filter((v) => v.provinceid == e.id))
   });
 
   $("#iran_map path").click((e) => {

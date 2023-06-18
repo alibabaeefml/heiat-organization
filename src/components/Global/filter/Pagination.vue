@@ -6,11 +6,13 @@
     <v-btn
       prepend-icon="mdi-chevron-left"
       color="primary"
+      :variant="active_page !== 1 ? 'elevated' : 'outlined'"
       @click="active_page > 1 ? active_page-- : null"
       >قبل</v-btn
     >
     <v-btn
       min-width="10"
+      style="border-radius: 10px"
       width="10"
       :variant="active_page == i ? 'elevated' : 'outlined'"
       color="primary"
@@ -22,6 +24,7 @@
       append-icon="mdi-chevron-right"
       color="primary"
       @click="active_page < pages_count ? active_page++ : null"
+      :variant="active_page + 1 > pages_count ? 'outlined' : 'elevated'"
       >بعد</v-btn
     >
   </div>

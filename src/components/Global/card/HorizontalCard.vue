@@ -4,7 +4,7 @@
       class="rounded-xl"
       cover
       :width="data.img_width || 'auto'"
-      :height="data.img_height || 'auto'"
+      :height="data.img_height || '120px'"
       :src="data.img || default_img"
     ></v-img>
 

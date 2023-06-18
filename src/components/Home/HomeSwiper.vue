@@ -35,6 +35,7 @@
         </p>
         <v-btn
           :to="{ path: slide.btn_link }"
+          class="font-weight-bold"
           variant="outlined"
           color="secondary"
           text="ادامه مطلب"
@@ -45,16 +46,16 @@
     <div
       class="position-absolute d-flex justify-space-between"
       :style="
-        (useDisplay().smAndUp.value ? 'top: 70%' : 'bottom:0') +
+        (useDisplay().smAndUp.value ? 'top: 75%' : 'bottom:0') +
         ';left: 5%; width: 90%;  z-index: 10;'
       "
     >
       <v-btn
-        class="next-slide"
+        class="next-slide text-primary"
         icon="mdi-arrow-right"
         color="secondary"
       ></v-btn>
-      <v-btn class="prev-slide" icon="mdi-arrow-left" color="secondary"></v-btn>
+      <v-btn class="prev-slide text-primary"  icon="mdi-arrow-left" color="secondary" ></v-btn>
     </div>
   </swiper>
 </template>

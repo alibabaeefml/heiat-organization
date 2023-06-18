@@ -2,7 +2,7 @@
   <section class="wrapper bg-secondary-3 position-relative">
     <div class="position-relative pa-16" style="z-index: 11">
       <div
-        class="d-flex gap-1 flex-md-row flex-column align-end justify-space-between"
+        class="d-flex align-center gap-1 flex-md-row flex-column justify-space-between"
       >
         <TextGroup
           :title="language.value.index_sec4_news_title"
@@ -24,10 +24,10 @@
               width: '100%',
               img_height: '310px',
               card_theme: 'secondary',
-              title: latest_news.title,
-              text: latest_news.lead,
-              img: latest_news.thumbnail,
-              link: { name: 'SingleNews', params: { id: latest_news.id || 1 } },
+              title: latest_news?.title,
+              text: latest_news?.lead,
+              img: latest_news?.thumbnail,
+              link: { name: 'SingleNews', params: { id: latest_news?.id || 1 } },
             }"
           />
         </v-col>
@@ -63,7 +63,6 @@ const latest_news = ref({});
 
 const get_latest_news = async () => {
   latest_news.value = await use_news_store().show_news({
-    limit: 1,
     page: 1,
   });
 };

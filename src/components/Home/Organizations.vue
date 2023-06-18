@@ -14,7 +14,6 @@
           <div class="d-flex flex-wrap justify-center gap-1">
             <VerticalCard
               :data="{
-                card_theme: 'primary',
                 width: useDisplay().smAndUp.value ? '270px' : null,
                 title: organ.title,
                 text: organ.text,
@@ -25,6 +24,7 @@
                   params: { scroll_to: organ?.id },
                 },
               }"
+              background="#fff"
               :is_cover="false"
               v-for="organ in get_organizations"
             />

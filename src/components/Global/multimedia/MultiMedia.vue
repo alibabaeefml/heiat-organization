@@ -8,7 +8,11 @@
         :class="center ? 'text-center mx-auto w-75' : ''"
         :title_class="'text-' + theme"
       />
-      <v-tabs :color="theme" grow v-model="media_tab">
+      <v-tabs
+        :color="theme"
+        grow
+        v-model="media_tab"
+      >
         <v-tab value="photos">آلبوم تصاویر</v-tab>
         <v-tab value="videos">فیلم</v-tab>
         <v-tab value="audios">صوت</v-tab>
@@ -17,6 +21,10 @@
       <v-window v-model="media_tab">
         <v-window-item value="photos">
           <Photos />
+          <div class="w-100 flex justify-center">
+            <v-btn color="primary">نمایش همه</v-btn>
+          </div>
+          
         </v-window-item>
         <v-window-item value="videos">
           <Videos />
@@ -47,8 +55,14 @@ const props = defineProps({
 });
 </script>
 
-<style scoped>
+<style>
 .v-tab {
   font-weight: 900;
+  font-size: 15px;
+  color: var(--primary);
+  flex: unset !important;
+}
+.v-slide-group__content {
+  justify-content: center !important;
 }
 </style>

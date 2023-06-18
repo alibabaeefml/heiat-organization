@@ -70,7 +70,8 @@ import Comments from "@/components/Global/comment/Comments.vue";
 import VerticalCard from "@/components/Global/card/VerticalCard.vue";
 import Actions from "@/components/Global/button_group/Actions.vue";
 import { use_news_store } from "@/store/news";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+import { watch } from "vue";
 
 const news = ref({});
 const relevants = ref([]);
@@ -84,5 +85,7 @@ const load_data = async () => {
 };
 
 load_data();
+const route = useRoute();
+watch(route, load_data);
 const rating = ref();
 </script>

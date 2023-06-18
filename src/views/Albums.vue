@@ -46,7 +46,7 @@
               />
             </v-col>
             <v-col cols="12">
-              <Pagination :pages_count="pages" @callback="paginate" />
+              <Pagination :pages_count="pages" @callback="paginate"  />
             </v-col>
           </v-row>
           <div
@@ -93,6 +93,6 @@ load_data();
 const filter_key = ref(false);
 
 const paginate = (page_number) => {
-  use_photo_store().index_news({ page: page_number.value });
+  use_photo_store().index_albums({ page: page_number.value });
 };
 </script>

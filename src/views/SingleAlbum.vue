@@ -69,6 +69,7 @@ const load_data = async () => {
 };
 
 load_data();
-
+const route = useRoute();
+watch(route, load_data);
 const rating = ref();
 </script>
