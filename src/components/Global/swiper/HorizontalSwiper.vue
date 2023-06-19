@@ -1,48 +1,48 @@
 <template>
-  <Swiper
-    :modules="modules"
+  <swiper-container
     class="w-100"
     autoplay
     loop
-    :slides-per-view="useDisplay().xs.value ? 1 : slides_per_view"
+    :slides-per-view="useDisplay().xs.value ? 1 : 4"
     :space-between="20"
     :navigation="navigation_options"
+    @progress="onProgress"
+    @slidechange="onSlideChange"
   >
-    <SwiperSlide v-for="item in slides" :key="item.id">
-      <VerticalCard
+    <swiper-slide v-for="item in slides" :key="item.id"
+      ><VerticalCard
         :data="{
           title: item.title,
           text: item.lead,
           img: item.thumbnail,
           link: { name: route_name, params: { id: item.id } },
         }"
-      />
-    </SwiperSlide>
-  </Swiper>
+        center_link="true"
+    /></swiper-slide>
+  </swiper-container>
 </template>
 
 <script setup>
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
-
 import { useDisplay } from "vuetify/lib/framework.mjs";
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from "swiper/vue";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
 import VerticalCard from "../card/VerticalCard.vue";
 
-const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay];
+import { register } from "swiper/element/bundle";
+
+register();
 
 const navigation_options = {
-  nextEl: ".next-slide",
-  prevEl: ".prev-slide",
+  nextEl: "#horizontal_swiper_next_slide",
+  prevEl: "#horizontal_swiper_prev_slide",
 };
 
+const onProgress = (e) => {
+  const [swiper, progress] = e.detail;
+};
+
+const onSlideChange = (e) => {};
+
 const props = defineProps({
-  slides: { default: 5 },
-  slides_per_view: { default: 4 },
-  route_name: { default: "" },
+  slides: { default: [] },
+  
 });
 </script>

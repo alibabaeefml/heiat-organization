@@ -113,5 +113,16 @@ circle.active + text {
 .prev-slide,
 .next-slide {
   color: var(--primary) !important;
+  width: 40px !important;
+  height: 40px !important;
 }
+.prev-slide:disabled,
+.next-slide:disabled {
+  color: var(--primary) !important;
+  background-color: transparent !important;
+  background: unset !important;
+  border: var(--primary) 2px solid;
+}
+
+
 </style>

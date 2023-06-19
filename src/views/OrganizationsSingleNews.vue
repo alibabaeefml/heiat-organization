@@ -84,6 +84,7 @@
                 text: item.lead,
                 link: { name: 'OrganizationsSingleNews', id: item.id },
               }"
+              center_link="true"
               v-for="item in relevants"
               :key="item.id"
             />

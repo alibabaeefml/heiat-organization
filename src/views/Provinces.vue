@@ -67,6 +67,7 @@
                     title: item.title,
                     text: item.lead,
                   }"
+                  center_link="true"
                 />
               </v-col>
               <v-col cols="12">

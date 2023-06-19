@@ -13,6 +13,7 @@ export const use_news_store = defineStore("news", () => {
     if ([200, 201].includes(response.status)) {
       news.value = response.data.data;
       use_paginate_store().state = response.data.pages;
+     
       return response.data.data;
     }
   };
@@ -38,6 +39,7 @@ export const use_news_store = defineStore("news", () => {
     if ([200, 201].includes(response.status)) {
       use_paginate_store().state = response.data.pages;
       provinces_news.value = response.data.data;
+  
       return response.data.data;
     }
   };

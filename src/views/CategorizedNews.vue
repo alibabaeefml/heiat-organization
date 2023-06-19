@@ -24,11 +24,13 @@
           <div class="d-flex align-center justify-space-between w-100 gap-1">
             <v-btn
               class="next-slide"
+              id="primary_news_next_slide"
               icon="mdi-arrow-right"
               color="secondary"
             ></v-btn>
             <v-btn
               class="prev-slide"
+              id="primary_news_prev_slide"
               icon="mdi-arrow-left"
               color="secondary"
             ></v-btn>
@@ -99,6 +101,7 @@
               class="next-slide"
               icon="mdi-arrow-right"
               color="secondary"
+              id="horizontal_swiper_next_slide"
             ></v-btn>
             <v-btn
               color="primary"
@@ -107,6 +110,7 @@
               >نمایش همه</v-btn
             >
             <v-btn
+              id="horizontal_swiper_prev_slide"
               class="prev-slide"
               icon="mdi-arrow-left"
               color="secondary"

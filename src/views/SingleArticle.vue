@@ -49,6 +49,7 @@
           <v-spacer class="my-5"></v-spacer>
           <VerticalCard
             v-for="item in relevants"
+            center_link="true"
             :data="{
               card_theme: 'primary',
               title: item.title,

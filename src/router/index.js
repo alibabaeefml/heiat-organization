@@ -229,4 +229,6 @@ const router = createRouter({
 router.beforeEach((to, from) => {
   document.title = to.meta.title;
 });
+
+
 export default router;

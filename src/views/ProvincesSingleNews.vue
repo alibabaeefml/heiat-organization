@@ -45,6 +45,7 @@
           <h2 class="text-primary">اخبار مرتبط</h2>
           <v-spacer class="my-5"></v-spacer>
           <VerticalCard
+          center_link="true"
             v-for="item in relevants"
             :data="{
               card_theme: 'primary',

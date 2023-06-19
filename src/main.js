@@ -17,13 +17,9 @@ import default_img from "@/assets/images/default-image.webp";
 import default_avatar from "@/assets/images/default-image.webp";
 import { use_language_store } from "./store/language";
 import { storeToRefs } from "pinia";
-
 const app = createApp(App);
 
-
 registerPlugins(app);
-
-
 
 use_language_store().index_data();
 const { get_data } = storeToRefs(use_language_store());
@@ -34,4 +30,6 @@ app.config.globalProperties.default_avatar = default_avatar;
 app.config.globalProperties.language = get_data;
 
 app.mount("#app");
+
+
 

@@ -1,89 +1,43 @@
 <template>
-  <Swiper
-    :modules="modules"
+  <swiper-container
     class="w-100"
     autoplay
     loop
+    :slides-per-view="1"
     :space-between="20"
     :navigation="navigation_options"
+    @progress="onProgress"
+    @slidechange="onSlideChange"
   >
-    <SwiperSlide v-for="item in slides.slice(0, 3)" :key="item.id">
+    <swiper-slide v-for="slide in slides" :key="slides.id">
       <HorizontalCard
         :data="{
-          img_width: useDisplay().smAndUp.value ? '200px' : '100%',
-          title: item.title,
-          text: item.lead,
-          img: item.thumbnail,
-          link: { name: 'SingleNews', params: { id: item.id } },
+          img_width: '200px',
+          title: slide.title,
+          text: slide.lead,
+          img: slide.thumbnail,
+          link: { name: 'SingleNews', params: { id: slide.id } },
         }"
       />
-    </SwiperSlide>
-  </Swiper>
-  <Swiper
-    :modules="modules"
-    class="w-100"
-    autoplay
-    loop
-    :space-between="20"
-    :navigation="navigation_options"
-    v-if="slides.length >= 6"
-  >
-    <SwiperSlide v-for="item in slides.slice(3, 6)" :key="item.id">
-      <HorizontalCard
-        :data="{
-          img_width: useDisplay().smAndUp.value ? '200px' : '100%',
-          title: item.title,
-          text: item.lead,
-          img: item.thumbnail,
-          link: { name: 'News', params: { id: item.id } },
-        }"
-      />
-    </SwiperSlide>
-  </Swiper>
-  <Swiper
-    :modules="modules"
-    class="w-100"
-    autoplay
-    loop
-    :space-between="20"
-    :navigation="navigation_options"
-    v-if="slides.length > 6"
-  >
-    <SwiperSlide v-for="item in slides.slice(6)" :key="item.id">
-      <HorizontalCard
-        :data="{
-          img_width: useDisplay().smAndUp.value ? '200px' : '100%',
-          title: item.title,
-          text: item.lead,
-          img: item.thumbnail,
-          link: { name: 'News', params: { id: item.id } },
-        }"
-      />
-    </SwiperSlide>
-  </Swiper>
+    </swiper-slide>
+  </swiper-container>
 </template>
 
 <script setup>
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
+import { register } from "swiper/element/bundle";
+
+register();
 import HorizontalCard from "@/components/Global/card/HorizontalCard.vue";
 
 import { useDisplay } from "vuetify/lib/framework.mjs";
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from "swiper/vue";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-
-const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay];
+// import function to register Swiper custom elements
 
 const navigation_options = {
-  nextEl: ".next-slide",
-  prevEl: ".prev-slide",
+  nextEl: "#primary_news_next_slide",
+  prevEl: "#primary_news_prev_slide",
 };
 
 const props = defineProps({
   slides: { default: [], type: Array },
 });
-
 </script>
