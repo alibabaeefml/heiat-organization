@@ -84,12 +84,12 @@ p.limited {
 .jvectormap-region.jvectormap-element.active {
   fill: var(--primary);
 }
-circle.active + text {
-  fill: var(--primary) !important;
+circle.active {
+  fill: var(--secondary) !important;
   pointer-events: none;
 }
-circle.active {
-  fill: var(--secondary-3) !important;
+circle.active + text {
+  fill: var(--primary) !important;
   pointer-events: none;
 }
 .pattern-div {

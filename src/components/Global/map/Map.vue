@@ -17,6 +17,7 @@ import { use_news_store } from "@/store/news";
 import { use_province_store } from "@/store/province";
 import { storeToRefs } from "pinia";
 import { watch } from "vue";
+import { ref } from "vue";
 import { computed } from "vue";
 import { onMounted } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
@@ -27,20 +28,16 @@ const props = defineProps({
 const { get_all_provinces } = storeToRefs(use_province_store());
 
 const calc_circle_radient = (key) => {
-  switch (key) {
-    case value < 10:
-      return 8;
-    case value > 10 && value < 50:
-      return 10;
-    case value > 50:
-      return 13;
-
-    default:
-      return 8;
+  if (key < 10) {
+    return 8;
+  } else if (key >= 10 && key <= 50) {
+    return 10;
+  } else {
+    return 13;
   }
 };
 
- function append_map_stats(path, statistic_data, data_code, attrs = {}) {
+function append_map_stats(path, statistic_data, data_code, attrs = {}) {
   let bbox = path.getBBox();
   let x = bbox.x + bbox.width / 2;
   let y = bbox.y + bbox.height / 2;
@@ -49,7 +46,7 @@ const calc_circle_radient = (key) => {
     circle: {
       cx: x,
       cy: y,
-      r: 8,
+      r: calc_circle_radient(statistic_data),
       id: path.id,
       "data-code": data_code,
       style: `pointerEvents: none;
@@ -91,6 +88,10 @@ const calc_circle_radient = (key) => {
   }
 
   background_circle.after(data_number);
+
+  if (selected.value.id == path.id) {
+    select_province(path.id);
+  }
 }
 
 onMounted(async () => {
@@ -156,23 +157,23 @@ onMounted(async () => {
       province_name,
       custom_attr
     );
-
   });
 
   $("#iran_map path").click((e) => {
     select_province(e.currentTarget.id);
   });
-
-  select_province(selected.value.id);
 });
 
 const emit = defineEmits(["select_province"]);
+
 const select_province = (id) => {
-  $("path[data-code]").removeClass("active");
-  $(`path#${id}`).addClass("active");
+  $("path[data-code], circle").removeClass("active");
+  $(`path#${id}, circle[id=${id}]`).addClass("active");
   emit("select_province", id);
 };
+
 const selected = computed(() => props.province);
+
 watch(selected, () => select_province(selected.value.id));
 </script>
 
