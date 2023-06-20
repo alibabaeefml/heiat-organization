@@ -59,11 +59,13 @@
                       img: item.thumbnail,
                       title: item.title,
                       text: item.lead,
-                      card_theme:'primary'
+                      card_theme: 'primary',
                     }"
                     :show_link="false"
                     play_icon="true"
-                    @click="selected_video = item"
+                    @click="
+                      selected_video = item;
+                    "
                   />
                 </v-col>
               </v-row>
@@ -120,4 +122,6 @@ const filter_key = ref(false);
 const paginate = (page_number) => {
   store.index_videos({ page: page_number.value });
 };
+
+
 </script>

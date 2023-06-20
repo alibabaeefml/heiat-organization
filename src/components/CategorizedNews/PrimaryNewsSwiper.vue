@@ -6,8 +6,6 @@
     :slides-per-view="1"
     :space-between="20"
     :navigation="navigation_options"
-    @progress="onProgress"
-    @slidechange="onSlideChange"
   >
     <swiper-slide v-for="slide in slides" :key="slides.id">
       <HorizontalCard

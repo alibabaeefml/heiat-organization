@@ -1,83 +1,88 @@
 <template>
-  <swiper
-    :slides-per-view="1"
-    :space-between="50"
-    :class="{
-      'w-75': useDisplay().mdAndUp.value,
-      'w-100': useDisplay().mdAndDown.value,
-      'pa-5': true,
-    }"
-    style="margin-top: 100px"
-    :modules="modules"
-    :navigation="navigation_options"
-    loop
-    autoplay
-   
-  >
-    <swiper-slide v-for="slide in slides" :key="slide">
-      <v-img
-        class="rounded-xl"
-        cover
-        :src="slide.img || default_img"
-        height="300px"
-      ></v-img>
-      <div
-        :class="
-          (useDisplay().smAndUp.value ? 'w-75 ' : '') +
-          'mx-auto d-flex flex-column align-center gap-1 mt-5'
-        "
-      >
-        <h2 class="text-secondary next">
-          {{ slide.title || "عنوان اسلاید" }}
-        </h2>
-        <p class="text-white limited">
-          {{ slide.lead || persian_lorem }}
-        </p>
-        <v-btn
-          :to="{ path: slide.btn_link }"
-          class="font-weight-bold"
-          variant="outlined"
-          color="secondary"
-          text="ادامه مطلب"
+  <div class="position-relative">
+    <swiper-container
+      :slides-per-view="1"
+      :space-between="50"
+      :class="{
+        'w-75': useDisplay().mdAndUp.value,
+        'w-100': useDisplay().mdAndDown.value,
+        'pa-5': true,
+      }"
+      style="margin-top: 100px"
+      :navigation="navigation_options"
+      
+      autoplay
+    >
+      <swiper-slide v-for="slide in slides" :key="slide">
+        <v-img
+          class="rounded-xl"
+          cover
+          :src="slide.img || default_img"
+          height="300px"
+        ></v-img>
+        <div
+          :class="
+            (useDisplay().smAndUp.value ? 'w-75 ' : '') +
+            'mx-auto d-flex flex-column align-center gap-1 mt-5'
+          "
         >
-        </v-btn>
-      </div>
-    </swiper-slide>
+          <h2 class="text-secondary next">
+            {{ slide.title || "عنوان اسلاید" }}
+          </h2>
+          <p class="text-white limited">
+            {{ slide.lead || persian_lorem }}
+          </p>
+          <v-btn
+            :to="{ path: slide.btn_link }"
+            class="font-weight-bold"
+            variant="outlined"
+            color="secondary"
+            text="ادامه مطلب"
+          >
+          </v-btn>
+        </div>
+      </swiper-slide>
+    </swiper-container>
     <div
       class="position-absolute d-flex justify-space-between"
+      id="home-swiper-navigation"
       :style="
-        (useDisplay().smAndUp.value ? 'top: 75%' : 'bottom:0') +
-        ';left: 5%; width: 90%;  z-index: 10;'
+        (useDisplay().smAndUp.value ? 'top: 80%' : 'bottom:0') +
+        ';left: 15%; width: 70%;  z-index: 10;'
       "
     >
       <v-btn
-        class="next-slide text-primary"
+        class="next-slide"
+        id="home_swiper_next_slide"
         icon="mdi-arrow-right"
         color="secondary"
       ></v-btn>
-      <v-btn class="prev-slide text-primary"  icon="mdi-arrow-left" color="secondary" ></v-btn>
+      <v-btn
+        class="prev-slide"
+        id="home_swiper_prev_slide"
+        icon="mdi-arrow-left"
+        color="secondary"
+      ></v-btn>
     </div>
-  </swiper>
+  </div>
 </template>
 
 <script setup>
+import { register } from "swiper/element/bundle";
+
+register();
+
 import { useDisplay } from "vuetify/lib/framework.mjs";
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
+// import function to register Swiper custom elements
 
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from "swiper/vue";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import { computed, ref } from "vue";
-
-const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay];
-
-let navigation_options = {
-  nextEl: ".next-slide",
-  prevEl: ".prev-slide",
+const navigation_options = {
+  nextEl: "#home_swiper_next_slide",
+  prevEl: "#home_swiper_prev_slide",
 };
 
-const props = defineProps(["slides"]);
+const props = defineProps({
+  slides: { default: [], type: Array },
+});
 </script>
+
+<style scooped></style>

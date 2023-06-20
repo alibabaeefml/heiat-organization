@@ -24,10 +24,13 @@
               width: '100%',
               img_height: '310px',
               card_theme: 'secondary',
-              title: latest_news?.title,
-              text: latest_news?.lead,
-              img: latest_news?.thumbnail,
-              link: { name: 'SingleNews', params: { id: latest_news?.id || 1 } },
+              title: get_news[0]?.title,
+              text: get_news[0]?.lead,
+              img: get_news[0]?.thumbnail,
+              link: {
+                name: 'SingleNews',
+                params: { id: get_news[0]?.id || 1 },
+              },
             }"
           />
         </v-col>
@@ -59,14 +62,7 @@ import { ref } from "vue";
 use_news_store().index_news();
 const { get_news } = storeToRefs(use_news_store());
 
-const latest_news = ref({});
 
-const get_latest_news = async () => {
-  latest_news.value = await use_news_store().show_news({
-    page: 1,
-  });
-};
-get_latest_news();
 </script>
 
 <style scoped>

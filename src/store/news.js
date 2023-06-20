@@ -21,7 +21,7 @@ export const use_news_store = defineStore("news", () => {
   const show_news = async (filters = null) => {
     const response = await axios.get(url("news", filters));
     if ([200, 201].includes(response.status)) {
-      return response.data.data[0];
+      return response.data;
     }
   };
   const index_news_categories = async () => {

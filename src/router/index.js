@@ -76,6 +76,7 @@ const routes = [
         meta: {
           title: "تک ویژه نامه",
           theme: "light",
+          footer_theme_class: "bg-secondary-2",
         },
       },
       {
@@ -121,6 +122,7 @@ const routes = [
         meta: {
           title: "ویژه نامه",
           theme: "light",
+          footer_theme_class: "bg-secondary-2",
         },
       },
       {
@@ -148,6 +150,7 @@ const routes = [
         meta: {
           title: "چند رسانه ای",
           theme: "light",
+          footer_theme_class: "bg-secondary-2",
         },
       },
       {
@@ -229,6 +232,5 @@ const router = createRouter({
 router.beforeEach((to, from) => {
   document.title = to.meta.title;
 });
-
 
 export default router;

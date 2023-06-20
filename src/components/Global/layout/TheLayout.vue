@@ -89,7 +89,7 @@
             <v-menu open-on-hover>
               <template v-slot:activator="{ props }">
                 <router-link
-                  :to="{ name: 'MultiMedia' }"
+                  to="#"
                   :class="{
                     link: true,
                     dark: theme == 'dark',
@@ -143,6 +143,16 @@
                   }"
                 >
                   مقاله
+                </router-link>
+                <router-link
+                  :to="{ name: 'MultiMedia' }"
+                  :class="{
+                    link: true,
+                    dark: theme == 'dark',
+                    active: router_name == 'MultiMedia',
+                  }"
+                >
+                  همه
                 </router-link>
               </v-list>
             </v-menu>
@@ -248,16 +258,70 @@
           >
             اخبار
           </router-link>
-          <router-link
-            :to="{ name: 'MultiMedia' }"
-            :class="{
-              link: true,
-              dark: false,
-              active: router_name == 'MultiMedia',
-            }"
-          >
-            چندرسانه ای
-          </router-link>
+          <v-menu open-on-hover open-on-click>
+            <template v-slot:activator="{ props }">
+              <router-link
+                to=""
+                :class="{
+                  link: true,
+                  active: router_name == 'MultiMedia',
+                }"
+                v-bind="props"
+              >
+                چندرسانه ای
+              </router-link>
+            </template>
+
+            <v-list
+              class="mt-1 d-flex flex-column gap-1 text-center bg-secondary"
+            >
+              <router-link
+                :to="{ name: 'Videos' }"
+                :class="{
+                  link: true,
+                  active: router_name == 'Videos',
+                }"
+              >
+                فیلم
+              </router-link>
+              <router-link
+                :to="{ name: 'Audios' }"
+                :class="{
+                  link: true,
+                  active: router_name == 'Audios',
+                }"
+              >
+                صوت
+              </router-link>
+              <router-link
+                :to="{ name: 'Albums' }"
+                :class="{
+                  link: true,
+                  active: router_name == 'Albums',
+                }"
+              >
+                آلبوم
+              </router-link>
+              <router-link
+                :to="{ name: 'Articles' }"
+                :class="{
+                  link: true,
+                  active: router_name == 'Articles',
+                }"
+              >
+                مقاله
+              </router-link>
+              <router-link
+                :to="{ name: 'MultiMedia' }"
+                :class="{
+                  link: true,
+                  active: router_name == 'MultiMedia',
+                }"
+              >
+                همه
+              </router-link>
+            </v-list>
+          </v-menu>
           <router-link
             :to="{ name: 'AboutUs' }"
             :class="{
@@ -293,7 +357,10 @@
             class="pt-5 d-flex flex-column pa-0"
             color="#FAF8E8"
           >
-            <v-row class="py-3 px-16 w-100" :no-gutters="useDisplay().mdAndUp.value">
+            <v-row
+              class="py-3 px-16 w-100"
+              :no-gutters="useDisplay().mdAndUp.value"
+            >
               <v-col cols="12" md="4" class="d-flex flex-column gap-1">
                 <div class="d-flex flex-column">
                   <router-link
@@ -385,7 +452,7 @@
                     <router-link
                       :style="{
                         width: useDisplay().xs.value ? '50%' : '160px',
-                        margin:'auto'
+                        margin: 'auto',
                       }"
                       :to="get_settings?.footer_icon1_link || '/home'"
                     >
@@ -398,7 +465,7 @@
                     <router-link
                       :style="{
                         width: useDisplay().xs.value ? '50%' : '160px',
-                        margin:'auto'
+                        margin: 'auto',
                       }"
                       :to="get_settings?.footer_icon1_link || '/home'"
                     >
@@ -411,7 +478,7 @@
                     <router-link
                       :style="{
                         width: useDisplay().xs.value ? '50%' : '160px',
-                        margin:'auto'
+                        margin: 'auto',
                       }"
                       :to="get_settings?.footer_icon1_link || '/home'"
                     >
@@ -425,7 +492,7 @@
                 </div>
               </v-col>
             </v-row>
-            <div class="bg-primary w-100">
+            <div class="w-100" :class="footer_theme_class || 'bg-primary'">
               <div
                 class="d-flex align-center w-100 flex-sm-row flex-column justify-space-between pa-3 px-16"
               >
@@ -524,6 +591,10 @@ const visit_stat = ref();
 
 const { get_settings } = storeToRefs(use_settings_store());
 use_settings_store().index_settings();
+
+const footer_theme_class = computed(
+  () => router.currentRoute.value.meta.footer_theme_class
+);
 </script>
 
 <style scoped>

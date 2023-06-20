@@ -110,19 +110,25 @@ circle.active + text {
   border-radius: 1rem;
 }
 
-.prev-slide,
-.next-slide {
+button[class*=-slide] {
   color: var(--primary) !important;
   width: 40px !important;
   height: 40px !important;
 }
-.prev-slide:disabled,
-.next-slide:disabled {
+button[class*=-slide]:disabled,
+button[class*=-slide][aria-disabled=true]
+ {
   color: var(--primary) !important;
   background-color: transparent !important;
   background: unset !important;
   border: var(--primary) 2px solid;
 }
-
+#home-swiper-navigation [class*=-slide]:disabled,
+#home-swiper-navigation [class*=-slide][aria-disabled=true] {
+  color: var(--secondary) !important;
+  background-color: transparent !important;
+  background: unset !important;
+  border: var(--secondary) 2px solid;
+}
 
 </style>
