@@ -1,4 +1,4 @@
-const base_url = "https://sazmanheyat.ir/api/";
+const base_url = "https://admin.sazmanheyat.ir/api/";
 
 const create_filters = (filters = null) => {
   if (filters) {
