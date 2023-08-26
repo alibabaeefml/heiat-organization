@@ -19,6 +19,7 @@
       class="menu-item"
       style="position: absolute; left: 30px; bottom: 70px;"
       :to="{ name: 'Provinces' }"
+      disabled
     >
       <v-img
         src="@/assets/images/provinces-white-icon.png"
@@ -34,6 +35,7 @@
       class="menu-item"
       style="position: absolute; left: 95px; bottom: 50px"
       :to="{ name: 'Organizations' }"
+      disabled
     >
       <v-img src="@/assets/images/ipo-white-icon.png" width="20" cover></v-img>
       <v-tooltip activator="parent"> مجامع میان تخصصی </v-tooltip>
@@ -44,6 +46,7 @@
       size="small"
       class="menu-item"
       style="position: absolute; left: 155px; bottom: 40px"
+      disabled
     >
       <v-img
         src="@/assets/images/e-services-white-icon.png"
@@ -59,7 +62,7 @@
       size="small"
       class="menu-item"
       style="position: absolute; right: 30px; bottom: 70px;"
-      :to="{ name: 'CategorizedNews' }"
+      :to="{ name: 'ReporterNews' }"
     >
       <v-img src="@/assets/images/news-white-icon.png" width="20" cover></v-img>
       <v-tooltip activator="parent" location="right"> اخبار </v-tooltip>
@@ -70,6 +73,7 @@
       size="small"
       class="menu-item"
       style="position: absolute; right: 95px; bottom: 50px"
+      disabled
     >
       <v-img
         src="@/assets/images/events-white-icon.png"
@@ -85,6 +89,7 @@
       class="menu-item"
       style="position: absolute; right: 155px; bottom: 40px"
       :to="{ name: 'MultiMedia' }"
+      disabled
     >
       <v-img
         src="@/assets/images/multimedia-white-icon.png"

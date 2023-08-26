@@ -70,6 +70,25 @@ export const use_news_store = defineStore("news", () => {
       return response.data;
     }
   };
+  // Reporter News
+  const reporter_news = ref([]);
+  const get_reporter_news = computed(() => reporter_news.value);
+
+  const index_reporter_news = async (filters = null) => {
+    const response = await axios.get(url("khabarnegarnews", filters));
+    if ([200, 201].includes(response.status)) {
+      reporter_news.value = response.data.data;
+      use_paginate_store().state = response.data.pages;
+      return response.data.data;
+    }
+  };
+
+  const show_reporter_news = async (filters = null) => {
+    const response = await axios.get(url("khabarnegarnews", filters));
+    if ([200, 201].includes(response.status)) {
+      return response.data;
+    }
+  };
 
   // Special News
   const special_news = ref([]);
@@ -102,5 +121,8 @@ export const use_news_store = defineStore("news", () => {
     index_special_news,
     show_special_news,
     get_special_news,
+    index_reporter_news,
+    show_reporter_news,
+    get_reporter_news,
   };
 });

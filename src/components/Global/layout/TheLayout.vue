@@ -20,7 +20,7 @@
         }"
       >
         <div class="d-flex flex-column align-center">
-          <router-link :to="{ name: 'Home' }">
+          <router-link :to="{ name: 'Intro' }">
             <v-img width="60" height="60" :src="get_settings?.logo"> </v-img>
           </router-link>
           <span
@@ -55,7 +55,7 @@
           >
             صفحه اصلی
           </router-link>
-          <router-link
+          <!-- <router-link
             :to="{ name: 'Provinces' }"
             :class="{
               link: true,
@@ -74,8 +74,18 @@
             }"
           >
             تشکل های میان تخصصی
-          </router-link>
+          </router-link> -->
           <router-link
+            :to="{ name: 'ReporterNews' }"
+            :class="{
+              link: true,
+              dark: theme == 'dark',
+              active: router_name == 'ReporterNews',
+            }"
+          >
+            اخبار پویش خبرنگار
+          </router-link>
+ <!-- <router-link
             :to="{ name: 'CategorizedNews' }"
             :class="{
               link: true,
@@ -84,8 +94,8 @@
             }"
           >
             اخبار
-          </router-link>
-          <div>
+          </router-link> -->
+                   <!-- <div>
             <v-menu open-on-hover>
               <template v-slot:activator="{ props }">
                 <router-link
@@ -177,7 +187,8 @@
             }"
           >
             تماس با ما
-          </router-link>
+          </router-link> -->
+         
         </div>
         <v-btn
           variant="text"
@@ -228,7 +239,7 @@
           >
             صفحه اصلی
           </router-link>
-          <router-link
+          <!-- <router-link
             :to="{ name: 'Provinces' }"
             :class="{
               link: true,
@@ -247,8 +258,8 @@
             }"
           >
             تشکل های میان تخصصی
-          </router-link>
-          <router-link
+          </router-link> -->
+          <!-- <router-link
             :to="{ name: 'CategorizedNews' }"
             :class="{
               link: true,
@@ -257,8 +268,18 @@
             }"
           >
             اخبار
+          </router-link> -->
+          <router-link
+            :to="{ name: 'ReporterNews' }"
+            :class="{
+              link: true,
+              dark: false,
+              active: router_name == 'ReporterNews',
+            }"
+          >
+            اخبار پویش خبرنگار
           </router-link>
-          <v-menu open-on-hover open-on-click>
+          <!-- <v-menu open-on-hover open-on-click>
             <template v-slot:activator="{ props }">
               <router-link
                 to=""
@@ -341,7 +362,7 @@
             }"
           >
             تماس با ما
-          </router-link>
+          </router-link> -->
         </div>
       </v-navigation-drawer>
 
@@ -389,7 +410,7 @@
               >
                 <h3 class="text-primary">دسترسی سریع</h3>
                 <v-row class="mt-2 font-weight-bold"
-                  ><v-col cols="6" class="d-flex flex-column align-center">
+                  ><v-col cols="12" class="d-flex flex-column align-center">
                     <v-btn
                       variant="text"
                       :active="false"
@@ -399,6 +420,14 @@
                       صفحه اصلی
                     </v-btn>
                     <v-btn
+                      variant="text"
+                      :active="false"
+                      :to="{ name: 'ReporterNews' }"
+                      width="max-content"
+                    >
+                      اخبار پویش خبرنگار
+                    </v-btn>
+                    <!-- <v-btn
                       variant="text"
                       :active="false"
                       :to="{ name: 'AboutUs' }"
@@ -413,10 +442,10 @@
                       width="max-content"
                     >
                       تماس با ما
-                    </v-btn>
+                    </v-btn> -->
                   </v-col>
-                  <v-col cols="6" class="d-flex flex-column align-center">
-                    <v-btn
+                  <!-- <v-col cols="6" class="d-flex flex-column align-center">
+                     <v-btn
                       variant="text"
                       :active="false"
                       :to="{ name: 'Organizations' }"
@@ -439,8 +468,8 @@
                       width="max-content"
                     >
                       گالری
-                    </v-btn>
-                  </v-col>
+                    </v-btn> 
+                  </v-col> -->
                 </v-row>
               </v-col>
               <v-col cols="12" md="4">

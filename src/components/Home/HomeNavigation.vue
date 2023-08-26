@@ -26,7 +26,7 @@
         />
       </svg>
     </nav-item>
-    <nav-item name="استان ها" route_name="Provinces">
+    <nav-item name="استان ها" route_name="">
       <svg
         id="Huge-icon_navigation_maps_outline_map-location_06"
         data-name="Huge-icon/navigation maps/outline/map-location 06"
@@ -50,7 +50,7 @@
         </g>
       </svg>
     </nav-item>
-    <nav-item name="تشکل ها" route_name="Organizations">
+    <nav-item name="تشکل ها" route_name="">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="54.829"
@@ -127,7 +127,7 @@
         </g>
       </svg>
     </nav-item>
-    <nav-item name="اخبار" route_name="CategorizedNews">
+    <nav-item name="اخبار پویش خبرنگار" route_name="ReporterNews">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="45.541"
@@ -165,7 +165,7 @@
         </g>
       </svg>
     </nav-item>
-    <nav-item name="چند رسانه ای" route_name="MultiMedia">
+    <nav-item name="چند رسانه ای" route_name="">
       <svg
         id="Huge-icon_multimedia_and_audio_outline_clapperboard"
         data-name="Huge-icon/multimedia and audio/outline/clapperboard"
@@ -180,7 +180,7 @@
         />
       </svg>
     </nav-item>
-    <nav-item name="معرفی سازمان" route_name="AboutUs">
+    <nav-item name="معرفی سازمان" route_name="">
       <svg
         id="huge-icon_education_outline_book"
         data-name="huge-icon/education/outline/book"
@@ -196,7 +196,7 @@
         />
       </svg>
     </nav-item>
-    <nav-item name="تماس با ما" route_name="ContactUs">
+    <nav-item name="تماس با ما" route_name="">
       <svg
         id="Huge-icon_communication_outline_call-user"
         data-name="Huge-icon/communication/outline/call-user"

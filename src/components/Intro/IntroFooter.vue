@@ -10,7 +10,33 @@
           class="pa-0"
           color="#aaca54"
           style="min-width: unset"
-          :to="{ name: 'Provinces' }"
+          :to="{ name: 'Home' }"
+          :active="false"
+          >صفحه اصلی</v-btn
+        >
+      </li>
+      <span class="mx-1" style="color: #aaca54">|</span>
+
+      <li class="pa-0">
+        <v-btn
+          variant="text"
+          class="pa-0"
+          color="#aaca54"
+          style="min-width: unset"
+          :to="{ name: 'ReporterNews' }"
+          :active="false"
+          >اخبار پویش خبرنگار</v-btn
+        >
+      </li>
+      <!-- <li class="pa-0">
+        
+        <v-btn
+          variant="text"
+          class="pa-0"
+          color="#aaca54"
+          style="min-width: unset"
+          :to="{ name: 'Intro' }"
+          :active="false"
           >استان ها</v-btn
         >
       </li>
@@ -21,7 +47,8 @@
           class="pa-0"
           color="#aaca54"
           style="min-width: unset"
-          :to="{ name: 'Organizations' }"
+          :to="{ name: 'Intro' }"
+          :active="false"
           >مجامع میان تخصصی</v-btn
         >
       </li>
@@ -52,7 +79,8 @@
           class="pa-0"
           color="#aaca54"
           style="min-width: unset"
-          :to="{ name: 'CategorizedNews' }"
+          :to="{ name: 'Intro' }"
+          :active="false"
           >اخبار</v-btn
         >
       </li>
@@ -63,7 +91,8 @@
           class="pa-0"
           color="#aaca54"
           style="min-width: unset"
-          :to="{ name: 'AboutUs' }"
+          :to="{ name: 'Intro' }"
+          :active="false"
           >معرفی سازمان</v-btn
         >
       </li>
@@ -74,7 +103,8 @@
           class="pa-0"
           color="#aaca54"
           style="min-width: unset"
-          :to="{ name: 'MultiMedia' }"
+          :to="{ name: 'Intro' }"
+          :active="false"
           >چندرسانه ای</v-btn
         >
       </li>
@@ -85,13 +115,14 @@
           class="pa-0"
           color="#aaca54"
           style="min-width: unset"
-          :to="{ name: 'ContactUs' }"
+          :to="{ name: 'Intro' }"
+          :active="false"
           >تماس با ما</v-btn
         >
-      </li>
+      </li> -->
     </ul>
     <p style="color: #aaca54">
-      پايگاه اطلاع‌رسانی سازمان هیأت و تشکل های دینی کشور
+      کلیه حقوق این سایت متعلق به سازمان هیأت و تشکل های دینی می باشد.
     </p>
   </v-footer>
 </template>

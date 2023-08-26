@@ -10,7 +10,7 @@
         :data="{
           caption: get_albums[0].title,
           img: get_albums[0].thumbnail,
-          link: { name: 'SingleAlbum', params: { id: get_albums[0].id } },
+          // link: { name: 'SingleAlbum', params: { id: get_albums[0].id } },
         }"
         height="400"
       />
@@ -48,7 +48,7 @@
             :data="{
               caption: album.title,
               img: album.thumbnail,
-              link: { name: 'SingleAlbum', params: { id: album.id } },
+              // link: { name: 'SingleAlbum', params: { id: album.id } },
             }"
           />
         </swiper-slide>

@@ -208,6 +208,24 @@ const routes = [
         },
       },
       {
+        path: "/reporter-news",
+        name: "ReporterNews",
+        component: () => import("@/views/ReporterNews.vue"),
+        meta: {
+          title: "لیست اخبار پویش خبرنگار",
+          theme: "light",
+        },
+      },
+      {
+        path: "/reporter-news/:id",
+        name: "SingleReporterNews",
+        component: () => import("@/views/SingleReporterNews.vue"),
+        meta: {
+          title: "تک خبر پویش خبرنگار",
+          theme: "light",
+        },
+      },
+      {
         path: "/:pathMatch(.*)*",
         name: "PageNotFound",
         component: () => import("@/views/PageNotFound.vue"),

@@ -16,7 +16,7 @@
           title: news_item.title,
           text: news_item.lead,
           img: news_item.img,
-          link: { name: 'ProvincesSingleNews', params: { id: news_item.id } },
+          // link: { name: 'ProvincesSingleNews', params: { id: news_item.id } },
         }"
       />
     </ul>
@@ -25,6 +25,7 @@
     </h3>
     <div class="d-sm-flex justify-sm-end" v-if="data.province_news?.length">
       <v-btn
+      disabled
         color="primary"
         class="rounded-lg font-weight-bold"
         :width="useDisplay().xs.value ? '100%' : 'auto'"

@@ -31,7 +31,7 @@
       </v-window>
     </div>
     <div class="w-100 d-flex justify-center py-5">
-      <v-btn color="primary" :to="{ name: media_tab }">نمایش همه</v-btn>
+      <v-btn disabled color="primary" :to="{ name: media_tab }">نمایش همه</v-btn>
     </div>
   </section>
 </template>

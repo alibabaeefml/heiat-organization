@@ -4,7 +4,7 @@
     class="d-block rounded-xl position-relative overflow-hidden bg-primary"
     
   >
-    <v-img cover :src="data.img || default_img"></v-img>
+    <v-img cover :src="data.img || default_img" height="300"></v-img>
     <span
       class="position-absolute pa-3"
       style="

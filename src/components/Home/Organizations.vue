@@ -19,10 +19,10 @@
                 text: organ.text,
                 lead: organ.lead,
                 img: organ.img,
-                link: {
-                  name: 'Organizations',
-                  params: { scroll_to: organ?.id },
-                },
+                // link: {
+                //   name: 'Organizations',
+                //   params: { scroll_to: organ?.id },
+                // },
               }"
               background="#fff"
               :is_cover="false"

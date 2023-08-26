@@ -14,7 +14,7 @@
           title: item.title,
           lead:item.lead,
           img:item.thumbnail,
-          link:{name:'SingleArticle',params:{id:item.id}}
+          // link:{name:'SingleArticle',params:{id:item.id}}
         }"
       />
     </v-col>

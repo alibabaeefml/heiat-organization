@@ -12,7 +12,8 @@
             :data="{
               caption: item.title,
               img: item.img,
-              link: { name: 'SpecialNews', params: { id: item.id } },
+              // link: { name: 'SpecialNews', params: { id: item.id } },
+              link: { name: 'Home'},
             }"
           />
         </v-col>
