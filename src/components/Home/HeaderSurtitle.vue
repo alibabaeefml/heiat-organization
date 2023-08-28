@@ -1,8 +1,7 @@
 <template>
   <div class="position-relative overflow-hidden bg-secondary pa-3 rounded-lg">
     <div class=" mx-auto overflow-hidden" style="width: 99%;">
-      <p class="subtitle-anim text-primary" >{{ latest_news.lead || persian_lorem }}</p>
-
+      <p class="subtitle-anim text-primary" >{{ language.value.header_marque_desc  }}</p>
     </div>
   </div>
 </template>

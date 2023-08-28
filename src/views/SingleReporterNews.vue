@@ -40,11 +40,12 @@
           </div>
           <div class="text-justify" v-html="news.desc"></div>
 
-          <Comments
+          <!-- <Comments
+
             class="mt-10"
             table="news"
             :post_id="router.currentRoute.value.params.id"
-          />
+          /> -->
         </v-col>
         <v-col cols="12" md="3">
           <h2 class="text-primary">اخبار مرتبط</h2>
@@ -57,7 +58,7 @@
               title: item.title,
               text: item.lead,
               img: item.thumbnail,
-              link: { name: 'SingleNews', params: { id: item.id } },
+              link: { name: 'SingleReporterNews', params: { id: item.id } },
             }"
           />
         </v-col>

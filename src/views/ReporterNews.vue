@@ -12,7 +12,11 @@
         z-index: 11;
       "
     >
-      <TextGroup title="اخبار پویش خبرنگار" />
+      <TextGroup
+        :title="language.value.khabarnegar_sec1_title"
+        :pretitle="language.value.khabarnegar_sec1_subtitle"
+        :desc="language.value.khabarnegar_sec1_desc"
+      />
       <v-row class="mt-5 pa-3">
         <v-col cols="12" md="3">
           <Filter
