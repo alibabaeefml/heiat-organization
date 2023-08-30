@@ -10,7 +10,6 @@
           :desc="language.value.index_sec4_news_desc"
         />
         <v-btn
-        disabled
           color="primary"
           class="rounded-lg font-weight-bold"
           :width="useDisplay().xs.value ? '100%' : 'auto'"
@@ -28,10 +27,10 @@
               title: get_news[0]?.title,
               text: get_news[0]?.lead,
               img: get_news[0]?.thumbnail,
-              // link: {
-              //   name: 'SingleNews',
-              //   params: { id: get_news[0]?.id || 1 },
-              // },
+              link: {
+                name: 'SingleNews',
+                params: { id: get_news[0]?.id || 1 },
+              },
             }"
           />
         </v-col>
@@ -43,7 +42,7 @@
               title: news.title,
               text: news.lead,
               img: news.thumbnail,
-              // link: { name: 'SingleNews', params: { id: news.id } },
+              link: { name: 'SingleNews', params: { id: news.id } },
             }"
           />
         </v-col>
@@ -62,8 +61,6 @@ import { ref } from "vue";
 
 use_news_store().index_news();
 const { get_news } = storeToRefs(use_news_store());
-
-
 </script>
 
 <style scoped>

@@ -10,14 +10,13 @@
       }"
       style="margin-top: 100px"
       :navigation="navigation_options"
-      
       autoplay
     >
       <swiper-slide v-for="slide in slides" :key="slide">
         <v-img
           class="rounded-xl"
-          cover
           :src="slide.img || default_img"
+          cover
           height="300px"
         ></v-img>
         <div
