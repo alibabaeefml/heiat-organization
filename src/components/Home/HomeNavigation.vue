@@ -196,7 +196,7 @@
         />
       </svg>
     </nav-item>
-    <nav-item name="تماس با ما" route_name="">
+    <nav-item name="تماس با ما" route_name="ContactUs">
       <svg
         id="Huge-icon_communication_outline_call-user"
         data-name="Huge-icon/communication/outline/call-user"

@@ -108,6 +108,7 @@
           >چندرسانه ای</v-btn
         >
       </li>
+       -->
       <span class="mx-1" style="color: #aaca54">|</span>
       <li class="pa-0">
         <v-btn
@@ -119,7 +120,7 @@
           :active="false"
           >تماس با ما</v-btn
         >
-      </li> -->
+      </li>
     </ul>
     <p style="color: #aaca54">
       کلیه حقوق این سایت متعلق به سازمان هیأت و تشکل های دینی می باشد.

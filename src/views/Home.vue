@@ -5,11 +5,11 @@
       class="w-100 h-100 position-absolute pattern-div"
       style="pointer-events: none"
     ></div>
-    <ProvincesNews />
-    <Organizations />
     <News />
+    <Organizations />
+    <ProvincesNews />
     <MultiMedia color="primary" :center="true" />
-    <SpecialNews />
+    <SpecialNews />ws
   </div>
 </template>
 

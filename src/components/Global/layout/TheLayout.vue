@@ -85,7 +85,7 @@
           >
             اخبار پویش خبرنگار
           </router-link>
- <!-- <router-link
+          <!-- <router-link
             :to="{ name: 'CategorizedNews' }"
             :class="{
               link: true,
@@ -95,7 +95,7 @@
           >
             اخبار
           </router-link> -->
-                   <!-- <div>
+          <!-- <div>
             <v-menu open-on-hover>
               <template v-slot:activator="{ props }">
                 <router-link
@@ -178,6 +178,7 @@
           >
             معرفی سازمان
           </router-link>
+          -->
           <router-link
             :to="{ name: 'ContactUs' }"
             :class="{
@@ -187,8 +188,7 @@
             }"
           >
             تماس با ما
-          </router-link> -->
-         
+          </router-link>
         </div>
         <v-btn
           variant="text"
@@ -353,6 +353,7 @@
           >
             معرفی سازمان
           </router-link>
+          -->
           <router-link
             :to="{ name: 'ContactUs' }"
             :class="{
@@ -362,7 +363,7 @@
             }"
           >
             تماس با ما
-          </router-link> -->
+          </router-link>
         </div>
       </v-navigation-drawer>
 
@@ -427,7 +428,7 @@
                     >
                       اخبار پویش خبرنگار
                     </v-btn>
-                    <!-- <v-btn
+                    <v-btn
                       variant="text"
                       :active="false"
                       :to="{ name: 'AboutUs' }"
@@ -442,7 +443,7 @@
                       width="max-content"
                     >
                       تماس با ما
-                    </v-btn> -->
+                    </v-btn>
                   </v-col>
                   <!-- <v-col cols="6" class="d-flex flex-column align-center">
                      <v-btn

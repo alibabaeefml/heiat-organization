@@ -56,7 +56,7 @@
       <v-tooltip activator="parent"> چندرسانه ای </v-tooltip>
     </v-btn>
 
-    <v-btn icon variant="text" disabled class="menu-item" :to="{ name: 'ContactUs' }">
+    <v-btn icon variant="text"  class="menu-item" :to="{ name: 'ContactUs' }">
       <v-img src="@/assets/images/contact-us-icon.png" width="20" cover></v-img>
       <v-tooltip activator="parent"> تماس با ما </v-tooltip>
     </v-btn>

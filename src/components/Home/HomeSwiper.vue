@@ -33,7 +33,7 @@
             {{ slide.lead || persian_lorem }}
           </p>
           <v-btn
-            :to="{ path: '/home' }"
+            :to="{ path: slide.btn_link }"
             class="font-weight-bold"
             variant="outlined"
             color="secondary"
