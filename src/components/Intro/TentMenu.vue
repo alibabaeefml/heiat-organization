@@ -4,7 +4,6 @@
       'min-width': '600px',
       position: 'relative',
       scale: useDisplay().xs.value ? 0.5 : 1,
-      
     }"
   >
     <img
@@ -17,7 +16,7 @@
       color="#8cca54"
       size="small"
       class="menu-item"
-      style="position: absolute; left: 30px; bottom: 70px;"
+      style="position: absolute; left: 30px; bottom: 70px"
       :to="{ name: 'Provinces' }"
       disabled
     >
@@ -61,8 +60,8 @@
       color="#8cca54"
       size="small"
       class="menu-item"
-      style="position: absolute; right: 30px; bottom: 70px;"
-      :to="{ name: 'ReporterNews' }"
+      style="position: absolute; right: 30px; bottom: 70px"
+      :to="{ name: 'News' }"
     >
       <v-img src="@/assets/images/news-white-icon.png" width="20" cover></v-img>
       <v-tooltip activator="parent" location="right"> اخبار </v-tooltip>
@@ -73,14 +72,16 @@
       size="small"
       class="menu-item"
       style="position: absolute; right: 95px; bottom: 50px"
-      disabled
+      :to="{ name: 'ReporterNews' }"
     >
       <v-img
         src="@/assets/images/events-white-icon.png"
         width="20"
         cover
       ></v-img>
-      <v-tooltip activator="parent" location="right"> رویداد ها </v-tooltip>
+      <v-tooltip activator="parent" location="right">
+        اخبار پویش خبرنگار
+      </v-tooltip>
     </v-btn>
     <v-btn
       icon

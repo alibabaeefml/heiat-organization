@@ -28,6 +28,18 @@
           >اخبار پویش خبرنگار</v-btn
         >
       </li>
+      <span class="mx-1" style="color: #aaca54">|</span>
+      <li class="pa-0">
+        <v-btn
+          variant="text"
+          class="pa-0"
+          color="#aaca54"
+          style="min-width: unset"
+          :to="{ name: 'News' }"
+          :active="false"
+          >اخبار</v-btn
+        >
+      </li>
       <!-- <li class="pa-0">
         
         <v-btn
@@ -72,18 +84,7 @@
           >خدمات الکترونیک</v-btn
         >
       </li>
-      <span class="mx-1" style="color: #aaca54">|</span>
-      <li class="pa-0">
-        <v-btn
-          variant="text"
-          class="pa-0"
-          color="#aaca54"
-          style="min-width: unset"
-          :to="{ name: 'Intro' }"
-          :active="false"
-          >اخبار</v-btn
-        >
-      </li>
+      
       <span class="mx-1" style="color: #aaca54">|</span>
       <li class="pa-0">
         <v-btn
@@ -116,7 +117,7 @@
           class="pa-0"
           color="#aaca54"
           style="min-width: unset"
-          :to="{ name: 'Intro' }"
+          :to="{ name: 'ContactUs' }"
           :active="false"
           >تماس با ما</v-btn
         >

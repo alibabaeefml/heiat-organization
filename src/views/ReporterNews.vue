@@ -46,7 +46,7 @@
               />
             </v-col>
             <v-col cols="12">
-              <Pagination :pages_count="pages" @click="paginate" />
+              <Pagination :pages_count="pages" @callback="paginate" />
             </v-col>
           </v-row>
           <div

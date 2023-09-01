@@ -50,7 +50,7 @@
         </g>
       </svg>
     </nav-item>
-    <nav-item name="تشکل ها" route_name="">
+     <nav-item name="تشکل ها" route_name="">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="54.829"
@@ -126,6 +126,9 @@
           </g>
         </g>
       </svg>
+    </nav-item> 
+    <nav-item name="اخبار" route_name="News">
+   <v-icon size="60">mdi-newspaper</v-icon>
     </nav-item>
     <nav-item name="اخبار پویش خبرنگار" route_name="ReporterNews">
       <svg

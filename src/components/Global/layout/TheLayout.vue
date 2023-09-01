@@ -85,16 +85,16 @@
           >
             اخبار پویش خبرنگار
           </router-link>
-          <!-- <router-link
-            :to="{ name: 'CategorizedNews' }"
+          <router-link
+            :to="{ name: 'News' }"
             :class="{
               link: true,
               dark: theme == 'dark',
-              active: router_name == 'CategorizedNews',
+              active: router_name == 'News',
             }"
           >
             اخبار
-          </router-link> -->
+          </router-link>
           <!-- <div>
             <v-menu open-on-hover>
               <template v-slot:activator="{ props }">
@@ -259,16 +259,16 @@
           >
             تشکل های میان تخصصی
           </router-link> -->
-          <!-- <router-link
-            :to="{ name: 'CategorizedNews' }"
+           <router-link
+            :to="{ name: 'News' }"
             :class="{
               link: true,
               dark: false,
-              active: router_name == 'CategorizedNews',
+              active: router_name == 'News',
             }"
           >
             اخبار
-          </router-link> -->
+          </router-link> 
           <router-link
             :to="{ name: 'ReporterNews' }"
             :class="{
