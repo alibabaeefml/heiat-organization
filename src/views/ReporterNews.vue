@@ -41,6 +41,8 @@
                   title: item.title,
                   text: item.lead,
                   img: item.thumbnail,
+                  name: item.name,
+                  lastname: item.lastname,
                   link: { name: 'SingleReporterNews', params: { id: item.id } },
                 }"
               />

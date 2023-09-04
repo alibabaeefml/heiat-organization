@@ -11,6 +11,11 @@
     <div class="w-100 pa-2">
       <h3 :class="data.title_class || ''">{{ data.title || "عنوان کارت" }}</h3>
       <p class="limited">{{ data.text || persian_lorem }}</p>
+
+      <div class="mt-3" style="font-weight: 900;color: var(--primary);" v-if="data.name && data.lastname">
+        <v-icon>mdi-account</v-icon>
+        <span>نویسنده: {{ data.name + " " + data.lastname }}</span>
+      </div>
       <div
         :class="{
           'd-flex': true,

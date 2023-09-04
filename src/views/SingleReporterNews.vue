@@ -13,10 +13,14 @@
               <h2 class="text-primary">
                 {{ news.title || "تیتر خبر" }}
               </h2>
+              <div class="d-flex align-center mt-2" style="gap: .25rem;">
+                <v-icon>mdi-account</v-icon>
+                <p>نویسنده: {{ news.name + ' ' + news.lastname }}</p>
+              </div>
               <div class="mt-2 d-flex gap-1 align-center">
                 <v-icon color="primary">mdi-calendar</v-icon>
                 <p>
-                  {{ news.date || "یازدهم مرداد ۱۴۰۱" }}
+                  {{ news.date }}
                   -
                   {{
                     new Date(Number(news.timecreated)).getHours() +
@@ -38,7 +42,7 @@
               ></v-rating>
             </div>
           </div>
-          <div class="text-justify" v-html="news.desc"></div>
+          <div class="text-justify mt-5" v-html="news.desc"></div>
 
           <!-- <Comments
 
