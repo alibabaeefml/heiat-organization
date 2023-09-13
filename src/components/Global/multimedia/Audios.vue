@@ -26,7 +26,7 @@
             size="59"
           ></v-avatar>
           <h3 class="overflow-hidden" style="height: 25px">
-            {{ selected_audio.title || persian_lorem }}
+            {{ selected_audio.title  }}
           </h3>
         </div>
         <audio-player

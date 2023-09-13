@@ -14,7 +14,7 @@
       class="text-center"
       style="background-color: rgba(255, 255, 255, 0.8); height: 70px"
     >
-      <h5>{{ data.caption || persian_lorem }}</h5>
+      <h5>{{ data.caption  }}</h5>
     </v-card-title>
   </v-card>
 </template>

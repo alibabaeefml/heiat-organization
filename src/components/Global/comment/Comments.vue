@@ -25,7 +25,7 @@
                   ></v-avatar>
                   <h4>{{ comment.reply?.author?.name || "کاربر" }}</h4>
                 </div>
-                <p class="mt-2">{{ comment.reply?.text || persian_lorem }}</p>
+                <p class="mt-2">{{ comment.reply?.text  }}</p>
               </div>
             </v-list-item>
           </v-list>

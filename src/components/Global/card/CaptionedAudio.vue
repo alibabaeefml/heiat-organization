@@ -9,7 +9,7 @@
     <v-avatar :image="audio.img || default_img" size="59"></v-avatar>
     <div class="d-flex flex-column gap-1 w-75">
       <h3 class="overflow-hidden" style="height: 25px">
-        {{ audio.title || persian_lorem }}
+        {{ audio.title  }}
       </h3>
       <span
         >{{ audio.speaker || "ناشناس" }} -

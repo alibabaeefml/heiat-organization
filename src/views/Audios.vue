@@ -71,7 +71,7 @@
             <v-col>
               <h2>{{ selected_audio.title || "عنوان صوت انتخاب شده" }}</h2>
               <p class="text-justify mt-3">
-                {{ selected_audio.desc || persian_lorem }}
+                {{ selected_audio.desc  }}
               </p>
             </v-col>
           </v-row>

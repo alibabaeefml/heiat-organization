@@ -50,7 +50,7 @@
             </div>
           </div>
           <p class="limited">
-            {{ data.lead || persian_lorem }}
+            {{ data.lead  }}
           </p>
         </v-col>
       </v-row>

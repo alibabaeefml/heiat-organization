@@ -21,7 +21,7 @@
 
     <div class="pa-2">
       <h3>{{ data.title || "عنوان کارت" }}</h3>
-      <p class="limited">{{ data.text || persian_lorem }}</p>
+      <p class="limited">{{ data.text  }}</p>
       <div
         :class="{
           'd-flex': true,

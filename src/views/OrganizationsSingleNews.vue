@@ -54,7 +54,7 @@
             color="primary"
             class="my-3 border-opacity-100"
           ></v-divider>
-          <div class="text-justify" v-html="news.desc || persian_lorem"></div>
+          <div class="text-justify" v-html="news.desc "></div>
           <v-divider
             :thickness="3"
             color="primary"

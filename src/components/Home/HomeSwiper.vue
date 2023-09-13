@@ -29,7 +29,7 @@
             {{ slide.title || "عنوان اسلاید" }}
           </h2>
           <p class="text-white limited">
-            {{ slide.lead || persian_lorem }}
+            {{ slide.lead  }}
           </p>
           <v-btn
             :to="{ path: slide.btn_link }"

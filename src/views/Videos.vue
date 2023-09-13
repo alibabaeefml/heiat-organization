@@ -43,7 +43,7 @@
             <v-col>
               <h2>{{ selected_video.title || "عنوان ویدیو انتخاب شده" }}</h2>
               <p class="text-justify">
-                {{ selected_video.desc || persian_lorem }}
+                {{ selected_video.desc  }}
               </p>
             </v-col>
             <v-col cols="12" class="d-flex flex-column gap-1">

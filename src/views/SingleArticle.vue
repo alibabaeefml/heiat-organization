@@ -40,7 +40,7 @@
           </div>
           <div
             class="text-justify"
-            v-html="article.desc || persian_lorem"
+            v-html="article.desc "
           ></div>
           <Comments class="mt-10" table="articles" :post_id="article.id" />
         </v-col>

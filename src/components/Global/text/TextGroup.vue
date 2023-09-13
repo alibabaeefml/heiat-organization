@@ -3,7 +3,7 @@
     <h4>{{ pretitle }}</h4>
     <h2 :class="title_class" style="font-size: 2rem">{{ title }}</h2>
     <p :class="{ limited: limited, 'text-justify': justify }" v-if="!no_desc">
-      {{ desc || persian_lorem }}
+      {{ desc  }}
     </p>
   </div>
 </template>

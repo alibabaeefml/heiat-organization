@@ -31,7 +31,7 @@
           color="secondary"
         ></v-btn>
       </div>
-      <p class="limited mt-5 w-75 mx-auto">{{ data.lead || persian_lorem }}</p>
+      <p class="limited mt-5 w-75 mx-auto">{{ data.lead  }}</p>
       <HorizontalSwiper :slides="news" class="mt-5" />
     </div>
   </div>
