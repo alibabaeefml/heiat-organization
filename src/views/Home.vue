@@ -9,7 +9,7 @@
     <Organizations />
     <ProvincesNews />
     <MultiMedia color="primary" :center="true" />
-    <SpecialNews />ws
+    <SpecialNews />
   </div>
 </template>
 

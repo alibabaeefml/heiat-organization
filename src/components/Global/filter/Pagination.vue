@@ -10,16 +10,18 @@
       @click="active_page > 1 ? active_page-- : null"
       >قبل</v-btn
     >
-    <v-btn
-      min-width="10"
-      style="border-radius: 10px"
-      width="10"
-      :variant="active_page == i ? 'elevated' : 'outlined'"
-      color="primary"
-      @click="active_page = i"
-      v-for="(i, page) in pages_count"
-      >{{ i }}</v-btn
-    >
+    <template v-for="(i, page) in pages_count" :key="page">
+      <v-btn
+        min-width="10"
+        style="border-radius: 10px"
+        width="10"
+        :variant="active_page == i ? 'elevated' : 'outlined'"
+        color="primary"
+        @click="active_page = i"
+        v-if=" i < active_page + 3 && i > active_page - 3 "
+        >{{ i }}</v-btn
+      >
+    </template>
     <v-btn
       append-icon="mdi-chevron-right"
       color="primary"

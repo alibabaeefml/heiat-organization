@@ -76,14 +76,10 @@
             </p>
           </div>
         </v-col>
-        <v-col
-          cols="12"
-          md="6"
-        >
+        <v-col cols="12" md="6">
           <v-img
             class="rounded-xl w-100 h-100"
             cover
-            
             :src="get_settings?.aboutus_map_img"
           ></v-img>
         </v-col>

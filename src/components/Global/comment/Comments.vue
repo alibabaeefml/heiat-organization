@@ -1,12 +1,12 @@
 <template>
   <v-row>
-    <v-col :cols="cols">
+    <v-col :cols="cols" v-if="get_comments.length">
       <h2 class="text-primary">نظرات کاربران</h2>
       <v-card class="mt-5 overflow-y-auto" color="secondary-3" height="350px">
         <v-card-text class="d-flex align-center justify-center h-100">
           <v-list
             style="background-color: var(--secondary-3)"
-            v-if="get_comments.length"
+            
           >
             <v-list-item v-for="comment in get_comments">
               <div class="d-flex align-center gap-1">
@@ -30,7 +30,7 @@
             </v-list-item>
           </v-list>
 
-          <h3 v-else class="">نظری وجود ندارد</h3>
+
         </v-card-text>
       </v-card>
     </v-col>

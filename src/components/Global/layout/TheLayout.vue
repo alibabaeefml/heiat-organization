@@ -32,17 +32,15 @@
             >سازمان هیئت و تشکل های دینی</span
           >
         </div>
-
         <v-spacer></v-spacer>
         <HeaderSurtitle
-          v-if="display.smAndUp.value && router_name == 'Home'"
+          v-if="display.smAndUp.value && router_name != 'Intro'"
           style="width: 50%"
           class="mx-2"
         />
-
         <div
           class="d-flex justify-between gap-1"
-          v-if="display.width.value >= 800 && router_name != 'Home'"
+          v-if="display.width.value >= 800 && 0"
           gap="3rem"
         >
           <router-link
@@ -208,7 +206,7 @@
           variant="text"
           @click.stop="drawer = !drawer"
           :color="theme == 'dark' ? '#fff' : 'var(--primary)'"
-          v-if="display.width.value <= 800 || router_name == 'Home'"
+          v-if="display.width.value <= 800 || router_name != 'Intro'"
         ></v-app-bar-nav-icon>
       </v-app-bar>
       <!-- drawer menu -->
@@ -259,7 +257,7 @@
           >
             تشکل های میان تخصصی
           </router-link> -->
-           <router-link
+          <router-link
             :to="{ name: 'News' }"
             :class="{
               link: true,
@@ -268,7 +266,7 @@
             }"
           >
             اخبار
-          </router-link> 
+          </router-link>
           <router-link
             :to="{ name: 'ReporterNews' }"
             :class="{
@@ -366,7 +364,6 @@
           </router-link>
         </div>
       </v-navigation-drawer>
-
       <v-main
         style="height: 100vh; overflow-y: auto"
         class="pa-0 overflow-x-hidden"
@@ -530,16 +527,22 @@
                   کلیه حقوق این سایت متعلق به سازمان هیأت و تشکل های دینی
                   می‌باشد.
                 </p>
-                <div class="d-flex justify-space-between gap-1">
-                  <v-btn
-                    v-for="item in socials"
-                    :key="item"
-                    :icon="item.icon"
-                    :to="item.link"
-                    variant="plain"
-                    size="small"
-                  >
-                  </v-btn>
+                <div class="d-flex justify-space-between gap">
+                <v-btn variant="text" icon>
+                  <img src="@/assets/images/bale.png" alt="" width="30">
+                </v-btn>
+                <v-btn variant="text" icon>
+                  <img src="@/assets/images/beiraq.svg" alt="" width="30">
+                </v-btn>
+                <v-btn variant="text" icon>
+                  <img src="@/assets/images/eitaa.png" alt="" width="30">
+                </v-btn>
+                <v-btn variant="text" icon>
+                  <img src="@/assets/images/rubika.png" alt="" width="30">
+                </v-btn>
+                <v-btn variant="text" icon>
+                  <img src="@/assets/images/telegram.webp" alt="" width="30">
+                </v-btn>
                 </div>
               </div>
             </div>
@@ -602,20 +605,7 @@ const main_scroll = () => {
 
 const { footer_icon1_url, footer_icon2_url, footer_icon3_url } =
   getCurrentInstance().appContext.config.globalProperties.language.value;
-const socials = ref([
-  {
-    icon: "mdi-facebook",
-    link: footer_icon1_url,
-  },
-  {
-    icon: "mdi-instagram",
-    link: footer_icon2_url,
-  },
-  {
-    icon: "mdi-youtube",
-    link: footer_icon3_url,
-  },
-]);
+
 
 const visit_stat = ref();
 

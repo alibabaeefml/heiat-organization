@@ -7,7 +7,7 @@
     <div style="padding-top: 10rem; position: relative; z-index: 11">
       <v-img height="380" cover :src="news.img || default_img"> </v-img>
       <v-row class="pa-3">
-        <v-col cols="12" md="9">
+        <v-col cols="12" md="9" class="px-10">
           <div class="d-flex align-center justify-space-between">
             <div>
               <h2 class="text-primary">
