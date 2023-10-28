@@ -5,6 +5,7 @@
       position: 'relative',
       scale: useDisplay().xs.value ? 0.5 : 1,
     }"
+    class="text-center text-primary"
   >
     <img
       style="object-fit: cover; width: 100%; height: 100%"
@@ -16,7 +17,7 @@
       color="#8cca54"
       size="small"
       class="menu-item"
-      style="position: absolute; left: 30px; bottom: 70px"
+      style="position: absolute; left: 30px; bottom: 120px"
       :to="{ name: 'Provinces' }"
       disabled
     >
@@ -32,7 +33,7 @@
       color="#8cca54"
       size="small"
       class="menu-item"
-      style="position: absolute; left: 95px; bottom: 50px"
+      style="position: absolute; left: 95px; bottom: 100px"
       :to="{ name: 'Organizations' }"
       disabled
     >
@@ -44,7 +45,7 @@
       color="#8cca54"
       size="small"
       class="menu-item"
-      style="position: absolute; left: 155px; bottom: 40px"
+      style="position: absolute; left: 155px; bottom: 80px"
       disabled
     >
       <v-img
@@ -60,7 +61,7 @@
       color="#8cca54"
       size="small"
       class="menu-item"
-      style="position: absolute; right: 30px; bottom: 70px"
+      style="position: absolute; right: 30px; bottom: 120px"
       :to="{ name: 'News' }"
     >
       <v-img src="@/assets/images/news-white-icon.png" width="20" cover></v-img>
@@ -71,7 +72,7 @@
       color="#8cca54"
       size="small"
       class="menu-item"
-      style="position: absolute; right: 95px; bottom: 50px"
+      style="position: absolute; right: 95px; bottom: 100px"
       :to="{ name: 'ReporterNews' }"
     >
       <v-img
@@ -88,7 +89,7 @@
       color="#8cca54"
       size="small"
       class="menu-item"
-      style="position: absolute; right: 155px; bottom: 40px"
+      style="position: absolute; right: 155px; bottom: 80px"
       :to="{ name: 'MultiMedia' }"
       disabled
     >
@@ -99,6 +100,7 @@
       ></v-img>
       <v-tooltip activator="parent" location="right"> چند رسانه ای </v-tooltip>
     </v-btn>
+    <h1>سازمان هیئت و تشکل های دینی</h1>
   </div>
 </template>
 

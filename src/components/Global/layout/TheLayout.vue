@@ -19,16 +19,16 @@
           zIndex: 20,
         }"
       >
-        <div class="d-flex flex-column align-center">
+        <div class="d-flex align-center">
           <router-link :to="{ name: 'Intro' }">
             <v-img width="60" height="60" :src="get_settings?.logo"> </v-img>
           </router-link>
           <span
             :style="{
-              'font-size': '7px',
               'letter-spacing': '-0.5px',
               color: theme == 'dark' ? '#fff' : 'var(--primary)',
             }"
+            class="mt-2 font-weight-bold"
             >سازمان هیئت و تشکل های دینی</span
           >
         </div>
@@ -406,7 +406,6 @@
                 md="4"
                 class="text-center d-flex flex-column align-center"
               >
-                <h3 class="text-primary">دسترسی سریع</h3>
                 <v-row class="mt-2 font-weight-bold"
                   ><v-col cols="12" class="d-flex flex-column align-center">
                     <v-btn
@@ -472,7 +471,6 @@
               </v-col>
               <v-col cols="12" md="4">
                 <div class="d-flex align-md-end align-center flex-column gap-1">
-                  <h4>آمار بازدید سایت: {{ visit_stat || 4312 }}</h4>
                   <div
                     class="d-flex flex-sm-row flex-column justify-center justify-sm-end w-100"
                   >
@@ -528,21 +526,25 @@
                   می‌باشد.
                 </p>
                 <div class="d-flex justify-space-between gap">
-                <v-btn variant="text" icon>
-                  <img src="@/assets/images/bale.png" alt="" width="30">
-                </v-btn>
-                <v-btn variant="text" icon>
-                  <img src="@/assets/images/beiraq.svg" alt="" width="30">
-                </v-btn>
-                <v-btn variant="text" icon>
-                  <img src="@/assets/images/eitaa.png" alt="" width="30">
-                </v-btn>
-                <v-btn variant="text" icon>
-                  <img src="@/assets/images/rubika.png" alt="" width="30">
-                </v-btn>
-                <v-btn variant="text" icon>
-                  <img src="@/assets/images/telegram.webp" alt="" width="30">
-                </v-btn>
+                  <v-btn variant="text" icon>
+                    <img src="@/assets/images/bale.png" alt="" width="30" />
+                  </v-btn>
+                  <v-btn variant="text" icon>
+                    <img src="@/assets/images/beiraq.svg" alt="" width="30" />
+                  </v-btn>
+                  <v-btn variant="text" icon>
+                    <img src="@/assets/images/eitaa.png" alt="" width="30" />
+                  </v-btn>
+                  <v-btn variant="text" icon>
+                    <img src="@/assets/images/rubika.png" alt="" width="30" />
+                  </v-btn>
+                  <v-btn variant="text" icon>
+                    <img
+                      src="@/assets/images/telegram.webp"
+                      alt=""
+                      width="30"
+                    />
+                  </v-btn>
                 </div>
               </div>
             </div>
@@ -605,7 +607,6 @@ const main_scroll = () => {
 
 const { footer_icon1_url, footer_icon2_url, footer_icon3_url } =
   getCurrentInstance().appContext.config.globalProperties.language.value;
-
 
 const visit_stat = ref();
 

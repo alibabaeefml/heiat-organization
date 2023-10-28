@@ -1,6 +1,6 @@
 <template>
   <div class="intro-wrapper">
-    <v-btn
+    <!-- <v-btn
       icon
       color="#aaca54"
       style="position: absolute; top: 1rem; left: 1rem"
@@ -43,7 +43,7 @@
       item_link="News"
       class="d-md-block d-none"
       v-if="searchbar_display_lg"
-    />
+    /> -->
     <v-img
       src="../assets/images/besmellah.png"
       style="position: absolute; top: 1rem; right: 1rem"

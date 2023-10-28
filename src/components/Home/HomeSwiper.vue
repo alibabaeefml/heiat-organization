@@ -32,7 +32,7 @@
             {{ slide.lead  }}
           </p>
           <v-btn
-            :to="{ path: slide.btn_link }"
+            :to="slide.btn_link"
             class="font-weight-bold"
             variant="outlined"
             color="secondary"
