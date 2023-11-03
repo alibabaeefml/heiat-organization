@@ -1,6 +1,21 @@
 <template>
   <v-card>
     <v-layout>
+      <v-slide-x-reverse-transition>
+        <IntroMenu v-if="showMenu" @hideMenu="showMenu = false" />
+      </v-slide-x-reverse-transition>
+      <v-btn
+        icon
+        position="fixed"
+        location="right center"
+        color="secondary"
+        style="z-index: 999"
+        @click="showMenu = true"
+        v-if="!showMenu"
+      >
+        <v-icon color="primary">mdi-menu</v-icon>
+        <v-tooltip activator="parent"> منو</v-tooltip>
+      </v-btn>
       <v-app-bar
         v-if="router.currentRoute.value.name != 'Intro' && show_app_bar"
         :color="
@@ -204,7 +219,7 @@
         />
         <v-app-bar-nav-icon
           variant="text"
-          @click.stop="drawer = !drawer"
+          @click.stop="showMenu = !showMenu"
           :color="theme == 'dark' ? '#fff' : 'var(--primary)'"
           v-if="display.width.value <= 800 || router_name != 'Intro'"
         ></v-app-bar-nav-icon>
@@ -567,7 +582,7 @@ import { storeToRefs } from "pinia";
 import { use_search_store } from "@/store/search";
 import { getCurrentInstance } from "vue";
 import { use_settings_store } from "@/store/settings";
-
+import IntroMenu from "@/components/Intro/IntroMenu.vue";
 const router = useRouter();
 const router_name = computed(() => router.currentRoute.value.name);
 const drawer = ref(false);
@@ -616,6 +631,8 @@ use_settings_store().index_settings();
 const footer_theme_class = computed(
   () => router.currentRoute.value.meta.footer_theme_class
 );
+
+const showMenu = ref(true);
 </script>
 
 <style scoped>

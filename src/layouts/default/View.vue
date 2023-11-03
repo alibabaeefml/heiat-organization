@@ -110,25 +110,27 @@ circle.active + text {
   border-radius: 1rem;
 }
 
-button[class*=-slide] {
+button[class*="-slide"] {
   color: var(--primary) !important;
   width: 40px !important;
   height: 40px !important;
 }
-button[class*=-slide]:disabled,
-button[class*=-slide][aria-disabled=true]
- {
+button[class*="-slide"]:disabled,
+button[class*="-slide"][aria-disabled="true"] {
   color: var(--primary) !important;
   background-color: transparent !important;
   background: unset !important;
   border: var(--primary) 2px solid;
 }
-#home-swiper-navigation [class*=-slide]:disabled,
-#home-swiper-navigation [class*=-slide][aria-disabled=true] {
+#home-swiper-navigation [class*="-slide"]:disabled,
+#home-swiper-navigation [class*="-slide"][aria-disabled="true"] {
   color: var(--secondary) !important;
   background-color: transparent !important;
   background: unset !important;
   border: var(--secondary) 2px solid;
 }
 
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: red !important;
+}
 </style>

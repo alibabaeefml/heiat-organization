@@ -3,14 +3,10 @@
     <swiper-container
       :slides-per-view="1"
       :space-between="50"
-      :class="{
-        'w-75': useDisplay().mdAndUp.value,
-        'w-100': useDisplay().mdAndDown.value,
-        'pa-5': true,
-      }"
-      style="margin-top: 100px"
+      style="margin-block: 120px"
       :navigation="navigation_options"
       autoplay
+      :pagination="pagination"
     >
       <swiper-slide v-for="slide in slides" :key="slide">
         <v-img
@@ -19,45 +15,49 @@
           cover
           height="300px"
         ></v-img>
-        <div
-          :class="
-            (useDisplay().smAndUp.value ? 'w-75 ' : '') +
-            'mx-auto d-flex flex-column align-center gap-1 mt-5'
-          "
+        <h2
+          class="font-weight-regular position-absolute text-secondary next"
+          style="bottom: 1.5rem; right: 1rem; z-index: 2"
+          v-if="!hideTitle"
         >
-          <h2 class="text-secondary next">
-            {{ slide.title || "عنوان اسلاید" }}
-          </h2>
-          <p class="text-white limited">
-            {{ slide.lead  }}
-          </p>
-          <v-btn
-            :to="slide.btn_link"
-            class="font-weight-bold"
-            variant="outlined"
-            color="secondary"
-            text="ادامه مطلب"
-          >
-          </v-btn>
-        </div>
+          {{ slide.title || "عنوان اسلاید" }}
+        </h2>
+        <div
+          class="position-absolute w-100 h-100 rounded-xl"
+          style="
+            top: 0;
+            z-index: 1;
+            box-shadow: rgba(16, 16, 16, 0.6) 0px -20px 20px 20px inset;
+          "
+        ></div>
       </swiper-slide>
     </swiper-container>
+
     <div
-      class="position-absolute d-flex justify-space-between"
+      class="w-100 position-absolute d-flex justify-space-between"
       id="home-swiper-navigation"
-      :style="
-        (useDisplay().smAndUp.value ? 'top: 80%' : 'bottom:0') +
-        ';left: 15%; width: 70%;  z-index: 10;'
-      "
+      style="top: 50%; z-index: 10; pointer-events: none"
     >
       <v-btn
         class="next-slide"
+        style="
+          border-radius: 3rem;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          pointer-events: all;
+        "
         id="home_swiper_next_slide"
         icon="mdi-arrow-right"
         color="secondary"
       ></v-btn>
       <v-btn
         class="prev-slide"
+        style="
+          border-radius: 3rem;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          pointer-events: all;
+        "
         id="home_swiper_prev_slide"
         icon="mdi-arrow-left"
         color="secondary"
@@ -81,7 +81,14 @@ const navigation_options = {
 
 const props = defineProps({
   slides: { default: [], type: Array },
+  hideTitle: { type: Boolean },
+  pagination: { type: Boolean },
 });
 </script>
 
-<style scooped></style>
+<style>
+:root {
+  --swiper-pagination-bullet-inactive-color: #fff !important;
+  --swiper-theme-color: var(--secondary) !important;
+}
+</style>

@@ -1,22 +1,31 @@
 <template>
-  <section class="wrapper d-flex flex-column">
-    <HomeSwiper :slides="slides" />
-    <home-navigation
-      v-if="useDisplay().mdAndUp.value"
-      class="position-absolute"
-      style="bottom: 30px; left: calc(50% - 350px); z-index: 20"
+  <section class="wrapper d-flex gap-1 justify-center flex-sm-row flex-column">
+    <HomeSwiper
+      :slides="slides"
+      :style="{ width: display.xs.value ? '100%' : '40%' }"
+    />
+    <HomeSwiper
+      :slides="slides"
+      :style="{ width: display.xs.value ? '100%' : '20%' }"
+      hide-title
+      pagination
+    />
+    <HomeSwiper
+      :slides="slides"
+      :style="{ width: display.xs.value ? '100%' : '20%' }"
+      hide-title
+      pagination
     />
   </section>
 </template>
 <script setup>
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import HomeSwiper from "./HomeSwiper.vue";
-import HomeNavigation from "./HomeNavigation.vue";
 import { use_slider_store } from "@/store/slider";
 import { ref } from "vue";
 
 const slides = ref([]);
-
+const display = useDisplay();
 const load_data = async () => {
   slides.value = await use_slider_store().main_slider();
 };
@@ -46,4 +55,5 @@ load_data();
   bottom: 0;
   left: 0;
 }
+
 </style>

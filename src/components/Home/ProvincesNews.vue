@@ -8,6 +8,8 @@
         :data="data"
         :style="{ width: useDisplay().mdAndUp.value ? '50%' : '100%' }"
         class="order-md-1 order-2"
+        @select_province="set_province_data"
+        :province="data.province"
       />
 
       <Map
