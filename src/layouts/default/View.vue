@@ -133,4 +133,8 @@ button[class*="-slide"][aria-disabled="true"] {
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
   background: red !important;
 }
+
+.inset-bottom-shadow {
+  box-shadow: inset 0 -39px 44px -1px rgba(0, 0, 0, 0.5);
+}
 </style>

@@ -18,8 +18,10 @@ import default_avatar from "@/assets/images/default-image.webp";
 import { use_language_store } from "./store/language";
 import { storeToRefs } from "pinia";
 
-const app = createApp(App);
+import { register } from "swiper/element/bundle";
+register();
 
+const app = createApp(App);
 
 registerPlugins(app);
 

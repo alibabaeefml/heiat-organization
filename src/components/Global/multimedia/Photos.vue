@@ -1,123 +1,100 @@
 <template>
-  <div class="d-none d-md-flex gap-1 pa-5 justify-end">
-    <v-btn class="next-slide" icon="mdi-arrow-right" color="secondary"></v-btn>
-    <v-btn class="prev-slide" icon="mdi-arrow-left" color="secondary"></v-btn>
-  </div>
-  <v-row height="500">
-    <v-col cols="12" md="5" class="pa-8">
-      <CaptionedPhoto
-      v-if="get_albums.length"
-        :data="{
-          caption: get_albums[0].title,
-          img: get_albums[0].thumbnail,
-          // link: { name: 'SingleAlbum', params: { id: get_albums[0].id } },
-        }"
-        height="400"
-      />
+  <v-row height="500" class="mt-3">
+    <v-col cols="12" md="3" class="d-flex flex-column gap-1">
+      <router-link to="">
+        <v-img
+          cover
+          class="rounded-xl"
+          style="height: 200px"
+          :src="get_albums[0]?.thumbnail"
+        >
+          <v-tooltip activator="parent">{{ get_albums[0]?.title }}</v-tooltip>
+        </v-img>
+      </router-link>
+      <router-link to="">
+        <v-img
+          cover
+          class="rounded-xl"
+          style="height: 200px"
+          :src="get_albums[1]?.thumbnail"
+        >
+          <v-tooltip activator="parent">{{ get_albums[1]?.title }}</v-tooltip>
+        </v-img>
+      </router-link>
+      <router-link to="">
+        <v-img
+          cover
+          class="rounded-xl"
+          style="height: 200px"
+          :src="get_albums[2]?.thumbnail"
+        >
+          <v-tooltip activator="parent">{{ get_albums[2]?.title }}</v-tooltip>
+        </v-img>
+      </router-link>
     </v-col>
-    <v-col cols="12" md="7">
-      <div class="d-flex d-md-none gap-1 pa-5 justify-center">
-        <v-btn
-          class="next-slide"
-          icon="mdi-arrow-right"
-          color="secondary"
-        ></v-btn>
-        <v-btn
-          class="prev-slide"
-          icon="mdi-arrow-left"
-          color="secondary"
-        ></v-btn>
-      </div>
-      <swiper
-        :slides-per-view="useDisplay().smAndUp.value ? 2 : 1"
-        :space-between="20"
-        :class="{
-          'pa-5': true,
-        }"
-        :modules="modules"
-        :navigation="navigation_options"
-        loop
-        autoplay
-      >
-        <swiper-slide
-          v-for="album in get_albums.slice(0, 3)"
-          class="d-flex flex-column gap-1"
+    <v-col cols="12" md="6">
+      <router-link to="" class="position-relative">
+        <v-img
+          cover
+          class="rounded-xl"
+          style="height: 100%"
+          :src="get_albums[3]?.thumbnail"
         >
-          <CaptionedPhoto
-            height="200"
-            :data="{
-              caption: album.title,
-              img: album.thumbnail,
-              // link: { name: 'SingleAlbum', params: { id: album.id } },
-            }"
-          />
-        </swiper-slide>
-      </swiper>
-      <swiper
-        :slides-per-view="useDisplay().smAndUp.value ? 2 : 1"
-        :space-between="20"
-        :class="{
-          'pa-5': true,
-        }"
-        :modules="modules"
-        :navigation="navigation_options"
-        loop
-        autoplay
-      >
-        <swiper-slide
-          v-for="album in get_albums.slice(3, 6)"
-          class="d-flex flex-column gap-1"
+        </v-img>
+        <h3
+            class="position-absolute ma-5 text-secondary"
+            style="right: 0; bottom: 0; z-index: 2"
+          >
+            {{ get_albums[3]?.title }}
+          </h3>
+        <div
+          class="position-absolute w-100 h-100 rounded-xl"
+          style="
+            top: 0;
+            z-index: 1;
+            box-shadow: rgba(16, 16, 16, 0.6) 0px -20px 20px 20px inset;
+          "
+        ></div>
+      </router-link>
+    </v-col>
+    <v-col cols="12" md="3" class="d-flex flex-column gap-1">
+      <router-link to="">
+        <v-img
+          cover
+          class="rounded-xl"
+          style="height: 200px"
+          :src="get_albums[4]?.thumbnail"
         >
-          <CaptionedPhoto
-            :data="{ id: album.id, caption: album.title, img: album.thumbnail }"
-          />
-        </swiper-slide>
-      </swiper>
-      <swiper
-        :slides-per-view="useDisplay().smAndUp.value ? 2 : 1"
-        :space-between="20"
-        :class="{
-          'pa-5': true,
-        }"
-        :modules="modules"
-        :navigation="navigation_options"
-        loop
-        autoplay
-      >
-        <swiper-slide
-          v-for="album in get_albums.slice(6)"
-          class="d-flex flex-column gap-1"
+          <v-tooltip activator="parent">{{ get_albums[4]?.title }}</v-tooltip>
+        </v-img>
+      </router-link>
+      <router-link to="">
+        <v-img
+          cover
+          class="rounded-xl"
+          style="height: 200px"
+          :src="get_albums[5]?.thumbnail"
         >
-          <CaptionedPhoto
-            :data="{ id: album.id, caption: album.title, img: album.thumbnail }"
-          />
-        </swiper-slide>
-      </swiper>
+          <v-tooltip activator="parent">{{ get_albums[5]?.title }}</v-tooltip>
+        </v-img>
+      </router-link>
+      <router-link to="">
+        <v-img
+          cover
+          class="rounded-xl"
+          style="height: 200px"
+          :src="get_albums[5]?.thumbnail"
+        >
+          <v-tooltip activator="parent">{{ get_albums[5]?.title }}</v-tooltip>
+        </v-img>
+      </router-link>
     </v-col>
   </v-row>
 </template>
 <script setup>
-import CaptionedPhoto from "../card/CaptionedPhoto.vue";
-import { useDisplay } from "vuetify/lib/framework.mjs";
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
-
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from "swiper/vue";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
 import { use_photo_store } from "@/store/photo";
 import { storeToRefs } from "pinia";
 
-const modules = [Navigation, Pagination, Scrollbar, A11y, Autoplay];
-
-const navigation_options = {
-  nextEl: ".next-slide",
-  prevEl: ".prev-slide",
-};
-
 const { get_albums } = storeToRefs(use_photo_store());
 use_photo_store().index_albums();
-
 </script>

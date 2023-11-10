@@ -24,7 +24,7 @@
           </option>
         </select>
         <v-btn class="rounded-xl" color="primary" :to="{ name: 'Provinces' }"
-          >صفحه اصتان</v-btn
+          >صفحه استان</v-btn
         >
       </div>
     </div>

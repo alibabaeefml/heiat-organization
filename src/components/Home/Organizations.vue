@@ -1,41 +1,73 @@
 <template>
   <section class="bg-white">
     <div class="position-relative" style="z-index: 11">
+      <TextGroup
+        :pretitle="language.value.index_sec3_orgs_subtitle"
+        :title="language.value.index_sec3_orgs_title"
+        :limited="false"
+        class="text-center"
+      />
       <v-row class="pa-16">
-        <v-col md="4" cols="12">
-          <TextGroup
-            :pretitle="language.value.index_sec3_orgs_subtitle"
-            :title="language.value.index_sec3_orgs_title"
-            :desc="language.value.index_sec3_orgs_desc"
-            :limited="false"
-          />
+        <v-col md="4" cols="12" v-for="organ in get_organizations" class="mt-3">
+          <router-link
+            :to="{ name: 'Organizations', params: { id: organ.id } }"
+            class="text-decoration-none"
+          >
+            <v-img :src="organ.img" cover class="rounded-xl h-100" />
+            <h3 class="text-black text-center mt-2">
+              {{ organ.title }}
+            </h3>
+          </router-link>
         </v-col>
-        <v-col md="8" cols="12">
-          <div class="d-flex flex-wrap justify-center gap-1">
-            <VerticalCard
-              :data="{
-                width: useDisplay().smAndUp.value ? '270px' : null,
-                title: organ.title,
-                text: organ.text,
-                lead: organ.lead,
-                img: organ.img,
-                // link: {
-                //   name: 'Organizations',
-                //   params: { scroll_to: organ?.id },
-                // },
-              }"
-              background="#fff"
-              :is_cover="false"
-              v-for="organ in get_organizations"
-            />
-          </div>
+        <v-col md="4" cols="12" v-for="organ in get_organizations" class="mt-3">
+          <router-link
+            :to="{ name: 'Organizations', params: { id: organ.id } }"
+            class="text-decoration-none"
+          >
+            <v-img :src="organ.img" cover class="rounded-xl h-100" />
+            <h3 class="text-black text-center mt-2">
+              {{ organ.title }}
+            </h3>
+          </router-link>
+        </v-col>
+        <v-col md="4" cols="12" v-for="organ in get_organizations" class="mt-3">
+          <router-link
+            :to="{ name: 'Organizations', params: { id: organ.id } }"
+            class="text-decoration-none"
+          >
+            <v-img :src="organ.img" cover class="rounded-xl h-100" />
+            <h3 class="text-black text-center mt-2">
+              {{ organ.title }}
+            </h3>
+          </router-link>
+        </v-col>
+        <v-col md="4" cols="12" v-for="organ in get_organizations" class="mt-3">
+          <router-link
+            :to="{ name: 'Organizations', params: { id: organ.id } }"
+            class="text-decoration-none"
+          >
+            <v-img :src="organ.img" cover class="rounded-xl h-100" />
+            <h3 class="text-black text-center mt-2">
+              {{ organ.title }}
+            </h3>
+          </router-link>
+        </v-col>
+        <v-col md="4" cols="12" v-for="organ in get_organizations" class="mt-3">
+          <router-link
+            :to="{ name: 'Organizations', params: { id: organ.id } }"
+            class="text-decoration-none"
+          >
+            <v-img :src="organ.img" cover class="rounded-xl h-100" />
+            <h3 class="text-black text-center mt-2">
+              {{ organ.title }}
+            </h3>
+          </router-link>
         </v-col>
       </v-row>
     </div>
   </section>
 </template>
 <script setup>
-import VerticalCard from "@/components/Global/card/VerticalCard.vue";
 import TextGroup from "@/components/Global/text/TextGroup.vue";
 import { use_organization_store } from "@/store/organization";
 import { storeToRefs } from "pinia";

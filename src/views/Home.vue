@@ -10,6 +10,7 @@
     <ProvincesNews />
     <MultiMedia color="primary" :center="true" />
     <SpecialNews />
+    <ContentPackages/>
   </div>
 </template>
 
@@ -20,4 +21,5 @@ import News from "@/components/Home/News.vue";
 import ProvincesNews from "@/components/Home/ProvincesNews.vue";
 import MultiMedia from "@/components/Global/multimedia/MultiMedia.vue";
 import SpecialNews from "@/components/Home/SpecialNews.vue";
+import ContentPackages from "@/components/Home/ContentPackages.vue";
 </script>

@@ -68,10 +68,8 @@
 
 <script setup>
 import { register } from "swiper/element/bundle";
-
 register();
 
-import { useDisplay } from "vuetify/lib/framework.mjs";
 // import function to register Swiper custom elements
 
 const navigation_options = {
